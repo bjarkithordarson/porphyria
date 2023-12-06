@@ -10,26 +10,33 @@ public class StalkerController : MonoBehaviour
     public float collisionSphereRadius = 0f;
     public float spawnAngleFrom = 0;
     public float spawnAngleTo = 2 * Mathf.PI;
+    public bool autoSpawnRandomly = false;
     public float respawnRateSeconds = 1f;
     public bool alwaysSpawnInBounds = true; 
     public float yAxisSpawn = 0.2f;
     public AudioSource spawnAudio;
+    private System.DateTime lastSpawnTimestamp;
+    private double secondsSinceLastSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomly", 0, respawnRateSeconds);
+        lastSpawnTimestamp = System.DateTime.Now;
+        secondsSinceLastSpawn = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        secondsSinceLastSpawn = (System.DateTime.Now - lastSpawnTimestamp).TotalSeconds;
     }
 
     void SpawnRandomly()
     {
-        SpawnInRadius(player.transform.position, spawnRadius);
+        if(autoSpawnRandomly && (secondsSinceLastSpawn < respawnRateSeconds))
+        {
+            SpawnInRadius(player.transform.position, spawnRadius);
+        }
     }
 
     void SpawnInRadius(Vector3 center, float radius)
@@ -72,13 +79,15 @@ public class StalkerController : MonoBehaviour
             
 
 
-    void SpawnAt(Vector3 position)
+    public void SpawnAt(Vector3 position)
     {
+        lastSpawnTimestamp = System.DateTime.Now;
         transform.position = position;
         if(spawnAudio && spawnAudio.isPlaying == false)
         {
             spawnAudio.Play();
         }
+        transform.LookAt(player.transform);
     }
 
     void Despawn()
