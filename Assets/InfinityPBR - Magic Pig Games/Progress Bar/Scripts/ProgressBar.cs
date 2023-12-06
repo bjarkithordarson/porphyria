@@ -25,20 +25,11 @@ namespace MagicPigGames
         [Header("Plumbing")]
         public RectTransform rectTransform;
 
-        public Transform player; // Assign this in the inspector
-        public Transform targetObject; // Assign this in the inspector
-        public float maxDistance = 10.0f; // The maximum distance for full speed depletion
-
         private float _progress = 0f; // This is the runtime value for progress!
         protected float _elapsedTime = 0f;
         protected float _lastProgress = 0f;
         protected Vector2 _lastParentSize;
         protected Coroutine _transitionCoroutine;
-        public Light spotlight;
-        public FlaskScript flask; // Reference to the current flask script
-
-        private float countdownTimer = 20.0f; // 20 seconds duration
-        private float maxTimer = 20.0f; // Maximum value of the timer
 
         protected virtual float SizeAtCurrentProgress 
             => Mathf.Lerp(SizeMin, SizeMax, _progress);
@@ -52,54 +43,8 @@ namespace MagicPigGames
 
         protected virtual void Start()
         {
-            SetProgress(1f); // Start with full health
+            SetProgress(1f); // Start with full progress
         }
-
-        protected virtual void Update()
-        {
-                if (Input.GetKeyDown(KeyCode.E) && flask.IsPlayerNearby())
-        {
-                countdownTimer = maxTimer;
-                SetProgress(1f); // Refill the progress bar
-                flask.ConsumeFlask(); // Despawn the flask
-                return;
-        }
-            
-
-            // Base depletion rate
-            float baseDepletionRate = 0.5f; // Adjust this value as needed
-
-            // Adjust additional depletion rate based on distance to the object
-            float distance = Vector3.Distance(player.position, targetObject.position);
-            distance = Mathf.Clamp(distance, 0, maxDistance);
-
-            // Calculate additional depletion rate based on proximity
-            float proximityDepletionRate = (1 - (distance / maxDistance)) * baseDepletionRate;
-
-            // Total depletion rate
-            float totalDepletionRate = baseDepletionRate + proximityDepletionRate;
-
-            // Decrease the timer and update the progress
-            if (countdownTimer > 0)
-            {
-                countdownTimer -= Time.deltaTime * totalDepletionRate;
-                float newProgress = countdownTimer / maxTimer; // Map the timer value to a 0-1 range
-                SetProgress(newProgress);
-            }
-            else
-            {
-                // Ensure the progress doesn't go below zero
-                SetProgress(0f);
-             // Disable the spotlight when progress reaches 0
-            if (spotlight != null)
-            {
-                spotlight.enabled = false;
-            }
-            }
-
-            HandleParentSizeChange();
-        }
-
 
         public virtual void SetProgress(float progress)
         {
