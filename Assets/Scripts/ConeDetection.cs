@@ -15,12 +15,20 @@ public class ConeDetection : MonoBehaviour
         {
             HighlightObject(other.gameObject);
         }
+        if (other.gameObject.CompareTag("Statue"))
+        {
+            HighlightObject(other.gameObject);
+        }
         // Add more conditions here for other interactable objects
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Flask"))
+        {
+            RemoveHighlight(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Statue"))
         {
             RemoveHighlight(other.gameObject);
         }
