@@ -105,9 +105,28 @@ namespace StarterAssets
         private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
+        private GameObject _newCamera;
         private GameObject _mainCamera;
-        public GameObject currentCamera { get {return currentCamera;} set{currentCamera = value;} }
-        // private GameObject newCamera;
+        public GameObject PlayerCamera 
+        { 
+            get
+            {
+                return _mainCamera;
+            } 
+            set
+            {
+                if(_mainCamera == null)
+                {
+                    _mainCamera = value;
+                }
+                else
+                {
+                    _newCamera = value;
+                }
+                
+            } 
+        }
+
 
         private const float _threshold = 0.01f;
 
@@ -131,7 +150,7 @@ namespace StarterAssets
             // get a reference to our main camera
             if (_mainCamera == null)
             {
-                _mainCamera = newCamera;
+                _mainCamera = PlayerCamera;
             }
             
         }
@@ -155,19 +174,13 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
-
+        
         private void Update()
-        {   if (newCamera != null)
-{
-    Debug.Log("newCamera is assigned correctly");
-}
-else
-{
-    Debug.Log("newCamera is not assigned correctly");
-}
-            _mainCamera = newCamera;
-            CameraRotation();
+        {
             _hasAnimator = TryGetComponent(out _animator);
+            
+            // _mainCamera = PlayerCamera;
+            CameraRotation();
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -225,6 +238,10 @@ else
 
         private void Move()
         {
+            if(_newCamera != null && _input.move.magnitude < 0.001f) {
+                _mainCamera = _newCamera;
+                _newCamera = null;                
+            }
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
