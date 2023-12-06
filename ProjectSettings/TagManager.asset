@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Flask
+  - Statue
   layers:
   - Default
   - TransparentFX
