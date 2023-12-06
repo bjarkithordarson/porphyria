@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -104,7 +105,28 @@ namespace StarterAssets
         private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
+        private GameObject _newCamera;
         private GameObject _mainCamera;
+        public GameObject PlayerCamera 
+        { 
+            get
+            {
+                return _mainCamera;
+            } 
+            set
+            {
+                if(_mainCamera == null)
+                {
+                    _mainCamera = value;
+                }
+                else
+                {
+                    _newCamera = value;
+                }
+                
+            } 
+        }
+
 
         private const float _threshold = 0.01f;
 
@@ -128,8 +150,9 @@ namespace StarterAssets
             // get a reference to our main camera
             if (_mainCamera == null)
             {
-                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+                _mainCamera = PlayerCamera;
             }
+            
         }
 
         private void Start()
@@ -151,11 +174,13 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
-
+        
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
-
+            
+            // _mainCamera = PlayerCamera;
+            CameraRotation();
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -213,6 +238,10 @@ namespace StarterAssets
 
         private void Move()
         {
+            if(_newCamera != null && _input.move.magnitude < 0.001f) {
+                _mainCamera = _newCamera;
+                _newCamera = null;                
+            }
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
