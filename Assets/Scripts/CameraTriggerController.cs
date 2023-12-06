@@ -19,8 +19,8 @@ public class CameraTriggerController : MonoBehaviour
         if (other.CompareTag("Player")) // Ensure your character has the tag "Player"
         {
             // Switch cameras
-            mainCamera.enabled = !mainCamera.enabled;
-            secondaryCamera.enabled = !secondaryCamera.enabled;
+            mainCamera.enabled = secondaryCamera;
+            secondaryCamera = mainCamera;
         }
     }
     // Update is called once per frame

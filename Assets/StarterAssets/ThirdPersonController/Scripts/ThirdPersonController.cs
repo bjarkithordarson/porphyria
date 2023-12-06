@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -105,6 +106,8 @@ namespace StarterAssets
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
+        public GameObject currentCamera { get {return currentCamera;} set{currentCamera = value;} }
+        // private GameObject newCamera;
 
         private const float _threshold = 0.01f;
 
@@ -128,8 +131,9 @@ namespace StarterAssets
             // get a reference to our main camera
             if (_mainCamera == null)
             {
-                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+                _mainCamera = newCamera;
             }
+            
         }
 
         private void Start()
@@ -153,9 +157,17 @@ namespace StarterAssets
         }
 
         private void Update()
-        {
+        {   if (newCamera != null)
+{
+    Debug.Log("newCamera is assigned correctly");
+}
+else
+{
+    Debug.Log("newCamera is not assigned correctly");
+}
+            _mainCamera = newCamera;
+            CameraRotation();
             _hasAnimator = TryGetComponent(out _animator);
-
             JumpAndGravity();
             GroundedCheck();
             Move();
