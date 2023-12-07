@@ -13,6 +13,7 @@ public class ConeDetection : MonoBehaviour
     public TextMeshProUGUI statueCountText; // Change to TextMeshProUGUI
     private int statueCount = 0; // To keep track of statues interacted with
     private GameObject currentStatue = null; // To keep track of the current statue
+    public TextMeshProUGUI interactionText;
 
 
 
@@ -34,6 +35,7 @@ public class ConeDetection : MonoBehaviour
         {
             HighlightObject(other.gameObject);
             currentStatue = other.gameObject;
+            interactionText.enabled = true;
         }
         // Add more conditions here for other interactable objects
     }
@@ -48,6 +50,7 @@ public class ConeDetection : MonoBehaviour
         {
             RemoveHighlight(other.gameObject);
             currentStatue = null;
+            interactionText.enabled = false;
         }
         // Add more conditions here for other interactable objects
     }
