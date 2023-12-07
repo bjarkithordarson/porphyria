@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -179,6 +179,50 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5359345231557764008, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789498226170530569, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: ShapeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789498226170530569, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789498226170530569, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789498226170530569, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: ColorBySpeedModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789498226170530569, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789498226170530569, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789498226170530569, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789498226170530569, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789498226170530569, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789498226170530569, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5972653154976994767, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -193,7 +237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5974064782649019255, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.055
+      value: 0.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604370853600195916, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: spawnAudio
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -492,7 +540,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 582968d7d59b3184bb0e6cc845255fff, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.054
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -722,7 +770,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 29f985c21931c7148a903d5a28cf3401, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.475
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -942,7 +990,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a10affbfb88cd8640b321279ad0d0588, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.896
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1067,6 +1115,56 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &1636125176 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1931348702628356363, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+  m_PrefabInstance: {fileID: 87431881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1784065527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784065529}
+  - component: {fileID: 1784065528}
+  m_Layer: 0
+  m_Name: DeathSceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1784065528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784065527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a534a1dc2e27eae4591e883aca9ac376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSceneName: 
+--- !u!4 &1784065529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784065527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7199669, y: 7.111952, z: -9.424289}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1910192691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,6 +1175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1910192693}
   - component: {fileID: 1910192692}
+  - component: {fileID: 1910192694}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -1095,14 +1194,14 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.03773582, g: 0.036489826, b: 0.036489826, a: 1}
   m_Intensity: 100
   m_Range: 10
   m_SpotAngle: 20
   m_InnerSpotAngle: 7
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1155,12 +1254,36 @@ Transform:
   m_GameObject: {fileID: 1910192691}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5450683, y: 0.47957554, z: 0.45630142, w: 0.514487}
-  m_LocalPosition: {x: 1.801, y: 3.619, z: 0.395}
+  m_LocalPosition: {x: 1.562, y: 3.649, z: 0.408}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 7.077, y: 93.13, z: 90.613}
+--- !u!114 &1910192694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910192691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822b75ad38273e5428ae9c06aa138c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBar: {fileID: 0}
+  spotlight: {fileID: 1910192692}
+  targetObject: {fileID: 1636125176}
+  depletionController: {fileID: 0}
+  intenseFlickerDistance: 10
+  baselineFlickerSpeed: 0.3
+  baselineMinIntensity: 10
+  baselineMaxIntensity: 100
+  intenseFlickerSpeed: 0.1
+  intenseMinIntensity: 0.01
+  intenseMaxIntensity: 100
+  interactionText: {fileID: 0}
 --- !u!1 &1914447764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +1381,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 034596ebbd479cc46b422727fb76e8f3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.213
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1423,8 +1546,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279769201
+  m_fontColor: {r: 0.4433962, g: 0.094117135, b: 0.094117135, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1507,3 +1630,4 @@ SceneRoots:
   - {fileID: 1216475992}
   - {fileID: 1910192693}
   - {fileID: 453320700}
+  - {fileID: 1784065529}
