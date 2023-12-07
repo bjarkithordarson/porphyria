@@ -22,7 +22,10 @@ public class ConeDetection : MonoBehaviour
         // Check if "E" is pressed and there's a current statue
         if (Input.GetKeyDown(KeyCode.E) && currentStatue != null)
         {
+            if(statueCount != 2)
+            {
             InteractWithStatue();
+            }
         }
     }
     void OnTriggerEnter(Collider other)
@@ -35,6 +38,10 @@ public class ConeDetection : MonoBehaviour
         {
             HighlightObject(other.gameObject);
             currentStatue = other.gameObject;
+            if (statueCount == 2)
+            {
+                interactionText.text = " You have enough statues ";
+            }
             interactionText.enabled = true;
         }
         // Add more conditions here for other interactable objects
@@ -50,6 +57,7 @@ public class ConeDetection : MonoBehaviour
         {
             RemoveHighlight(other.gameObject);
             currentStatue = null;
+            interactionText.text = " Press E to pickup statue ";
             interactionText.enabled = false;
         }
         // Add more conditions here for other interactable objects
@@ -78,13 +86,15 @@ public class ConeDetection : MonoBehaviour
         }
     }
 
-    void InteractWithStatue()
-    {
+void InteractWithStatue()
+{   
+
         statueCount++; // Increase statue count
         statueCountText.text = statueCount.ToString() + "/2"; // Update TMP text
 
-        // Destroy the statue object
-        Destroy(currentStatue);
+        Destroy(currentStatue); // Destroy the statue object
         currentStatue = null; // Reset current statue
+        interactionText.enabled = false; // Disable interaction text
     }
 }
+

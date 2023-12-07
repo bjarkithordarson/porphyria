@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftDoorAnimator: {fileID: 9009174854239526015}
-  rightDoorAnimator: {fileID: 8092450138988627356}
+  rightDoorAnimator: {fileID: 0}
   openParameterName: Open
   doorBlocker: {fileID: 6183227335825652654}
 --- !u!82 &4028576939161097079
@@ -982,7 +982,6 @@ GameObject:
   - component: {fileID: 8761017095652907499}
   - component: {fileID: 7408121337968938940}
   - component: {fileID: 3527348904740369815}
-  - component: {fileID: 8092450138988627356}
   m_Layer: 0
   m_Name: Door_R_01
   m_TagString: Untagged
@@ -1079,27 +1078,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1620331, y: 4.0589285, z: 0.41791582}
   m_Center: {x: -0.5169599, y: 0.35249215, z: 0.14490813}
---- !u!95 &8092450138988627356
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6278947721750627605}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d3ebcc2868d55074da0885ad362588f6, type: 2}
-  m_CullingMode: 2
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6419218918314649847
 GameObject:
   m_ObjectHideFlags: 0
