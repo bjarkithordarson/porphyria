@@ -5,6 +5,7 @@ using UnityEngine;
 public class StalkerController : MonoBehaviour
 {
     public GameObject player;
+    public GameObject Stalker;
     public float spawnRadius = 1;
     public bool avoidCollisions = true;
     public float collisionSphereRadius = 0f;
@@ -80,7 +81,7 @@ public class StalkerController : MonoBehaviour
 
 
     public void SpawnAt(Vector3 position)
-    {
+    {   Stalker.SetActive(true)
         lastSpawnTimestamp = System.DateTime.Now;
         transform.position = position;
         if(spawnAudio && spawnAudio.isPlaying == false)
@@ -92,7 +93,7 @@ public class StalkerController : MonoBehaviour
 
     void Despawn()
     {
-
+        Stalker.SetActive(false)
     }
 
     private void OnTriggerEnter(Collider other)

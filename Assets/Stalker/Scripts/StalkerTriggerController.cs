@@ -7,6 +7,7 @@ public class StalkerTriggerController : MonoBehaviour
     public GameObject stalkerSpawner;
     public GameObject stalker;
 
+    
     private void OnTriggerEnter(Collider other)
     {
         StalkerController stalkerController = stalker.GetComponent<StalkerController>();
