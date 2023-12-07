@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class checkpoint : MonoBehaviour
 {
-public GameObject characterPrefab;
+public Transform characterPrefab;
 public Transform respawnPoint;
     // Start is called before the first frame update
     void Start()
@@ -13,12 +11,19 @@ public Transform respawnPoint;
     }
 
 void RespawnCharacter()
-{
-    Instantiate(characterPrefab, respawnPoint.position, respawnPoint.rotation);
+{   
+    Debug.Log("Respawning character...");
+    Debug.Log(respawnPoint);
+    Debug.Log(characterPrefab);
+    characterPrefab.transform.position = respawnPoint.position;
+    
 }
     // Update is called once per frame
     void Update()
     {
-        
+    if(Input.GetKeyDown(KeyCode.C)){
+    RespawnCharacter();
+
+    }
     }
 }
