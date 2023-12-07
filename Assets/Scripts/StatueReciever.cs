@@ -42,6 +42,7 @@ public GameObject Flooring;
         depositText.enabled = true;
         // Add code to place the statues here
         Flooring.SetActive(false);
+        depositText.text = "Thanks for playing!";
     }
 
 

@@ -10,7 +10,7 @@ public class DepletionController : MonoBehaviour
     public Light spotlight;
 
     private float countdownTimer = 20.0f; // 20 seconds duration
-    private float maxTimer = 20.0f; // Maximum value of the timer
+    private float maxTimer = 120.0f; // Maximum value of the timer
     public void SetCountdownTimer()
     {
         countdownTimer = maxTimer;
@@ -18,7 +18,7 @@ public class DepletionController : MonoBehaviour
     private void Update()
     {
         // Base depletion rate
-        float baseDepletionRate = 0.5f; // Adjust this value as needed
+        float baseDepletionRate = 0.2f; // Adjust this value as needed
 
         // Adjust additional depletion rate based on distance to the object
         float distance = Vector3.Distance(player.position, targetObject.position);
