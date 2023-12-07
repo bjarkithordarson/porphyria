@@ -94,4 +94,12 @@ public class StalkerController : MonoBehaviour
     {
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(GameManager.instance.InstantDeathRoutine());
+        }
+    }
 }

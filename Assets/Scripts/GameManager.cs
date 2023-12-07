@@ -26,4 +26,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(5); // Wait for 5 secs
         SceneManager.LoadScene(gameSceneName); // Restart the game
     }
+
+    public IEnumerator InstantDeathRoutine()
+    {
+        SceneManager.LoadScene(deathSceneName); // Restart the game
+        yield return new WaitForSeconds(5); // Wait for 5 secs
+        SceneManager.LoadScene(gameSceneName); // Restart the game
+    }
 }
