@@ -85,6 +85,7 @@ public class StalkerController : MonoBehaviour
         transform.position = position;
         if(spawnAudio && spawnAudio.isPlaying == false)
         {
+            Debug.Log("Playing creepy sound");
             spawnAudio.Play();
         }
         transform.LookAt(player.transform);
