@@ -12,9 +12,9 @@ public class DepletionController : MonoBehaviour
     private float countdownTimer = 20.0f; // 20 seconds duration
     private float maxTimer = 20.0f; // Maximum value of the timer
     public void SetCountdownTimer()
-        {
+    {
         countdownTimer = maxTimer;
-        }
+    }
     private void Update()
     {
         // Base depletion rate
@@ -45,7 +45,7 @@ public class DepletionController : MonoBehaviour
             if (spotlight != null)
             {
                 spotlight.enabled = false;
-                GameManager.OutOfOilRoutine()
+                StartCoroutine(GameManager.instance.OutOfOilRoutine());
             }
         }
     }
