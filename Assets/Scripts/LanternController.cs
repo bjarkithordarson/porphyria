@@ -10,7 +10,7 @@ public class LanternController : MonoBehaviour
     public Light spotlight;
     public Transform targetObject;
     public DepletionController depletionController;
-    public float intenseFlickerDistance = 5.0f; // Distance for intense flickering
+    public float intenseFlickerDistance = 10.0f; // Distance for intense flickering
 
     // Baseline flicker settings
     public float baselineFlickerSpeed = 0.1f;
