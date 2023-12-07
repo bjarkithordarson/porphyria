@@ -22,15 +22,10 @@ public class GameManager : MonoBehaviour
         //audioSource.PlayOneShot(deathSound);
         yield return new WaitForSeconds(3); // Wait for 3 secs
         SceneManager.LoadScene(deathSceneName); // Load death scene
-
-        yield return new WaitForSeconds(5); // Wait for 5 secs
-        SceneManager.LoadScene(gameSceneName); // Restart the game
     }
 
-    public IEnumerator InstantDeathRoutine()
+    public void InstantDeathRoutine()
     {
         SceneManager.LoadScene(deathSceneName); // Restart the game
-        yield return new WaitForSeconds(5); // Wait for 5 secs
-        SceneManager.LoadScene(gameSceneName); // Restart the game
     }
 }

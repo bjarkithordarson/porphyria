@@ -99,7 +99,7 @@ public class StalkerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(GameManager.instance.InstantDeathRoutine());
+            GameManager.instance.InstantDeathRoutine();
         }
     }
 }
