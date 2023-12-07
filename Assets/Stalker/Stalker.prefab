@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1931348702628356363}
   - component: {fileID: 7604370853600195916}
   - component: {fileID: 1994040542830501960}
+  - component: {fileID: 5357695870787736016}
   m_Layer: 0
   m_Name: Stalker
   m_TagString: Untagged
@@ -54,6 +55,7 @@ MonoBehaviour:
   collisionSphereRadius: 0
   spawnAngleFrom: 0
   spawnAngleTo: 6.2831855
+  autoSpawnRandomly: 0
   respawnRateSeconds: 500
   alwaysSpawnInBounds: 1
   yAxisSpawn: 0.2
@@ -65,7 +67,28 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152182984508239746}
+  m_Enabled: 0
+--- !u!95 &5357695870787736016
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152182984508239746}
   m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 97f5d06a130764642b7d2a4b38ef39a6, type: 3}
+  m_Controller: {fileID: 9100000, guid: eff1ba3198d62e24e9e3a37900293441, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3445542077544786983
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,15 +317,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4394396899019480, guid: ea309e8646148c24ab067d84d5d22697, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.75
+      value: 0.018
       objectReference: {fileID: 0}
     - target: {fileID: 4394396899019480, guid: ea309e8646148c24ab067d84d5d22697, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.851
       objectReference: {fileID: 0}
     - target: {fileID: 4394396899019480, guid: ea309e8646148c24ab067d84d5d22697, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 69.75
+      value: 0.055
       objectReference: {fileID: 0}
     - target: {fileID: 4394396899019480, guid: ea309e8646148c24ab067d84d5d22697, type: 3}
       propertyPath: m_LocalRotation.w

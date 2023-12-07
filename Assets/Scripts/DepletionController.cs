@@ -45,6 +45,7 @@ public class DepletionController : MonoBehaviour
             if (spotlight != null)
             {
                 spotlight.enabled = false;
+                GameManager.OutOfOilRoutine()
             }
         }
     }
