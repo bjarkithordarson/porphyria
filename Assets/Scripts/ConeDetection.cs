@@ -1,20 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.UI; // Needed for UI elements
 using TMPro;
 
 
 public class ConeDetection : MonoBehaviour
 {
+    public static ConeDetection instance;
 
     public Material highlightMaterial; // Assign this in the Inspector
     private Material normalMaterial; // Store the original material
     public TextMeshProUGUI statueCountText; // Change to TextMeshProUGUI
-    private int statueCount = 0; // To keep track of statues interacted with
+    public int statueCount = 0; // To keep track of statues interacted with
     private GameObject currentStatue = null; // To keep track of the current statue
     public TextMeshProUGUI interactionText;
 
+        void Awake()
+    {
+        instance = this;
+    }
 
 
     void Update()
