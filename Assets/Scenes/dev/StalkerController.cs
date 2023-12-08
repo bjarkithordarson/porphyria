@@ -60,7 +60,7 @@ public class StalkerController : MonoBehaviour
             }
         } while ((avoidCollisions && IsInsideCollider(position)) || !IsAboveFloor(position));
         Debug.Log("Found a random spawn point!");
-        SpawnAt(position);
+        SpawnAt(position, true);
     }
 
     private bool IsInsideCollider(Vector3 point)
@@ -80,12 +80,12 @@ public class StalkerController : MonoBehaviour
             
 
 
-    public void SpawnAt(Vector3 position)
+    public void SpawnAt(Vector3 position, bool spawnWithAudio)
     {
         gameObject.SetActive(true);
         lastSpawnTimestamp = System.DateTime.Now;
         transform.position = position;
-        if(spawnAudio && spawnAudio.isPlaying == false)
+        if(spawnWithAudio && spawnAudio && spawnAudio.isPlaying == false)
         {
             spawnAudio.Play();
         }

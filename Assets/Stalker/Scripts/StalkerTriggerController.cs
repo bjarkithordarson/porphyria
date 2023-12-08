@@ -10,6 +10,7 @@ public class StalkerTriggerController : MonoBehaviour
     public float secondsUntilDespawn;
 
     public float DespawnTimer;
+    public bool spawnWithAudio = true;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,7 +19,7 @@ public class StalkerTriggerController : MonoBehaviour
         {
             gameObject.SetActive(false);
             StalkerController stalkerController = stalker.GetComponent<StalkerController>();
-            stalkerController.SpawnAt(stalkerSpawner.transform.position);
+            stalkerController.SpawnAt(stalkerSpawner.transform.position, spawnWithAudio);
             if (timedDespawn)
             {
                 stalkerController.DelayedDespawn(secondsUntilDespawn);
