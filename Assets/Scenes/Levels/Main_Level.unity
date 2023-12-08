@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.04876551, g: 0.04876551, b: 0.04876551, a: 1}
+  m_AmbientSkyColor: {r: 0.19506204, g: 0.19506204, b: 0.19506204, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -5632,6 +5632,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 559255200}
+    - target: {fileID: 7604370853600195916, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
+      propertyPath: Stalker
+      value: 
+      objectReference: {fileID: 954777404}
     - target: {fileID: 7604370853600195916, guid: 46b2a6eef152b064fb7abf2baa12d1c7, type: 3}
       propertyPath: spawnAudio
       value: 
@@ -21615,6 +21619,10 @@ PrefabInstance:
       value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 2280346187822325259, guid: 40c2ba2834b290144b6c70f0806adf6a, type: 3}
+      propertyPath: allowJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280346187822325259, guid: 40c2ba2834b290144b6c70f0806adf6a, type: 3}
       propertyPath: JumpHeight
       value: 0
       objectReference: {fileID: 0}
@@ -21678,6 +21686,10 @@ PrefabInstance:
       propertyPath: statueCountText
       value: 
       objectReference: {fileID: 819323785}
+    - target: {fileID: 9053502795059137937, guid: 40c2ba2834b290144b6c70f0806adf6a, type: 3}
+      propertyPath: requiredStatueCount
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -26881,6 +26893,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7262331221396228043, guid: dc0606f2c075d394399d85c685495e33, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -27287,6 +27303,10 @@ PrefabInstance:
     - target: {fileID: 2684121855736398920, guid: 04e1a06408295ca40a3168338e58a0d5, type: 3}
       propertyPath: m_Name
       value: AudioTrigger (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990578256263810249, guid: 04e1a06408295ca40a3168338e58a0d5, type: 3}
+      propertyPath: audioSpawner
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3990578256263810249, guid: 04e1a06408295ca40a3168338e58a0d5, type: 3}
       propertyPath: audioClips.Array.size
@@ -60599,7 +60619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You need 2 statues
+  m_text: You need 3 statues
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -84965,6 +84985,10 @@ PrefabInstance:
       propertyPath: depositText
       value: 
       objectReference: {fileID: 1518725359}
+    - target: {fileID: 526920918982947479, guid: e20e81fd135a1a240bdbd4bbd9dd22bb, type: 3}
+      propertyPath: statuesNeeded
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6562916937264589739, guid: e20e81fd135a1a240bdbd4bbd9dd22bb, type: 3}
       propertyPath: m_Size.y
       value: 3.755205

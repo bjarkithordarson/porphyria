@@ -81,12 +81,8 @@ public class StalkerController : MonoBehaviour
 
 
     public void SpawnAt(Vector3 position)
-<<<<<<< HEAD
-    {   Stalker.SetActive(true);
-=======
     {
         gameObject.SetActive(true);
->>>>>>> 4972dcc18d180cc9ea04be81cd817f6b873943ac
         lastSpawnTimestamp = System.DateTime.Now;
         transform.position = position;
         if(spawnAudio && spawnAudio.isPlaying == false)
@@ -98,21 +94,14 @@ public class StalkerController : MonoBehaviour
 
     public void Despawn()
     {
-<<<<<<< HEAD
-        Stalker.SetActive(false);
-=======
         gameObject.SetActive(false);
     }
 
     public void DelayedDespawn(float seconds)
     {
         Invoke("Despawn", seconds);
->>>>>>> 4972dcc18d180cc9ea04be81cd817f6b873943ac
     }
 
-    public void DelayedDespawn(float seconds){
-        Invoke("Despawn", seconds);
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
