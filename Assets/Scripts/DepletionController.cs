@@ -11,21 +11,22 @@ public class DepletionController : MonoBehaviour
 
     private float countdownTimer = 20.0f; // 20 seconds duration
     private float maxTimer = 120.0f; // Maximum value of the timer
+
+    public float baseDepletionRate = 1f;
+    public float stalkerDepletionRate = 2f;
     public void SetCountdownTimer()
     {
         countdownTimer = maxTimer;
     }
     private void Update()
     {
-        // Base depletion rate
-        float baseDepletionRate = 0.2f; // Adjust this value as needed
 
         // Adjust additional depletion rate based on distance to the object
         float distance = Vector3.Distance(player.position, targetObject.position);
         distance = Mathf.Clamp(distance, 0, maxDistance);
 
         // Calculate additional depletion rate based on proximity
-        float proximityDepletionRate = (1 - (distance / maxDistance)) * baseDepletionRate;
+        float proximityDepletionRate = (1 - (distance / maxDistance)) * stalkerDepletionRate;
 
         // Total depletion rate
         float totalDepletionRate = baseDepletionRate + proximityDepletionRate;
