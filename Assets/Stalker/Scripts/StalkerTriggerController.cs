@@ -14,6 +14,7 @@ public class StalkerTriggerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
+            gameObject.SetActive(false);
             StalkerController stalkerController = stalker.GetComponent<StalkerController>();
             stalkerController.SpawnAt(stalkerSpawner.transform.position);
             if (timedDespawn)
