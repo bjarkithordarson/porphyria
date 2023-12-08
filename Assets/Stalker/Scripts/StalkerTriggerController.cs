@@ -6,10 +6,20 @@ public class StalkerTriggerController : MonoBehaviour
 {
     public GameObject stalkerSpawner;
     public GameObject stalker;
+    public bool timedDespawn;
+    public float secondsUntilDespawn;
 
     private void OnTriggerEnter(Collider other)
     {
-        StalkerController stalkerController = stalker.GetComponent<StalkerController>();
-        stalkerController.SpawnAt(stalkerSpawner.transform.position);
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            StalkerController stalkerController = stalker.GetComponent<StalkerController>();
+            stalkerController.SpawnAt(stalkerSpawner.transform.position);
+            if (timedDespawn)
+            {
+                stalkerController.DelayedDespawn(secondsUntilDespawn);
+            }
+        }
     }
 }

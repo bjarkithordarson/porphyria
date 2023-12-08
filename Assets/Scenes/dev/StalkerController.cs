@@ -81,11 +81,11 @@ public class StalkerController : MonoBehaviour
 
     public void SpawnAt(Vector3 position)
     {
+        gameObject.SetActive(true);
         lastSpawnTimestamp = System.DateTime.Now;
         transform.position = position;
         if(spawnAudio && spawnAudio.isPlaying == false)
         {
-            Debug.Log("Playing creepy sound");
             spawnAudio.Play();
         }
         transform.LookAt(player.transform);
@@ -93,7 +93,12 @@ public class StalkerController : MonoBehaviour
 
     void Despawn()
     {
+        gameObject.SetActive(false);
+    }
 
+    public void DelayedDespawn(float seconds)
+    {
+        Invoke("Despawn", seconds);
     }
 
     private void OnTriggerEnter(Collider other)
