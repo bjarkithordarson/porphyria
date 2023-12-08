@@ -11,6 +11,7 @@ public class ConeDetection : MonoBehaviour
     private Material normalMaterial; // Store the original material
     public TextMeshProUGUI statueCountText; // Change to TextMeshProUGUI
     public int statueCount = 0; // To keep track of statues interacted with
+    public int requiredStatueCount;
     private GameObject currentStatue = null; // To keep track of the current statue
     public TextMeshProUGUI interactionText;
 
@@ -25,7 +26,7 @@ public class ConeDetection : MonoBehaviour
         // Check if "E" is pressed and there's a current statue
         if (Input.GetKeyDown(KeyCode.E) && currentStatue != null)
         {
-            if(statueCount != 2)
+            if(statueCount != requiredStatueCount)
             {
             InteractWithStatue();
             }
@@ -41,7 +42,7 @@ public class ConeDetection : MonoBehaviour
         {
             HighlightObject(other.gameObject);
             currentStatue = other.gameObject;
-            if (statueCount == 2)
+            if (statueCount == requiredStatueCount)
             {
                 interactionText.text = " You have enough statues ";
             }
@@ -93,7 +94,7 @@ void InteractWithStatue()
 {   
 
         statueCount++; // Increase statue count
-        statueCountText.text = statueCount.ToString() + "/2"; // Update TMP text
+        statueCountText.text = statueCount.ToString() + "/" + requiredStatueCount; // Update TMP text
 
         Destroy(currentStatue); // Destroy the statue object
         currentStatue = null; // Reset current statue

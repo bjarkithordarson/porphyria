@@ -9,6 +9,8 @@ public class StalkerTriggerController : MonoBehaviour
     public bool timedDespawn;
     public float secondsUntilDespawn;
 
+    public float DespawnTimer;
+
     private void OnTriggerEnter(Collider other)
     {
 

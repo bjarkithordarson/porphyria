@@ -5,6 +5,7 @@ using UnityEngine;
 public class StalkerController : MonoBehaviour
 {
     public GameObject player;
+    public GameObject Stalker;
     public float spawnRadius = 1;
     public bool avoidCollisions = true;
     public float collisionSphereRadius = 0f;
@@ -91,7 +92,7 @@ public class StalkerController : MonoBehaviour
         transform.LookAt(player.transform);
     }
 
-    void Despawn()
+    public void Despawn()
     {
         gameObject.SetActive(false);
     }
