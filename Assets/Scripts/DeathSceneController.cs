@@ -19,6 +19,6 @@ public class DeathSceneController : MonoBehaviour
         yield return new WaitForSeconds(5);
         Debug.Log("After delay");
         Debug.Log(GameManager.instance.gameSceneName);
-        SceneManager.LoadScene(GameManager.instance.gameSceneName);
+        SceneManager.LoadScene("AlphaMenu");
     }
 }
