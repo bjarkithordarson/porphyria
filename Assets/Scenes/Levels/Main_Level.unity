@@ -85890,7 +85890,7 @@ PrefabInstance:
       objectReference: {fileID: 1518725359}
     - target: {fileID: 526920918982947479, guid: e20e81fd135a1a240bdbd4bbd9dd22bb, type: 3}
       propertyPath: statuesNeeded
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6562916937264589739, guid: e20e81fd135a1a240bdbd4bbd9dd22bb, type: 3}
       propertyPath: m_Size.y

@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class StatueReciever : MonoBehaviour
 {
-public int statuesNeeded = 2;
+public int statuesNeeded;
 public TextMeshProUGUI depositText;
 public SceneManager SceneManager;
-
 public GameObject Flooring;
 
+private bool canReturnStatues = false;
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -28,10 +28,12 @@ public GameObject Flooring;
                 depositText.enabled = true;
             }
         }
+        canReturnStatues = ConeDetection.instance.statueCount >= statuesNeeded;
     }
 
     void OnTriggerExit(Collider other)
     {
+        canReturnStatues = false;
         if (other.gameObject.CompareTag("Player"))
         {
             depositText.enabled = false;
@@ -40,39 +42,30 @@ public GameObject Flooring;
     }
     IEnumerator PlaceStatues()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3.5f);
         depositText.text = "Statues placed";
         depositText.enabled = true;
         // Add code to place the statues here
-        Flooring.SetActive(false);
+        StartCoroutine(LoadMainScreen());
         depositText.text = "Thanks for playing!";
-
     }
 
     IEnumerator LoadMainScreen()
     {
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(4.0f);
         SceneManager.LoadScene("AlphaMenu");
-        
-    }
-
-    void OnTriggerStay()
-    {
-        //Debug.Log(ConeDetection.instance.statueCount);
-        if(Input.GetKeyDown(KeyCode.E) && ConeDetection.instance.statueCount >= statuesNeeded)
-        {
-            depositText.text = "Placing statues...";
-            depositText.enabled = true;
-            StartCoroutine(PlaceStatues());
-            StartCoroutine(LoadMainScreen());                
-            
-        }
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E) && canReturnStatues)
+        {
+            depositText.text = "Placing statues...";
+            depositText.enabled = true;
+            StartCoroutine(PlaceStatues());           
+
+        }
     }
     }
 
