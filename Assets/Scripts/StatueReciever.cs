@@ -1,12 +1,15 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class StatueReciever : MonoBehaviour
 {
 public int statuesNeeded = 2;
 public TextMeshProUGUI depositText;
+public SceneManager SceneManager;
 
 public GameObject Flooring;
 
@@ -43,20 +46,33 @@ public GameObject Flooring;
         // Add code to place the statues here
         Flooring.SetActive(false);
         depositText.text = "Thanks for playing!";
+
     }
 
+    IEnumerator LoadMainScreen()
+    {
+        yield return new WaitForSeconds(10.0f);
+        SceneManager.LoadScene("AlphaMenu");
+        
+    }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerStay()
     {
         //Debug.Log(ConeDetection.instance.statueCount);
         if(Input.GetKeyDown(KeyCode.E) && ConeDetection.instance.statueCount >= statuesNeeded)
         {
             depositText.text = "Placing statues...";
             depositText.enabled = true;
-            StartCoroutine(PlaceStatues());                
+            StartCoroutine(PlaceStatues());
+            StartCoroutine(LoadMainScreen());                
             
         }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
     }
     }
 
