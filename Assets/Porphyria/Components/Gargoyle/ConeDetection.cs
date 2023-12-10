@@ -9,6 +9,7 @@ public class ConeDetection : MonoBehaviour
 
     public Material highlightMaterial; // Assign this in the Inspector
     private Material normalMaterial; // Store the original material
+    public Material highlightMaterial2;
     public TextMeshProUGUI statueCountText; // Change to TextMeshProUGUI
     public int statueCount = 0; // To keep track of statues interacted with
     public int requiredStatueCount;
@@ -37,6 +38,10 @@ public class ConeDetection : MonoBehaviour
         if (other.gameObject.CompareTag("Flask"))
         {
             HighlightObject(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Paper"))
+        {
+            HighlightObject2(other.gameObject);
         }
         if (other.gameObject.CompareTag("Statue"))
         {
@@ -80,6 +85,20 @@ public class ConeDetection : MonoBehaviour
             renderer.material = highlightMaterial;
         }
     }
+    void HighlightObject2(GameObject obj)
+    {
+        var renderer = obj.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            // Store the original material
+            if (normalMaterial == null)
+            {
+                normalMaterial = renderer.material;
+            }
+            renderer.material = highlightMaterial2;
+        }
+    }
+
 
     void RemoveHighlight(GameObject obj)
     {

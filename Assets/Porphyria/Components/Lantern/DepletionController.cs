@@ -10,7 +10,7 @@ public class DepletionController : MonoBehaviour
     public Light spotlight;
 
     private float countdownTimer = 20.0f; // 20 seconds duration
-    private float maxTimer = 120.0f; // Maximum value of the timer
+    private float maxTimer = 90.0f; // Maximum value of the timer
 
     public float baseDepletionRate = 1f;
     public float stalkerDepletionRate = 2f;
