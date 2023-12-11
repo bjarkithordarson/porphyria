@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - Flask
   - Statue
+  - Floor
   layers:
   - Default
   - TransparentFX
