@@ -5,11 +5,18 @@ using UnityEngine;
 public class StalkerController : MonoBehaviour
 {
     public GameObject player;
-    public GameObject Stalker;
-    public float spawnRadius = 1;
+    [Header("Spawn Settings")]
+    [Range(0f,100f)]
+    public float spawnRadius = 1f;
     public bool avoidCollisions = true;
+
+    [Range(0f, 10f)]
     public float collisionSphereRadius = 0f;
+
+    [Range(0f, 360f)]
     public float spawnAngleFrom = 0;
+
+    [Range(0f, 360f)]
     public float spawnAngleTo = 2 * Mathf.PI;
     public bool autoSpawnRandomly = false;
     public float respawnRateSeconds = 1f;
@@ -18,6 +25,7 @@ public class StalkerController : MonoBehaviour
     public AudioSource spawnAudio;
     private System.DateTime lastSpawnTimestamp;
     private double secondsSinceLastSpawn;
+    public bool alwaysLookAtPlayer = true;
 
     // Start is called before the first frame update
     void Start()
@@ -30,14 +38,31 @@ public class StalkerController : MonoBehaviour
     void Update()
     {
         secondsSinceLastSpawn = (System.DateTime.Now - lastSpawnTimestamp).TotalSeconds;
+        if (alwaysLookAtPlayer)
+        {
+            LookAtPlayer();
+        }
+
+
+        if (autoSpawnRandomly && (secondsSinceLastSpawn > respawnRateSeconds))
+        {
+            SpawnRandomly();
+        }
     }
+
+    void LookAtPlayer()
+    {
+        Vector3 difference = player.transform.position - transform.position;
+        difference.y = 0;  // This line ensures the rotation is only around the Y-axis.
+        float rotationY = Mathf.Atan2(difference.x, difference.z) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0.0f, rotationY, 0.0f);
+    }
+
+
 
     void SpawnRandomly()
     {
-        if(autoSpawnRandomly && (secondsSinceLastSpawn < respawnRateSeconds))
-        {
-            SpawnInRadius(player.transform.position, spawnRadius);
-        }
+        SpawnInRadius(player.transform.position, spawnRadius);
     }
 
     void SpawnInRadius(Vector3 center, float radius)
@@ -46,7 +71,7 @@ public class StalkerController : MonoBehaviour
         Vector3 position;
         do
         {
-            float angle = (Mathf.Deg2Rad * player.transform.rotation.y) + spawnAngleFrom + (Random.value * (spawnAngleTo));
+            float angle = Mathf.Deg2Rad * (spawnAngleFrom + Random.value * (spawnAngleTo - spawnAngleFrom));
             position = center + new Vector3(Mathf.Cos(angle), yAxisSpawn, Mathf.Sin(angle)).normalized * radius;
             Debug.Log("Finding random spawn point along circle");
             retries--;
@@ -58,9 +83,13 @@ public class StalkerController : MonoBehaviour
             {
                 throw new System.Exception("Unable to find a collisionless position.");
             }
+            Debug.Log(IsInsideCollider(position));
         } while ((avoidCollisions && IsInsideCollider(position)) || !IsAboveFloor(position));
-        Debug.Log("Found a random spawn point!");
-        SpawnAt(position, true);
+        if (!IsInsideCollider(position) && IsAboveFloor(position))
+        {
+            Debug.Log("Found a random spawn point!");
+            SpawnAt(position, true);
+        }
     }
 
     private bool IsInsideCollider(Vector3 point)
@@ -75,9 +104,16 @@ public class StalkerController : MonoBehaviour
     }
     private bool IsAboveFloor(Vector3 point)
     {
-        return Physics.Raycast(point, Vector3.down, out RaycastHit hit, 5f);
+        if (Physics.Raycast(point, Vector3.down, out RaycastHit hit, 5f))
+        {
+            if (hit.collider.tag == "Floor")
+            {
+                return true;
+            }
+        }
+        return false;
     }
-            
+
 
 
     public void SpawnAt(Vector3 position, bool spawnWithAudio)
@@ -85,11 +121,21 @@ public class StalkerController : MonoBehaviour
         gameObject.SetActive(true);
         lastSpawnTimestamp = System.DateTime.Now;
         transform.position = position;
-        if(spawnWithAudio && spawnAudio && spawnAudio.isPlaying == false)
+        GroundObject();
+        if (spawnWithAudio && spawnAudio && spawnAudio.isPlaying == false)
         {
             spawnAudio.Play();
         }
         transform.LookAt(player.transform);
+    }
+
+    void GroundObject()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+        {
+            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+        }
     }
 
     public void Despawn()
