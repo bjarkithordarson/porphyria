@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public string gameSceneName = "Main_Level";
 
     public int AmountOfPlacedStatues;
+    public int AmountofStatuesNeeded;
     private void Awake()
     {
         instance = this;

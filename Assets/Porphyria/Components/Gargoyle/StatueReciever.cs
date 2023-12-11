@@ -8,11 +8,14 @@ using UnityEngine.SceneManagement;
 public class StatueReciever : MonoBehaviour
 {
 public int statuesNeeded;
+private GameManager gameManager;
 public TextMeshProUGUI depositText;
 public SceneManager SceneManager;
 public GameObject Flooring;
+private Animator Railing_Pillar_Low_01;
 
 private bool canReturnStatues = false;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -40,17 +43,19 @@ private bool canReturnStatues = false;
         }
     // Start is called before the first frame update
     }
-    IEnumerator PlaceStatues()
+    IEnumerator AllStatuesPlaced()
     {
+        if(gameManager.AmountofStatuesNeeded < gameManager.AmountOfPlacedStatues){
         yield return new WaitForSeconds(3.5f);
-        depositText.text = "Statues placed";
+        depositText.text = "All statues placed";
         depositText.enabled = true;
+        }
         // Add code to place the statues here
-        StartCoroutine(LoadMainScreen());
-        depositText.text = "Thanks for playing!";
+        //StartCoroutine(LoadSecretStudyScreen());
+        
     }
 
-    IEnumerator LoadMainScreen()
+    IEnumerator LoadSecretStudyScreen()
     {
         yield return new WaitForSeconds(4.0f);
         SceneManager.LoadScene("AlphaMenu");
@@ -61,9 +66,10 @@ private bool canReturnStatues = false;
     {
         if (Input.GetKeyDown(KeyCode.E) && canReturnStatues)
         {
-            depositText.text = "Placing statues...";
+            depositText.text = "Placing statue...";
             depositText.enabled = true;
-            StartCoroutine(PlaceStatues());           
+            Railing_Pillar_Low_01.SetBool("PillarAnimation",true);
+            //StartCoroutine(AllStatuesPlaced());           
 
         }
     }
