@@ -18,6 +18,7 @@ public Animator HatchOpening;
 private BoxCollider boxCollider;
 // private ConeDetection ConeDetection;
 
+
 private bool canReturnStatues = false;
     void Start()
     {
@@ -60,9 +61,6 @@ private bool canReturnStatues = false;
         depositText.enabled = true;
         HatchOpening.enabled = true;
 
-        // }
-        // Add code to place the statues here
-        //StartCoroutine(LoadSecretStudyScreen());
         
     }
 
@@ -91,6 +89,7 @@ private bool canReturnStatues = false;
             //ConeDetection.instance.ResetStatueCount();
             Invoke("DisableText",2.0f);
             animator.enabled = true;
+            AudioManager.instance.StatuePlacementSound();
             
             
             if(GameManager.instance.AmountOfPlacedStatues == GameManager.instance.AmountofStatuesNeeded)
