@@ -68,10 +68,10 @@ private bool canReturnStatues = false;
         {
             depositText.text = "Placing statue...";
             depositText.enabled = true;
-            ConeDetection.instance.statueCount = 0;
-            GameManager.instance.AmountOfPlacedStatues++;
             CounterWeight.SetActive(true);
             Fire.SetActive(true);
+            ConeDetection.instance.statueCount --;
+            GameManager.instance.AmountOfPlacedStatues++;
             Railing_Pillar_Low_01.enabled = true;
             
             if(GameManager.instance.AmountOfPlacedStatues == GameManager.instance.AmountofStatuesNeeded)
