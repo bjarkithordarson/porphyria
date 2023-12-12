@@ -11,17 +11,24 @@ public SceneManager SceneManager;
 public GameObject Flooring;
 public GameObject CounterWeight;
 public GameObject Fire;
-private Animator Railing_Pillar_Low_01;
+private Animator animator;
+// public GameObject trigger;
+private BoxCollider boxCollider;
 // private ConeDetection ConeDetection;
 
 private bool canReturnStatues = false;
-
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             if (ConeDetection.instance.statueCount < statuesNeeded)
-            {
+            {   
+                depositText.text = "You need 1 statue";
                 depositText.enabled = true;
             }
             else
@@ -61,6 +68,11 @@ private bool canReturnStatues = false;
         SceneManager.LoadScene("AlphaMenu");
     }
 
+    private void DisableText()
+    {
+        boxCollider.enabled = false;
+        depositText.enabled = false;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -72,7 +84,10 @@ private bool canReturnStatues = false;
             Fire.SetActive(true);
             ConeDetection.instance.statueCount --;
             GameManager.instance.AmountOfPlacedStatues++;
-            Railing_Pillar_Low_01.enabled = true;
+            Debug.Log(GameManager.instance.AmountOfPlacedStatues);
+            Debug.Log(ConeDetection.instance.statueCount);
+            Invoke("DisableText",2.0f);
+            //animator.Play();
             
             if(GameManager.instance.AmountOfPlacedStatues == GameManager.instance.AmountofStatuesNeeded)
             {

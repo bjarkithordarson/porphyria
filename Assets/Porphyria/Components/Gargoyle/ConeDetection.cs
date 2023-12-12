@@ -94,7 +94,14 @@ void InteractWithStatue()
 {   
 
         statueCount++; // Increase statue count
+        if(statueCount > 0)
+        {
         statueCountText.text = statueCount.ToString() + "/" + requiredStatueCount; // Update TMP text
+        }
+        else
+        {
+            statueCountText.text = "";
+        }
 
         Destroy(currentStatue); // Destroy the statue object
         currentStatue = null; // Reset current statue
