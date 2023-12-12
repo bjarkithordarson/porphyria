@@ -1,24 +1,35 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-
 public class StatueReciever : MonoBehaviour
 {
 public int statuesNeeded;
+//private GameManager GameManager;
 public TextMeshProUGUI depositText;
+public TextMeshProUGUI StatueCount;
 public SceneManager SceneManager;
 public GameObject Flooring;
+public GameObject CounterWeight;
+public GameObject Fire;
+public Animator animator;
+// public GameObject trigger;
+private BoxCollider boxCollider;
+// private ConeDetection ConeDetection;
 
 private bool canReturnStatues = false;
+    void Start()
+    {
+        // animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             if (ConeDetection.instance.statueCount < statuesNeeded)
-            {
+            {   
+                depositText.text = "You need 1 statue";
                 depositText.enabled = true;
             }
             else
@@ -40,30 +51,53 @@ private bool canReturnStatues = false;
         }
     // Start is called before the first frame update
     }
-    IEnumerator PlaceStatues()
+    IEnumerator AllStatuesPlaced()
     {
-        yield return new WaitForSeconds(3.5f);
-        depositText.text = "Statues placed";
+        // if(GameManager.instance.AmountofStatuesNeeded < GameManager.instance.AmountOfPlacedStatues){
+        yield return new WaitForSeconds(2.5f);
+        depositText.text = "All statues placed";
         depositText.enabled = true;
+        Flooring.SetActive(false);
+
+        // }
         // Add code to place the statues here
-        StartCoroutine(LoadMainScreen());
-        depositText.text = "Thanks for playing!";
+        //StartCoroutine(LoadSecretStudyScreen());
+        
     }
 
-    IEnumerator LoadMainScreen()
+    IEnumerator LoadSecretStudyScreen()
     {
-        yield return new WaitForSeconds(4.0f);
-        SceneManager.LoadScene("AlphaMenu");
+        yield return new WaitForSeconds(2.0f);
     }
 
+    private void DisableText()
+    {
+        boxCollider.enabled = false;
+        depositText.enabled = false;
+    }
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && canReturnStatues)
         {
-            depositText.text = "Placing statues...";
+            depositText.text = "Placing statue...";
             depositText.enabled = true;
-            StartCoroutine(PlaceStatues());           
+            CounterWeight.SetActive(true);
+            Fire.SetActive(true);
+            ConeDetection.instance.statueCount--;
+            GameManager.instance.AmountOfPlacedStatues++;
+            StatueCount.text = "";
+            //ConeDetection.instance.ResetStatueCount();
+            Invoke("DisableText",2.0f);
+            animator.enabled = true;
+            
+            
+            if(GameManager.instance.AmountOfPlacedStatues == GameManager.instance.AmountofStatuesNeeded)
+            {
+                StartCoroutine(AllStatuesPlaced());
+
+            }
+                      
 
         }
     }

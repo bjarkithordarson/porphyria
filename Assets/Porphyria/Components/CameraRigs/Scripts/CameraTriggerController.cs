@@ -4,7 +4,7 @@ public class CameraTriggerController : MonoBehaviour
 {
     public GameObject camera;
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         // Check if the character enters the trigger zone
         if (other.CompareTag("Player")) // Ensure your character has the tag "Player"
