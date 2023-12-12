@@ -60,6 +60,7 @@ private bool canReturnStatues = false;
         depositText.text = "All statues placed";
         depositText.enabled = true;
         HatchOpening.enabled = true;
+        AudioManager.instance.StoneHatchSound();
 
         
     }

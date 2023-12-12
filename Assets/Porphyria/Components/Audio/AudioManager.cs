@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {   
+    public static AudioManager instance;
 
+    //Sounds for statue placement
     public AudioClip StatuePlacement;
     public AudioSource StatueSource;
 
-    public static AudioManager instance;
+    //Sounds for Stone Hatch movement
+
+    public AudioClip StoneSlabPlacement;
+    public AudioSource StoneSlabSource;
+
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -42,7 +49,12 @@ public class AudioManager : MonoBehaviour
 
     public void StatuePlacementSound()
     {
-        PlayOneShot(StatuePlacement,StatueSource);
+        PlayOneShot(StatuePlacement, StatueSource);
+    }
+
+    public void StoneHatchSound()
+    {
+        PlayOneShot(StoneSlabPlacement, StoneSlabSource);
     }
 
 }
