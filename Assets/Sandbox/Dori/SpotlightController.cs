@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpotlightController : MonoBehaviour
 {
-    public float sensitivity = 5f;
+    public float sensitivity = 2f;
     public float maxRotation = 90f; // Maximum rotation in one direction
     public float highIntensity = 10f; // Intensity when the mouse button is held
 
@@ -37,8 +37,8 @@ public class SpotlightController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // Left mouse button pressed
         {
             spotlight.intensity = highIntensity;
-            lanternController.baselineFlickerSpeed = 20;
-            lanternController.intenseFlickerSpeed = 20;
+            lanternController.baselineFlickerSpeed = 120;
+            lanternController.intenseFlickerSpeed = 120;
             areaLight.range = 20;
         }
         else if (Input.GetMouseButtonUp(0)) // Left mouse button released

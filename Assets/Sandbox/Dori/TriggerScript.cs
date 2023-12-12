@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class TriggerScript : MonoBehaviour
 {
-    
-    public AudioSource soundEffect; // Assign in the inspector
+    public AudioSource soundEffect; 
     public GameObject dustExplosion1;
-    public GameObject dustExplosion2; // Assign in the inspector
-    private Collider triggerCollider; // To reference the trigger's collider
+    public GameObject dustExplosion2; 
+    public CameraShakeController cameraShakeController; 
     public Animator fallingRubbleAnimator1;
     public Animator fallingRubbleAnimator2;
+    private Collider triggerCollider; 
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class TriggerScript : MonoBehaviour
         if (other.CompareTag("Player")) // Make sure it's the player entering the trigger
         {
             soundEffect.Play(); // Play the sound effect
-            StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(10f, 0.1f)); // Shake the camera
+            cameraShakeController.ShakeCamera(1f, 12f); // New camera shake using Cinemachine
             Invoke("ActivateFallingRubble", 6f);
             Invoke("ActivateEffects", 7f); // Wait for 1 second before activating effects
         }
@@ -28,15 +28,12 @@ public class TriggerScript : MonoBehaviour
 
     private void ActivateFallingRubble()
     {
-        
         fallingRubbleAnimator1.enabled = true; // Enable the animation
         fallingRubbleAnimator2.enabled = true; // Enable the animation
-        
     }
 
     private void ActivateEffects()
     {
-        
         dustExplosion1.SetActive(true);
         dustExplosion2.SetActive(true); // Enable the DustExplosion object
         Invoke("DeactivateEffects", 1.8f); // Schedule to deactivate effects after 3 seconds
