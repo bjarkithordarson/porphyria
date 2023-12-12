@@ -8,7 +8,9 @@ public class TriggerScript : MonoBehaviour
     public CameraShakeController cameraShakeController; 
     public Animator fallingRubbleAnimator1;
     public Animator fallingRubbleAnimator2;
-    private Collider triggerCollider; 
+    private Collider triggerCollider;
+    public GameObject fallingdust1;
+    public GameObject fallingdust2;
 
     private void Start()
     {
@@ -20,6 +22,8 @@ public class TriggerScript : MonoBehaviour
         if (other.CompareTag("Player")) // Make sure it's the player entering the trigger
         {
             soundEffect.Play(); // Play the sound effect
+            fallingdust1.SetActive(true);
+            fallingdust2.SetActive(true);
             cameraShakeController.ShakeCamera(1f, 12f); // New camera shake using Cinemachine
             Invoke("ActivateFallingRubble", 6f);
             Invoke("ActivateEffects", 7f); // Wait for 1 second before activating effects
@@ -37,6 +41,7 @@ public class TriggerScript : MonoBehaviour
         dustExplosion1.SetActive(true);
         dustExplosion2.SetActive(true); // Enable the DustExplosion object
         Invoke("DeactivateEffects", 1.8f); // Schedule to deactivate effects after 3 seconds
+        Invoke("DeactivateFallingDust", 4f);
     }
 
     private void DeactivateEffects()
@@ -44,5 +49,11 @@ public class TriggerScript : MonoBehaviour
         dustExplosion1.SetActive(false);
         dustExplosion2.SetActive(false); // Disable the DustExplosion object
         triggerCollider.enabled = false; // Disable the trigger collider
+    }
+
+    private void DeactivateFallingDust()
+    {
+        fallingdust1.SetActive(false);
+        fallingdust2.SetActive(false);
     }
 }

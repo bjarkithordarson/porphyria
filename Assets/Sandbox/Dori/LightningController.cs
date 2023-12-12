@@ -5,7 +5,7 @@ public class LightningController : MonoBehaviour
 {
     public Light[] spotlights; // Assign your spotlights in the Inspector
     public AudioSource lightningSound; // Assign an AudioSource for the lightning sound
-    public float maxIntensity = 8f; // Maximum intensity of the lightning
+    public float maxIntensity = 15f; // Maximum intensity of the lightning
     public float flashDuration = 0.2f; // Duration of each flash
     public float intervalBetweenFlashes = 0.1f; // Interval between flashes
 
