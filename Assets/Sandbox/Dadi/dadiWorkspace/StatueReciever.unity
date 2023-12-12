@@ -210,9 +210,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statuesNeeded: 1
   depositText: {fileID: 414779423}
+  StatueCount: {fileID: 361587719}
   Flooring: {fileID: 1701598712}
   CounterWeight: {fileID: 320497586}
   Fire: {fileID: 12794304}
+  animator: {fileID: 275911016}
+--- !u!95 &275911016 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1650430574197478948, guid: 7cdc0d6d8d28e56438218abf4a5db579, type: 3}
+  m_PrefabInstance: {fileID: 325256180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &279445658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5467909180194184158, guid: 2f674d964c57741e5a33e927df303a39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.63
+      value: -11.98
       objectReference: {fileID: 0}
     - target: {fileID: 5467909180194184158, guid: 2f674d964c57741e5a33e927df303a39, type: 3}
       propertyPath: m_LocalRotation.w
@@ -519,6 +526,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5836028502719834891, guid: 7cdc0d6d8d28e56438218abf4a5db579, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6365161651738577875, guid: 7cdc0d6d8d28e56438218abf4a5db579, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -674,15 +685,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5467909180194184158, guid: 2f674d964c57741e5a33e927df303a39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.452
+      value: 0.84
       objectReference: {fileID: 0}
     - target: {fileID: 5467909180194184158, guid: 2f674d964c57741e5a33e927df303a39, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.79
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 5467909180194184158, guid: 2f674d964c57741e5a33e927df303a39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.63
+      value: -13.71
       objectReference: {fileID: 0}
     - target: {fileID: 5467909180194184158, guid: 2f674d964c57741e5a33e927df303a39, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1089,9 +1100,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statuesNeeded: 1
   depositText: {fileID: 414779423}
+  StatueCount: {fileID: 361587719}
   Flooring: {fileID: 1701598712}
   CounterWeight: {fileID: 722414115}
   Fire: {fileID: 523669444}
+  animator: {fileID: 806776758}
+--- !u!95 &806776758 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6365161651738577875, guid: 7cdc0d6d8d28e56438218abf4a5db579, type: 3}
+  m_PrefabInstance: {fileID: 325256180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &830567836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1273,9 +1291,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statuesNeeded: 1
   depositText: {fileID: 414779423}
+  StatueCount: {fileID: 361587719}
   Flooring: {fileID: 1701598712}
   CounterWeight: {fileID: 1409073374}
   Fire: {fileID: 1865184452}
+  animator: {fileID: 1336581297}
+--- !u!95 &1336581297 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5812274238752340191, guid: 7cdc0d6d8d28e56438218abf4a5db579, type: 3}
+  m_PrefabInstance: {fileID: 325256180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1409073374 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4215226184228286702, guid: 7cdc0d6d8d28e56438218abf4a5db579, type: 3}
@@ -1564,9 +1589,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statuesNeeded: 1
   depositText: {fileID: 414779423}
+  StatueCount: {fileID: 361587719}
   Flooring: {fileID: 1701598712}
   CounterWeight: {fileID: 519708877}
   Fire: {fileID: 554889518}
+  animator: {fileID: 2008584561}
+--- !u!95 &2008584561 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7427994915119703441, guid: 7cdc0d6d8d28e56438218abf4a5db579, type: 3}
+  m_PrefabInstance: {fileID: 325256180}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2010273344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1661,7 +1693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5467909180194184158, guid: 2f674d964c57741e5a33e927df303a39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.87
+      value: -2.52
       objectReference: {fileID: 0}
     - target: {fileID: 5467909180194184158, guid: 2f674d964c57741e5a33e927df303a39, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1669,7 +1701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5467909180194184158, guid: 2f674d964c57741e5a33e927df303a39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.41
+      value: -18.24
       objectReference: {fileID: 0}
     - target: {fileID: 5467909180194184158, guid: 2f674d964c57741e5a33e927df303a39, type: 3}
       propertyPath: m_LocalRotation.w

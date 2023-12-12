@@ -7,11 +7,12 @@ public class StatueReciever : MonoBehaviour
 public int statuesNeeded;
 //private GameManager GameManager;
 public TextMeshProUGUI depositText;
+public TextMeshProUGUI StatueCount;
 public SceneManager SceneManager;
 public GameObject Flooring;
 public GameObject CounterWeight;
 public GameObject Fire;
-private Animator animator;
+public Animator animator;
 // public GameObject trigger;
 private BoxCollider boxCollider;
 // private ConeDetection ConeDetection;
@@ -19,7 +20,7 @@ private BoxCollider boxCollider;
 private bool canReturnStatues = false;
     void Start()
     {
-        animator = GetComponent<Animator>();
+        // animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
     }
     void OnTriggerEnter(Collider other)
@@ -53,9 +54,11 @@ private bool canReturnStatues = false;
     IEnumerator AllStatuesPlaced()
     {
         // if(GameManager.instance.AmountofStatuesNeeded < GameManager.instance.AmountOfPlacedStatues){
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(2.5f);
         depositText.text = "All statues placed";
         depositText.enabled = true;
+        Flooring.SetActive(false);
+
         // }
         // Add code to place the statues here
         //StartCoroutine(LoadSecretStudyScreen());
@@ -64,8 +67,7 @@ private bool canReturnStatues = false;
 
     IEnumerator LoadSecretStudyScreen()
     {
-        yield return new WaitForSeconds(4.0f);
-        SceneManager.LoadScene("AlphaMenu");
+        yield return new WaitForSeconds(2.0f);
     }
 
     private void DisableText()
@@ -82,16 +84,18 @@ private bool canReturnStatues = false;
             depositText.enabled = true;
             CounterWeight.SetActive(true);
             Fire.SetActive(true);
-            ConeDetection.instance.statueCount --;
+            ConeDetection.instance.statueCount--;
             GameManager.instance.AmountOfPlacedStatues++;
-            Debug.Log(GameManager.instance.AmountOfPlacedStatues);
-            Debug.Log(ConeDetection.instance.statueCount);
+            StatueCount.text = "";
+            //ConeDetection.instance.ResetStatueCount();
             Invoke("DisableText",2.0f);
-            //animator.Play();
+            animator.enabled = true;
+            
             
             if(GameManager.instance.AmountOfPlacedStatues == GameManager.instance.AmountofStatuesNeeded)
             {
                 StartCoroutine(AllStatuesPlaced());
+
             }
                       
 
