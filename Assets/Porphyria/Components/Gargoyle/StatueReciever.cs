@@ -13,6 +13,7 @@ public GameObject Flooring;
 public GameObject CounterWeight;
 public GameObject Fire;
 public Animator animator;
+public Animator HatchOpening; 
 // public GameObject trigger;
 private BoxCollider boxCollider;
 // private ConeDetection ConeDetection;
@@ -57,7 +58,7 @@ private bool canReturnStatues = false;
         yield return new WaitForSeconds(2.5f);
         depositText.text = "All statues placed";
         depositText.enabled = true;
-        Flooring.SetActive(false);
+        HatchOpening.enabled = true;
 
         // }
         // Add code to place the statues here
