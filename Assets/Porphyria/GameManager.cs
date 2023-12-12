@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public string deathSceneName = "EndScene";
     public string gameSceneName = "Main_Level";
 
+    public int AmountOfPlacedStatues = 0;
+    public int AmountofStatuesNeeded = 4;
     private void Awake()
     {
         instance = this;
