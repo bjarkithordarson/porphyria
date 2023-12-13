@@ -6,7 +6,7 @@ public class StatueRecieverForIntro : MonoBehaviour
 {
 public int statuesNeeded;
 //private GameManager GameManager;
-public TextMeshProUGUI depositText;
+public TextMeshPro depositText;
 public TextMeshProUGUI StatueCount;
 public SceneManager SceneManager;
 public BoxCollider doorCollider;
@@ -34,13 +34,13 @@ private bool hasFinished = false;
             if (ConeDetection.instance.statueCount < statuesNeeded)
             {   
                 depositText.text = "You need 1 statue";
-                depositText.enabled = true;
+                depositText.gameObject.SetActive(true);
             }
             else
             {
 
-                depositText.text = "Place down statues with 'E'";
-                depositText.enabled = true;
+                depositText.text = "Place down statue";
+                depositText.gameObject.SetActive(true);
             }
         }
         canReturnStatues = ConeDetection.instance.statueCount >= statuesNeeded;
@@ -51,7 +51,7 @@ private bool hasFinished = false;
         canReturnStatues = false;
         if (other.gameObject.CompareTag("Player"))
         {
-            depositText.enabled = false;
+            depositText.gameObject.SetActive(false);
         }
     // Start is called before the first frame update
     }
@@ -59,11 +59,11 @@ private bool hasFinished = false;
     {
         yield return new WaitForSeconds(2.5f);
         depositText.text = "All statues placed";
-        depositText.enabled = true;
+        depositText.gameObject.SetActive(true);
         doorCollider.enabled = true;
         audioSource.Play();
         yield return new WaitForSeconds(2.5f);
-        depositText.enabled = false;
+        depositText.gameObject.SetActive(false);
         hasFinished = true;
 
 
@@ -78,7 +78,7 @@ private bool hasFinished = false;
     private void DisableText()
     {
         boxCollider.enabled = false;
-        depositText.enabled = false;
+        depositText.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -86,7 +86,7 @@ private bool hasFinished = false;
         if (Input.GetKeyDown(KeyCode.E) && canReturnStatues && !hasFinished)
         {
             depositText.text = "Placing statue...";
-            depositText.enabled = true;
+            depositText.gameObject.SetActive(true);
             CounterWeight.SetActive(true);
             StatueCount.text = "";
             Invoke("DisableText",2.0f);
