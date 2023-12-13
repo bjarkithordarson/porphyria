@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DirectionalCameraTrigger : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class DirectionalCameraTrigger : MonoBehaviour
     public Axis axis = Axis.NorthSouth;
     [Range(0, 3600)]
     public float switchDelay = 3f;
+    public bool switchWhileMoving = false;
 
     private Direction currentObjectDirection;
     private DateTime lastObjectDirectionChange;
@@ -38,40 +40,64 @@ public class DirectionalCameraTrigger : MonoBehaviour
     private bool isActive = false;
     private bool priorityLowered = false;
 
+    private Vector3 lastObjectPosition;
+
+    private bool isEntering = false;
+    private bool isMoving = false;
+
     // Start is called before the first frame update
     void Start()
     {
         currentObjectDirection = GetObjectOrientation();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("Moved: " + ObjectHasMoved());
+        //Debug.Log("Last position: " + lastObjectPosition);
+        //Debug.Log("Position: " + trackingObject.transform.position);
+        isMoving = trackingObject.transform.position.Equals(lastObjectPosition) == false;
+
         if (currentObjectDirection != GetObjectOrientation())
         {
             currentObjectDirection = GetObjectOrientation();
             lastObjectDirectionChange = DateTime.Now;
         }
 
+        lastObjectPosition = trackingObject.transform.position;
         if (!isActive)
         {
             return;
-        }        
-
-        Debug.Log((DateTime.Now - lastObjectDirectionChange).TotalSeconds > switchDelay);
-
-        if((DateTime.Now - lastObjectDirectionChange).TotalSeconds > switchDelay) {
-            SwitchCamera(GetObjectOrientation());
         }
+
+        /*if((DateTime.Now - lastObjectDirectionChange).TotalSeconds > switchDelay) {
+            SwitchCamera(GetObjectOrientation());
+        }*/
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        isEntering = true;
         OnTriggerStay(other);
     }
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.tag != "Player")
+        {
+            return;
+        }
+        if (!isEntering && !switchWhileMoving && isMoving)
+        {
+            Debug.Log("BBBBBBBB" + isMoving);
+            return;
+        } else
+        {
+            Debug.Log("AAAAAAAA" + isMoving);
+        }
         if (!priorityLowered)
         {
             currentObjectDirection = GetObjectOrientation();
@@ -87,12 +113,14 @@ public class DirectionalCameraTrigger : MonoBehaviour
         }
 
         SwitchCamera(GetObjectOrientation());
+        isEntering = false;
     }
 
     private void OnTriggerExit(Collider other)
     {
         isActive = false;
         priorityLowered = false;
+        isEntering = false;
     }
 
     void SwitchCamera(Direction direction)
@@ -110,11 +138,6 @@ public class DirectionalCameraTrigger : MonoBehaviour
         
         if(westCamera)
             westCamera.m_Priority = direction == Direction.West ? 100 : 10;
-
-        Debug.Log("North: " + northCamera.m_Priority);
-        Debug.Log("South: " + southCamera.m_Priority);
-        Debug.Log("East: " + eastCamera.m_Priority);
-        Debug.Log("West: " + westCamera.m_Priority);
     }
 
     public Direction GetObjectOrientation()
