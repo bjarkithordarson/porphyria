@@ -22,7 +22,10 @@ public class LanternController : MonoBehaviour
     public float intenseMinIntensity = 0.01f;
     public float intenseMaxIntensity = 3.5f;
 
-    private float nextFlickerTime = 0.0f;
+    //private float nextFlickerTime = 0.0f;
+    public float nextFlickerTime = 0.0f;
+
+    public bool canFlicker = true;
 
      public TextMeshProUGUI interactionText;
 
@@ -41,8 +44,11 @@ public class LanternController : MonoBehaviour
 
         if (spotlight == null || targetObject == null) return;
 
+        
         float distance = Vector3.Distance(transform.position, targetObject.position);
         
+        if (canFlicker)
+        {
         // Determine if we are doing intense flickering or baseline flickering
         bool isIntenseFlickering = distance < intenseFlickerDistance;
 
@@ -56,6 +62,7 @@ public class LanternController : MonoBehaviour
             spotlight.intensity = Random.Range(minIntensity, maxIntensity);
             nextFlickerTime = Time.time + currentFlickerSpeed;
         }
+    }
     }
 
     void OnTriggerEnter(Collider other)
