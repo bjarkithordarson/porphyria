@@ -5,7 +5,7 @@ using TMPro;
 
 public class LanternController : MonoBehaviour
 {
-    private GameObject interactableObject = null;
+    
     public MagicPigGames.ProgressBar progressBar; // Assign this in the Inspector
     public Light spotlight;
     public Transform targetObject;
@@ -31,16 +31,7 @@ public class LanternController : MonoBehaviour
 
     void Update()
     {
-        // Check for interaction key press
-        if (Input.GetKeyDown(KeyCode.E) && interactableObject != null)
-        {
-            // Check if the object is a flask
-            if (interactableObject.CompareTag("Flask"))
-            {
-                ConsumeFlask(interactableObject);
-            }
-            // Add more conditions here for other interactable objects like lanterns
-        }
+
 
         if (spotlight == null || targetObject == null) return;
 
@@ -65,35 +56,6 @@ public class LanternController : MonoBehaviour
     }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Flask"))
-        {
-            interactableObject = other.gameObject;
-            interactionText.enabled = true;
-        }
-        // Add more conditions here for other interactable objects
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject == interactableObject)
-        {
-            interactableObject = null;
-            interactionText.enabled = false;
-        }
-    }
-
-    void ConsumeFlask(GameObject flask)
-    {
-        // Set progress bar to 100%
-        depletionController.SetCountdownTimer();
-        progressBar.SetProgress(1f);
-
-        // Destroy the flask object
-        Destroy(flask);
-        interactionText.enabled = false;
-    }
 
     // Add more methods here for other interactions, like picking up a lantern
 }
