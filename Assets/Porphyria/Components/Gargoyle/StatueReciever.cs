@@ -13,9 +13,11 @@ public GameObject Flooring;
 public GameObject CounterWeight;
 public GameObject Fire;
 public Animator animator;
+public Animator HatchOpening; 
 // public GameObject trigger;
 private BoxCollider boxCollider;
 // private ConeDetection ConeDetection;
+
 
 private bool canReturnStatues = false;
     void Start()
@@ -57,11 +59,9 @@ private bool canReturnStatues = false;
         yield return new WaitForSeconds(2.5f);
         depositText.text = "All statues placed";
         depositText.enabled = true;
-        Flooring.SetActive(false);
+        HatchOpening.enabled = true;
+        AudioManager.instance.StoneHatchSound();
 
-        // }
-        // Add code to place the statues here
-        //StartCoroutine(LoadSecretStudyScreen());
         
     }
 
@@ -90,6 +90,7 @@ private bool canReturnStatues = false;
             //ConeDetection.instance.ResetStatueCount();
             Invoke("DisableText",2.0f);
             animator.enabled = true;
+            AudioManager.instance.StatuePlacementSound();
             
             
             if(GameManager.instance.AmountOfPlacedStatues == GameManager.instance.AmountofStatuesNeeded)

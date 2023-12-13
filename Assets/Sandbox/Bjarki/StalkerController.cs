@@ -26,6 +26,8 @@ public class StalkerController : MonoBehaviour
     private System.DateTime lastSpawnTimestamp;
     private double secondsSinceLastSpawn;
     public bool alwaysLookAtPlayer = true;
+    public bool despawnWhenVisible = false;
+    public float despawnTimeout = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,17 @@ public class StalkerController : MonoBehaviour
         {
             SpawnRandomly();
         }
+
+    }
+
+    private void OnBecameVisible()
+    {
+        Debug.Log("STALKER VISIBLE");
+    }
+
+    private void OnBecameInvisible()
+    {
+        Debug.Log("STALKER INVISIBLE");
     }
 
     void LookAtPlayer()
@@ -73,17 +86,17 @@ public class StalkerController : MonoBehaviour
         {
             float angle = Mathf.Deg2Rad * (spawnAngleFrom + Random.value * (spawnAngleTo - spawnAngleFrom));
             position = center + new Vector3(Mathf.Cos(angle), yAxisSpawn, Mathf.Sin(angle)).normalized * radius;
-            Debug.Log("Finding random spawn point along circle");
+            //Debug.Log("Finding random spawn point along circle");
             retries--;
 
-            Debug.Log(IsAboveFloor(position));
+            //Debug.Log(IsAboveFloor(position));
 
             // Prevents the game from hanging. Crashes instead.
             if(retries <= 0)
             {
                 throw new System.Exception("Unable to find a collisionless position.");
             }
-            Debug.Log(IsInsideCollider(position));
+            //Debug.Log(IsInsideCollider(position));
         } while ((avoidCollisions && IsInsideCollider(position)) || !IsAboveFloor(position));
         if (!IsInsideCollider(position) && IsAboveFloor(position))
         {
