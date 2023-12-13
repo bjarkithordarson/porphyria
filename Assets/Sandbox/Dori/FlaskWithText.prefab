@@ -215,7 +215,7 @@ Transform:
   m_GameObject: {fileID: 9040251352900186509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.347, y: 0.176, z: 40.04}
+  m_LocalPosition: {x: 22.51, y: 0.176, z: 38.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -286,6 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textPopup: {fileID: 1055642021074612439}
+  depletionController: {fileID: 0}
+  progressBar: {fileID: 0}
 --- !u!65 &4003630456957721070
 BoxCollider:
   m_ObjectHideFlags: 0
