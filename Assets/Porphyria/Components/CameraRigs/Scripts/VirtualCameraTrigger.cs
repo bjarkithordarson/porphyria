@@ -22,6 +22,7 @@ public class VirtualCameraTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         OnTriggerStay(other);
+        Debug.Log("Camera switched");
     }
 
     private void OnTriggerStay(Collider other)
@@ -36,8 +37,6 @@ public class VirtualCameraTrigger : MonoBehaviour
             }
             vcam.m_Priority = 10;
         }
-
-        Debug.Log("VCam trigger");
     }
 
     private void OnDrawGizmos()
