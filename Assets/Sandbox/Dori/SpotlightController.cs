@@ -40,13 +40,16 @@ public class SpotlightController : MonoBehaviour
             lanternController.baselineFlickerSpeed = 120;
             lanternController.intenseFlickerSpeed = 120;
             areaLight.range = 20;
+            lanternController.canFlicker = false;
         }
-        else if (Input.GetMouseButtonUp(0)) // Left mouse button released
+        if (Input.GetMouseButtonUp(0)) // Left mouse button released
         {
             spotlight.intensity = originalIntensity;
             lanternController.baselineFlickerSpeed = 0.1f;
             lanternController.intenseFlickerSpeed = 0.1f;
+            lanternController.nextFlickerTime = 0.1f;
             areaLight.range = 8;
+            lanternController.canFlicker = true;
         }
     }
 }

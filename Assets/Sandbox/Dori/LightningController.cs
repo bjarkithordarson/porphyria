@@ -11,7 +11,7 @@ public class LightningController : MonoBehaviour
 
     void Start()
     {
-        // Schedule the lightning to start after 27 seconds and repeat every 30 seconds
+        // Schedule the lightning to start after 15 seconds and repeat every 30 seconds
         InvokeRepeating("TriggerLightning", 15f, 30f);
     }
 
@@ -19,13 +19,19 @@ public class LightningController : MonoBehaviour
     {
         if (lightningSound != null)
         {
-            lightningSound.Play(); // Play the lightning sound
+            StartCoroutine(PlayLightningSound()); // Start the coroutine to play the sound with delay
         }
 
         foreach (Light spotlight in spotlights)
         {
             StartCoroutine(Flash(spotlight));
         }
+    }
+
+    private IEnumerator PlayLightningSound()
+    {
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        lightningSound.Play(); // Play the lightning sound after the delay
     }
 
     private IEnumerator Flash(Light spotlight)
