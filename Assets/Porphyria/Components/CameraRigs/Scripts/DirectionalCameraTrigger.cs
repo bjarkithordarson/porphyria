@@ -92,11 +92,8 @@ public class DirectionalCameraTrigger : MonoBehaviour
         }
         if (!isEntering && !switchWhileMoving && isMoving)
         {
-            Debug.Log("BBBBBBBB" + isMoving);
+            Debug.Log("BBBBBBBB" + isMoving + currentObjectDirection);
             return;
-        } else
-        {
-            Debug.Log("AAAAAAAA" + isMoving);
         }
         if (!priorityLowered)
         {
@@ -166,5 +163,21 @@ public class DirectionalCameraTrigger : MonoBehaviour
                 }
         }
         return Direction.North;
+    }
+    private void OnDrawGizmos()
+    {
+        BoxCollider collider = GetComponent<BoxCollider>();
+        if (collider == null)
+            return;
+
+        Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale);
+
+        // Draw opaque yellow box
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube(collider.center, collider.size);
+
+        // Draw red wireframe
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(collider.center, collider.size);
     }
 }
