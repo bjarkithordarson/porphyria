@@ -31,6 +31,10 @@ public class ConeDetection : MonoBehaviour
             InteractWithStatue();
             }
         }
+        if(statueCount == 0)
+        {
+            ResetStatueCount();
+        }
     }
     void OnTriggerEnter(Collider other)
     {
@@ -51,6 +55,11 @@ public class ConeDetection : MonoBehaviour
         // Add more conditions here for other interactable objects
     }
 
+    public void ResetStatueCount()
+    {
+        statueCount = 0;
+        interactionText.text = "";
+    }
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Flask"))
@@ -101,4 +110,5 @@ void InteractWithStatue()
         interactionText.enabled = false; // Disable interaction text
     }
 }
+
 
