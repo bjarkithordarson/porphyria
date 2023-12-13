@@ -11,7 +11,7 @@ public class ConeDetection : MonoBehaviour
     public int statueCount = 0; // To keep track of statues interacted with
     public int requiredStatueCount;
     private GameObject currentStatue = null; // To keep track of the current statue
-    public TextMeshProUGUI interactionText;
+    public TextMeshPro interactionText;
 
         void Awake()
     {
@@ -31,7 +31,7 @@ public class ConeDetection : MonoBehaviour
         }
         if(statueCount == 0)
         {
-            ResetStatueCount();
+            //ResetStatueCount();
         }
     }
     void OnTriggerEnter(Collider other)
@@ -43,7 +43,7 @@ public class ConeDetection : MonoBehaviour
             {
                 interactionText.text = " You have enough statues ";
             }
-            interactionText.enabled = true;
+            interactionText.gameObject.SetActive(true);
         }
         // Add more conditions here for other interactable objects
     }
@@ -58,8 +58,8 @@ public class ConeDetection : MonoBehaviour
         if (other.gameObject.CompareTag("Statue"))
         {
             currentStatue = null;
-            interactionText.text = " Press E to pickup statue ";
-            interactionText.enabled = false;
+            interactionText.text = " Pickup statue ";
+            interactionText.gameObject.SetActive(false);
         }
         // Add more conditions here for other interactable objects
     }
@@ -72,7 +72,7 @@ void InteractWithStatue()
 
         Destroy(currentStatue); // Destroy the statue object
         currentStatue = null; // Reset current statue
-        interactionText.enabled = false; // Disable interaction text
+        interactionText.gameObject.SetActive(false); // Disable interaction text
     }
 }
 
