@@ -10,6 +10,7 @@ public class Billboard : MonoBehaviour
 
     void Update()
     {
+
         if (cinemachineBrain != null && cinemachineBrain.ActiveVirtualCamera != null)
         {
             // Get the current active virtual camera
