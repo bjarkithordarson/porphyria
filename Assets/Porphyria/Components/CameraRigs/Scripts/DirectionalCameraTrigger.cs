@@ -36,6 +36,7 @@ public class DirectionalCameraTrigger : MonoBehaviour
     private DateTime lastObjectDirectionChange;
 
     private bool isActive = false;
+    private bool priorityLowered = false;
 
     // Start is called before the first frame update
     void Start()
@@ -55,9 +56,7 @@ public class DirectionalCameraTrigger : MonoBehaviour
         if (!isActive)
         {
             return;
-        }
-
-        
+        }        
 
         Debug.Log((DateTime.Now - lastObjectDirectionChange).TotalSeconds > switchDelay);
 
@@ -68,14 +67,23 @@ public class DirectionalCameraTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        currentObjectDirection = GetObjectOrientation();
-        isActive = true;
+        OnTriggerStay(other);
+    }
 
-        CinemachineVirtualCamera[] virtualCameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
-
-        foreach (CinemachineVirtualCamera vcam in virtualCameras)
+    private void OnTriggerStay(Collider other)
+    {
+        if (!priorityLowered)
         {
-            vcam.m_Priority = 10;
+            currentObjectDirection = GetObjectOrientation();
+            isActive = true;
+
+            CinemachineVirtualCamera[] virtualCameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
+
+            foreach (CinemachineVirtualCamera vcam in virtualCameras)
+            {
+                vcam.m_Priority = 10;
+            }
+            priorityLowered = true;
         }
 
         SwitchCamera(GetObjectOrientation());
@@ -84,6 +92,7 @@ public class DirectionalCameraTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         isActive = false;
+        priorityLowered = false;
     }
 
     void SwitchCamera(Direction direction)
