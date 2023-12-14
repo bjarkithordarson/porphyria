@@ -11,6 +11,7 @@ public class TutorialDoorController : MonoBehaviour
     public AudioSource audioSourcedoor;
 
     private int statuesNeeded = 1;
+    public ConeDetection coneDetection;
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class TutorialDoorController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerIsNear && ConeDetection.instance.statueCount >= statuesNeeded)
+        if (Input.GetKeyDown(KeyCode.E) && playerIsNear && coneDetection.statueCount >= statuesNeeded)
         {
             OpenDoors();
         }

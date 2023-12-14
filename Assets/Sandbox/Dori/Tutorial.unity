@@ -32144,6 +32144,7 @@ MonoBehaviour:
   openParameterName: Open
   doorBlocker: {fileID: 459440172}
   audioSourcedoor: {fileID: 459440175}
+  coneDetection: {fileID: 1895399113}
 --- !u!1 &1329013036
 GameObject:
   m_ObjectHideFlags: 0
@@ -42002,6 +42003,7 @@ MonoBehaviour:
   animator: {fileID: 3809048560240714202}
   MovingStatue: {fileID: 1372230159}
   audioSource: {fileID: 3809048560240714203}
+  coneDetection: {fileID: 1895399113}
 --- !u!1 &1678777492
 GameObject:
   m_ObjectHideFlags: 0
@@ -46329,6 +46331,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 429318, guid: 963d519d7d4e41e1a704477cb3bbe2ec, type: 3}
   m_PrefabInstance: {fileID: 1891136889}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1895399113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3222517022582066419, guid: da0c0fe7612bfb347af12b6523ba0293, type: 3}
+  m_PrefabInstance: {fileID: 1513662762713557575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02266df7a0e9455459ba20a4ad9a9f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1901615360
 GameObject:
   m_ObjectHideFlags: 0
@@ -54845,6 +54858,7 @@ GameObject:
   - component: {fileID: 5909986102904926503}
   - component: {fileID: 7913490314057504073}
   - component: {fileID: 1756776559294756606}
+  - component: {fileID: 9200066768668156308}
   - component: {fileID: 5090951638715316655}
   - component: {fileID: 9200066768668156307}
   m_Layer: 0
@@ -55215,6 +55229,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9200066768668156308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757878910473567795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e13d76826de1ed49b14bb488492a694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionText: {fileID: 341517270}
+  coneDetection: {fileID: 1895399113}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
