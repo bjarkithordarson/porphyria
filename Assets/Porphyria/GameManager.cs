@@ -19,10 +19,12 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+
+
     public IEnumerator OutOfOilRoutine()
     {
         //audioSource.PlayOneShot(deathSound);
-        yield return new WaitForSeconds(3); // Wait for 3 secs
+        yield return new WaitForSeconds(4000); // Wait for 3 secs
         SceneManager.LoadScene(deathSceneName); // Load death scene
     }
 

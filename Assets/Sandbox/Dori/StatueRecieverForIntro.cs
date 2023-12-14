@@ -18,6 +18,7 @@ private BoxCollider boxCollider;
 // private ConeDetection ConeDetection;
 public GameObject MovingStatue;
 public AudioSource audioSource;
+public ConeDetection coneDetection;
 
 
 private bool canReturnStatues = false;
@@ -31,7 +32,7 @@ private bool hasFinished = false;
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (ConeDetection.instance.statueCount < statuesNeeded)
+            if (coneDetection.statueCount < statuesNeeded)
             {   
                 depositText.text = "You need 1 statue";
                 depositText.gameObject.SetActive(true);
@@ -43,7 +44,7 @@ private bool hasFinished = false;
                 depositText.gameObject.SetActive(true);
             }
         }
-        canReturnStatues = ConeDetection.instance.statueCount >= statuesNeeded;
+        canReturnStatues = coneDetection.statueCount >= statuesNeeded;
     }
 
     void OnTriggerExit(Collider other)

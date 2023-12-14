@@ -6,7 +6,7 @@ public class StatueReciever : MonoBehaviour
 {
 public int statuesNeeded;
 //private GameManager GameManager;
-public TextMeshProUGUI depositText;
+public TextMeshPro depositText;
 public TextMeshProUGUI StatueCount;
 public SceneManager SceneManager;
 public GameObject Flooring;
@@ -16,7 +16,8 @@ public Animator animator;
 public Animator HatchOpening; 
 // public GameObject trigger;
 private BoxCollider boxCollider;
-// private ConeDetection ConeDetection;
+public ConeDetection coneDetection;
+public FloorOpenEndJuice floorOpenEndJuice;
 
 
 private bool canReturnStatues = false;
@@ -29,19 +30,19 @@ private bool canReturnStatues = false;
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (ConeDetection.instance.statueCount < statuesNeeded)
+            if (coneDetection.statueCount < statuesNeeded)
             {   
                 depositText.text = "You need 1 statue";
-                depositText.enabled = true;
+                depositText.gameObject.SetActive(true);
             }
             else
             {
 
                 depositText.text = "Place down statues with 'E'";
-                depositText.enabled = true;
+                depositText.gameObject.SetActive(true);
             }
         }
-        canReturnStatues = ConeDetection.instance.statueCount >= statuesNeeded;
+        canReturnStatues = coneDetection.statueCount >= statuesNeeded;
     }
 
     void OnTriggerExit(Collider other)
@@ -49,18 +50,20 @@ private bool canReturnStatues = false;
         canReturnStatues = false;
         if (other.gameObject.CompareTag("Player"))
         {
-            depositText.enabled = false;
+            depositText.gameObject.SetActive(false);
         }
     // Start is called before the first frame update
     }
     IEnumerator AllStatuesPlaced()
     {
-        // if(GameManager.instance.AmountofStatuesNeeded < GameManager.instance.AmountOfPlacedStatues){
-        yield return new WaitForSeconds(2.5f);
-        depositText.text = "All statues placed";
-        depositText.enabled = true;
+        //if(GameManager.instance.AmountofStatuesNeeded < GameManager.instance.AmountOfPlacedStatues){
+        floorOpenEndJuice.ToggleFires();
+        yield return new WaitForSeconds(7f);
+        //depositText.text = "All statues placed";
+        //depositText.gameObject.SetActive(true);
         HatchOpening.enabled = true;
         AudioManager.instance.StoneHatchSound();
+        
 
         
     }
@@ -73,7 +76,7 @@ private bool canReturnStatues = false;
     private void DisableText()
     {
         boxCollider.enabled = false;
-        depositText.enabled = false;
+        depositText.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -81,14 +84,13 @@ private bool canReturnStatues = false;
         if (Input.GetKeyDown(KeyCode.E) && canReturnStatues)
         {
             depositText.text = "Placing statue...";
-            depositText.enabled = true;
+            depositText.gameObject.SetActive(true);
             CounterWeight.SetActive(true);
             Fire.SetActive(true);
-            ConeDetection.instance.statueCount--;
+            coneDetection.statueCount--;
             GameManager.instance.AmountOfPlacedStatues++;
-            StatueCount.text = "";
-            //ConeDetection.instance.ResetStatueCount();
-            Invoke("DisableText",2.0f);
+            coneDetection.ResetStatueCount();
+            Invoke("DisableText", 1.0f);
             animator.enabled = true;
             AudioManager.instance.StatuePlacementSound();
             

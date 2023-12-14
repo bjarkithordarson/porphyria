@@ -80,6 +80,7 @@ public class DirectionalCameraTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Debug.Log("CHANGE CAMERA");
         isEntering = true;
         OnTriggerStay(other);
     }
@@ -92,7 +93,7 @@ public class DirectionalCameraTrigger : MonoBehaviour
         }
         if (!isEntering && !switchWhileMoving && isMoving)
         {
-            Debug.Log("BBBBBBBB" + isMoving + currentObjectDirection);
+            //Debug.Log("BBBBBBBB" + isMoving + currentObjectDirection);
             return;
         }
         if (!priorityLowered)
@@ -122,7 +123,7 @@ public class DirectionalCameraTrigger : MonoBehaviour
 
     void SwitchCamera(Direction direction)
     {
-        Debug.Log("Switching directions");
+        //Debug.Log("Switching directions to " + direction);
 
         if(northCamera)
             northCamera.m_Priority = direction == Direction.North ? 100 : 10;

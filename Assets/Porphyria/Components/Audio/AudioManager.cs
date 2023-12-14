@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour
     //Sounds for Stone Hatch movement
     public AudioClip StoneSlabPlacement;
     public AudioSource StoneSlabSource;
+    public AudioSource FireFloorExplosionSource;
+    public AudioClip FireFloorExpSound;
 
     //Sounds for StoryInteractable
 
@@ -72,6 +74,10 @@ public class AudioManager : MonoBehaviour
     public void StoneHatchSound()
     {
         PlayOneShot(StoneSlabPlacement, StoneSlabSource);
+    }
+    public void FireFloorExplosion()
+    {
+        PlayOneShot(FireFloorExpSound, FireFloorExplosionSource);
     }
 
     public void PageSound()

@@ -22,11 +22,15 @@ public class VirtualCameraTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         OnTriggerStay(other);
-        Debug.Log("Camera switched");
+        //Debug.Log("Camera switched");
     }
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.tag != "Player")
+        {
+            return;
+        }
         activeVirtualCamera.m_Priority = 100;
 
         foreach(CinemachineVirtualCamera vcam in virtualCameras)
