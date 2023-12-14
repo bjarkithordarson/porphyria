@@ -12,7 +12,6 @@ public class AudioManager : MonoBehaviour
     public AudioSource StatueSource;
 
     //Sounds for Stone Hatch movement
-
     public AudioClip StoneSlabPlacement;
     public AudioSource StoneSlabSource;
 
