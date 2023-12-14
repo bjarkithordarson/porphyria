@@ -34,7 +34,7 @@ public class CameraHandler : MonoBehaviour
         mainCamera = triggeredCamera;
         mainCamera.SetActive(true);
         Character.PlayerCamera = mainCamera;
-        Debug.Log($"Set Active Camera {triggeredCamera.name}");
+        //Debug.Log($"Set Active Camera {triggeredCamera.name}");
     }
 
     // Update is called once per frame

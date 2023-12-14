@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip StoneSlabPlacement;
     public AudioSource StoneSlabSource;
+    public AudioSource FireFloorExplosionSource;
+    public AudioClip FireFloorExpSound;
 
 
     // Start is called before the first frame update
@@ -55,6 +57,10 @@ public class AudioManager : MonoBehaviour
     public void StoneHatchSound()
     {
         PlayOneShot(StoneSlabPlacement, StoneSlabSource);
+    }
+    public void FireFloorExplosion()
+    {
+        PlayOneShot(FireFloorExpSound, FireFloorExplosionSource);
     }
 
 }
