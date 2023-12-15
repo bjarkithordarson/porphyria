@@ -427,6 +427,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f39c1f6ba325484fa24c78dad993d781, type: 3}
+--- !u!114 &594595776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1244153835354180125, guid: 3d53ce96bc8c2dc48be9efe3549e6263, type: 3}
+  m_PrefabInstance: {fileID: 6028777877289574434}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &648335233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -735,6 +746,10 @@ MonoBehaviour:
   StoneSlabSource: {fileID: 1620047219}
   FireFloorExplosionSource: {fileID: 0}
   FireFloorExpSound: {fileID: 0}
+  FlaskPickupSource: {fileID: 0}
+  FlaskPickupSound: {fileID: 0}
+  OutOfOilSoonSource: {fileID: 0}
+  OutOfOilSoonSound: {fileID: 0}
   StoryInteractible: {fileID: 0}
   Page: {fileID: 8300000, guid: 71f81a4bab403964c927a96c879646a8, type: 3}
   DaughterScript1: {fileID: 0}
@@ -1821,6 +1836,10 @@ PrefabInstance:
       propertyPath: StoryPage
       value: 
       objectReference: {fileID: 8292107614328266974}
+    - target: {fileID: 7667674517538061633, guid: e76ecca51b5e60449ad5a912f2cc628d, type: 3}
+      propertyPath: StoryText
+      value: 
+      objectReference: {fileID: 594595776}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

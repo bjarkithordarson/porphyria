@@ -9,25 +9,25 @@ using UnityEngine.UI;
 public class StoryInteractionItem : MonoBehaviour
 {
     public GameObject Light;
-    public GameObject StoryPage;
+    public Image StoryPage;
     public TextMeshProUGUI StoryText;
     
     public TextMeshPro TextPrompt;
     private bool playerInTriggerZone = false;
-    private Image storyImage;
+    //private Image StoryPage;
     public float fadeDuration = 1f;
     
 
     // Start is called before the first frame update
     void Start()
     {   
-        storyImage = StoryPage.GetComponentInChildren<Image>();
-        TextPrompt.enabled = false;
+            // Ensure StoryPage is assigned in the Unity Editor
+        TextPrompt.gameObject.SetActive(false);
     }
     
     void OnTriggerEnter(Collider other)
     {
-        TextPrompt.enabled = true;
+        TextPrompt.gameObject.SetActive(true);
         if (other.gameObject.CompareTag("Player"))
         {
             playerInTriggerZone = true;
@@ -38,10 +38,10 @@ public class StoryInteractionItem : MonoBehaviour
     {
         // Fading in
         yield return FadeToAlpha(StoryText, 1.0f);
-        yield return FadeToAlpha(storyImage, 1.0f);
+        yield return FadeToAlpha(StoryPage, 1.0f);
 
         // Wait for a moment at fully visible state
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.3f);
 
         // Start the fade out process
         GameManager.instance.PauseGame();
@@ -52,7 +52,7 @@ public class StoryInteractionItem : MonoBehaviour
     {
         // Fading out
         yield return FadeToAlpha(StoryText, 0.0f);
-        yield return FadeToAlpha(storyImage, 0.0f);
+        yield return FadeToAlpha(StoryPage, 0.0f);
 
         // You can repeat the process if needed or perform other actions
     }
@@ -80,7 +80,7 @@ public class StoryInteractionItem : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        TextPrompt.enabled = false;
+        TextPrompt.gameObject.SetActive(false);
         playerInTriggerZone = false;
         StartCoroutine(FadeOut());
     }
@@ -90,7 +90,7 @@ public class StoryInteractionItem : MonoBehaviour
         if (playerInTriggerZone && Input.GetKeyDown(KeyCode.E))
         {   
             Light.SetActive(true);
-            TextPrompt.enabled =false;
+            TextPrompt.gameObject.SetActive(false);
             StartCoroutine(FadeIn());
             AudioManager.instance.PageSound();
             
