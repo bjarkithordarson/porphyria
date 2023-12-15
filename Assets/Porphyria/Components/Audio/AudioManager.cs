@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip StoneSlabPlacement;
     public AudioSource StoneSlabSource;
     public AudioSource FireFloorExplosionSource;
+    public AudioClip FireFloorExpSound;
 
     //Oil fucntionality sounds
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class TutorialDoorController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class TutorialDoorController : MonoBehaviour
 
     private int statuesNeeded = 1;
     public ConeDetection coneDetection;
+    public TextMeshPro openDoorText;
 
     void Start()
     {
@@ -24,6 +26,7 @@ public class TutorialDoorController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && playerIsNear && coneDetection.statueCount >= statuesNeeded)
         {
             OpenDoors();
+            openDoorText.gameObject.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.E) && playerIsNear)
         {
@@ -36,6 +39,7 @@ public class TutorialDoorController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsNear = true;
+            openDoorText.gameObject.SetActive(true);
         }
     }
 
@@ -44,6 +48,7 @@ public class TutorialDoorController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsNear = false;
+            openDoorText.gameObject.SetActive(false);
         }
     }
 
