@@ -15,7 +15,7 @@ public class StalkerTriggerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Player"))
+        /*if (other.gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
             StalkerController stalkerController = stalker.GetComponent<StalkerController>();
@@ -24,6 +24,6 @@ public class StalkerTriggerController : MonoBehaviour
             {
                 stalkerController.DelayedDespawn(secondsUntilDespawn);
             }
-        }
+        }*/
     }
 }

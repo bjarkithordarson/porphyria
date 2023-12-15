@@ -8,6 +8,7 @@ TagManager:
   - Flask
   - Statue
   - Floor
+  - AntiStalkerLight
   layers:
   - Default
   - TransparentFX
