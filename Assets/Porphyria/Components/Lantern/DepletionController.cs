@@ -9,9 +9,10 @@ public class DepletionController : MonoBehaviour
     public float maxDistance = 10.0f; // The maximum distance for full speed depletion
     public Light spotlight;
 
-    private float countdownTimer = 300f; // 20 seconds duration
-    private float maxTimer = 300f; // Maximum value of the timer
+    public float countdownTimer = 400f; // 20 seconds duration
+    public float maxTimer = 400f; // Maximum value of the timer
 
+    public float flaskAddOil = 100;
     public float baseDepletionRate = 0.01f;
     public float stalkerDepletionRate = 2f;
     public float highlightDepletionRate = 3f;
@@ -21,13 +22,13 @@ public class DepletionController : MonoBehaviour
 
     public void SetCountdownTimer()
     {
-        if(countdownTimer < 230)
+        if(countdownTimer < maxTimer - flaskAddOil)
         {
-        countdownTimer += 70;
+        countdownTimer += 150;
         }
         else
         {
-            countdownTimer = 300;
+            countdownTimer = 400;
         }
     }
 
