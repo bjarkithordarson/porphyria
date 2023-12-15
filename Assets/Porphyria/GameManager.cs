@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     //private AudioSource audioSource;
     public static GameManager instance;
     public string deathSceneName = "EndScene";
-    public string gameSceneName = "Main_Level";
+    public string tutorialSceneName = "Tutorial";
+    public string gameSceneName = "MainLevelScene";
 
     public int AmountOfPlacedStatues = 0;
     public int AmountofStatuesNeeded = 4;
