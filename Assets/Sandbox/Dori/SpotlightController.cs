@@ -11,6 +11,7 @@ public class SpotlightController : MonoBehaviour
     private Light spotlight;
     public LanternController lanternController;
     public Light areaLight;
+    public DepletionController depletionController;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class SpotlightController : MonoBehaviour
             lanternController.intenseFlickerSpeed = 120;
             areaLight.range = 20;
             lanternController.canFlicker = false;
+            depletionController.HighlightUsage();
         }
         if (Input.GetMouseButtonUp(0)) // Left mouse button released
         {
@@ -50,6 +52,7 @@ public class SpotlightController : MonoBehaviour
             lanternController.nextFlickerTime = 0.1f;
             areaLight.range = 8;
             lanternController.canFlicker = true;
+            depletionController.HighlightUsageOff();
         }
     }
 }

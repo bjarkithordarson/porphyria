@@ -12,12 +12,34 @@ public class DepletionController : MonoBehaviour
     private float countdownTimer = 200f; // 20 seconds duration
     private float maxTimer = 200f; // Maximum value of the timer
 
-    public float baseDepletionRate = 0.01f;
+    public float baseDepletionRate = 0.1f;
     public float stalkerDepletionRate = 2f;
+    public float highlightDepletionRate = 3f;
+    private float originalDepletionRate;
+
+
     public void SetCountdownTimer()
     {
-        countdownTimer = maxTimer;
+        if(countdownTimer < 150)
+        {
+        countdownTimer += 50;
+        }
+        else
+        {
+            countdownTimer = 200;
+        }
     }
+
+    public void HighlightUsage()
+    {
+        originalDepletionRate = baseDepletionRate;
+        baseDepletionRate = highlightDepletionRate;
+    }
+    public void HighlightUsageOff()
+    {
+        baseDepletionRate = originalDepletionRate;
+    }
+
     private void Update()
     {
 

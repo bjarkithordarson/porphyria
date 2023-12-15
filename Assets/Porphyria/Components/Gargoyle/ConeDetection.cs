@@ -28,7 +28,7 @@ public class ConeDetection : MonoBehaviour
             if (statueScript != null)
             {
                 statueCount++;
-                statueCountText.text = statueCount.ToString() + "/" + requiredStatueCount;
+                statueCountText.text = "You are carrying a statue";
                 statueScript.Interact();
                 Destroy(currentStatue);
                 currentStatue = null;

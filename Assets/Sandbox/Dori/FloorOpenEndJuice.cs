@@ -19,5 +19,11 @@ public class FloorOpenEndJuice : MonoBehaviour
         Fire5.SetActive(false);
         AnimationFire.SetActive(true);
         AudioManager.instance.FireFloorExplosion();
+        Invoke("StopAnimation", 10f);
+    }
+
+    public void StopAnimation()
+    {
+        AnimationFire.SetActive(false);
     }
 }
