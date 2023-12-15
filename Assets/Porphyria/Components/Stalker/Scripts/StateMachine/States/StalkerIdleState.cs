@@ -11,6 +11,8 @@ public class StalkerIdleState : StalkerBaseState
     private float timeLeft;
     public override void EnterState(StalkerStateManager stalker)
     {
+        StalkerAudioManager.instance.PlayIdleEnter();
+        stalker.controller.StartIdleAnimation();
         hasSeenPlayer = false;
 
         timeLeft = despawnTimeout;

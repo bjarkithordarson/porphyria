@@ -12,12 +12,26 @@ public class StalkerSpawningState : StalkerBaseState
     private StalkerStateManager stalker;
     public override void EnterState(StalkerStateManager stalker)
     {
+        StalkerAudioManager.instance.PlaySpawningEnter();
         this.stalker = stalker;
-        stalker.controller.TeleportRandomly();
-        stalker.controller.Spawn();
 
-        stalker.TransitionToState(stalker.idleState);
+        Vector3 candidatePosition = stalker.controller.GetRandomPositionInRadius(
+            stalker.target.transform.position,
+            spawnRadius,
+            minSpawnAngle,
+            maxSpawnAngle,
+            stalker.target.transform.eulerAngles.y);
 
+        if(stalker.controller.IsCapsuleColliding(candidatePosition))
+        {
+            Debug.Log("Failed to spawn");
+            stalker.TransitionToState(stalker.despawnedState);
+        } else
+        {
+            stalker.controller.TeleportTo(candidatePosition);
+            stalker.controller.Spawn();
+            stalker.TransitionToState(stalker.idleState);
+        }
 
     }
     public override void UpdateState(StalkerStateManager stalker)

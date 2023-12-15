@@ -10,6 +10,7 @@ public class StalkerPreparingLungeState : StalkerBaseState
     private float timeLeft;
     public override void EnterState(StalkerStateManager stalker)
     {
+        StalkerAudioManager.instance.PlayPreparingLungeEnter();
         Debug.Log("Stalker is preparing to lunge!");
 
         timeLeft = lungingTimeout;
@@ -19,6 +20,7 @@ public class StalkerPreparingLungeState : StalkerBaseState
     {
         if(!stalker.controller.CanSee(stalker.target.transform.position))
         {
+            timeLeft = lungingTimeout;
             stalker.TransitionToState(stalker.idleState);
         }
         else

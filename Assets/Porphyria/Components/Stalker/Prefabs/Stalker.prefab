@@ -95,6 +95,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stalkerCollider: {fileID: 8592313632983714160}
   stalkerBody: {fileID: 6891184463785908415}
+  lungeSpeed: 2
+  destination: {x: 0, y: 0, z: 0}
 --- !u!114 &3228740554496983436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +296,7 @@ MonoBehaviour:
   spawningState: {fileID: 6357541989611446252}
   idleState: {fileID: 1554142140947046626}
   scaredState: {fileID: 4935650721357271208}
-  fleeingState: {fileID: 4552025573260298334}
+  preparingLungeState: {fileID: 0}
   lungingState: {fileID: 1486577191120885187}
 --- !u!114 &892269557327499432
 MonoBehaviour:
@@ -308,7 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4497d1dc636c44641babfcfb293cd422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnWaitTime: 10
+  spawnTimeout: 10
+  timeLeft: 0
 --- !u!114 &6357541989611446252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +353,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb769d46d42a2f40b73187f92679c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasSeenPlayer: 0
+  despawnTimeout: 10
+  timeLeft: 0
 --- !u!114 &1486577191120885187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b4736c4ecf5204f8511f03e02130f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBeforeLunge: 1
+  returnToIdleTimeout: 3
 --- !u!114 &4935650721357271208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87c509cb8456d640b1d2b10c10f76b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 2
+  timeLeft: 0
 --- !u!1 &6891184463785908415
 GameObject:
   m_ObjectHideFlags: 0

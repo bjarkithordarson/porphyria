@@ -7,15 +7,15 @@ public class StalkerController : MonoBehaviour
     public CapsuleCollider stalkerCollider;
     public GameObject stalkerBody;
 
-    public Animator animator;
+    //public Animator animator;
 
     public float lungeSpeed = 2;
 
-    private Vector3 destination;
+    public Vector3 destination;
     void Start()
     {
-        destination = stalkerBody.transform.position;
-        animator = stalkerBody.GetComponent<Animator>();
+        destination = transform.position;
+        //animator = stalkerBody.GetComponent<Animator>();
 
         if (stalkerCollider == null)
         {
@@ -36,10 +36,10 @@ public class StalkerController : MonoBehaviour
 
     private void Move()
     {
-        if (stalkerBody.transform.position != destination)
-            stalkerBody.transform.position = Vector3.Lerp(stalkerBody.transform.position, destination, 0.01f);
+        if (Vector3.Distance(transform.position, destination) > 0.01f)
+            transform.position = Vector3.Lerp(transform.position, destination, 0.01f);
         else
-            animator.SetTrigger("Idle");
+            transform.position = destination;
     }
 
     public void Spawn()
@@ -52,13 +52,15 @@ public class StalkerController : MonoBehaviour
     }
     public void TeleportTo(Vector3 position)
     {
-        stalkerBody.transform.position = position;
+        transform.position = position;
+        destination = position;
     }
     public void LookAt(Vector3 position)
     {
         Vector3 direction = (position - transform.position).normalized;
         direction.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
+
         transform.rotation = lookRotation;
     }
     public bool CanSee(Vector3 position)
@@ -74,9 +76,17 @@ public class StalkerController : MonoBehaviour
         return false;
     }
 
+    public void StartIdleAnimation()
+    {
+        GetComponent<Animator>().Play("Idle");
+    }
+    public void StartFloatingAnimation()
+    {
+        GetComponent<Animator>().Play("Floating");
+    }
+
     public void RunTo(Vector3 position)
     {
-        animator.SetTrigger("Thriller");
         destination = position;
     }
 
@@ -88,6 +98,11 @@ public class StalkerController : MonoBehaviour
     public void TeleportRandomly()
     {
         TeleportTo(GetRandomPositionOnFloor());
+    }
+
+    public void TeleportRandomlyInRadius(Vector3 position, float radius, float minAngleDegrees, float maxAngleDegrees, float rotation)
+    {
+        TeleportTo(GetRandomPositionInRadius(position, radius, minAngleDegrees, maxAngleDegrees, rotation));
     }
 
     public Vector3 GetRandomPositionOnFloor()
@@ -106,4 +121,63 @@ public class StalkerController : MonoBehaviour
         }
         return Vector3.zero;
     }
+    public Vector3 GetRandomPositionInRadius(Vector3 position, float radius, float minAngleDegrees, float maxAngleDegrees, float rotation)
+    {
+        // Convert angles in degrees to radians
+        float minAngle = (minAngleDegrees + rotation) * Mathf.Deg2Rad;
+        float maxAngle = (maxAngleDegrees + rotation) * Mathf.Deg2Rad;
+
+        // Generate random angle between minAngle and maxAngle
+        float angle = Random.Range(minAngle, maxAngle);
+
+        // Calculate new x and z positions
+        float x = position.x + radius * Mathf.Cos(angle);
+        float z = position.z + radius * Mathf.Sin(angle);
+
+        // Create a new Vector3 with the calculated x and z
+        Vector3 newPos = new Vector3(x, position.y, z);
+
+        // Cast a ray downwards from the new position
+        RaycastHit hit;
+        if (Physics.Raycast(newPos, Vector3.down, out hit))
+        {
+            // If the ray hits an object tagged as "Floor", adjust the y position
+            if (hit.collider.tag == "Floor")
+            {
+                newPos.y = hit.point.y;
+            }
+        }
+
+        // Return new Vector3 position
+        return newPos;
+    }
+
+    public bool IsCapsuleColliding(Vector3 position)
+    {
+        CapsuleCollider capsule = stalkerBody.GetComponent<CapsuleCollider>();
+        // Get the bounds of the capsule collider
+        Bounds bounds = new Bounds(position, capsule.bounds.size);
+
+        // Get all colliders in the scene
+        Collider[] allColliders = Physics.OverlapSphere(position, capsule.radius);
+
+        // Check each collider to see if it's colliding with the capsule
+        foreach (Collider collider in allColliders)
+        {
+            // Ignore the floor
+            if (collider.CompareTag("Floor"))
+                continue;
+            // Ignore the capsule itself
+            if (collider == capsule)
+                continue;
+
+            // If the bounds of the capsule intersect with the bounds of the collider, return true
+            if (bounds.Intersects(collider.bounds))
+                return true;
+        }
+
+        // If no collisions were found, return false
+        return false;
+    }
+
 }
