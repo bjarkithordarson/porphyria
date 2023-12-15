@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoryInteraction : MonoBehaviour
+public class StoryInteractionItem : MonoBehaviour
 {
     public GameObject Light;
     public GameObject StoryPage;

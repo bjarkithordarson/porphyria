@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class DeathSceneController : MonoBehaviour
 {
+    public Animator endScene;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Start death scene");
+        endScene.enabled = true;
         StartCoroutine(LoadGameScene());
     }
 
