@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource FlaskPickupSource;
     public AudioClip FlaskPickupSound;
+    public AudioSource OutOfOilSoonSource;
+    public AudioClip OutOfOilSoonSound;
 
     //Sounds for StoryInteractable
 
@@ -86,6 +88,11 @@ public class AudioManager : MonoBehaviour
     public void FlaskPickupBubble()
     {
         PlayOneShot(FlaskPickupSound, FlaskPickupSource);
+    }
+
+    public void OutOfOil()
+    {
+        PlayOneShot(OutOfOilSoonSound, OutOfOilSoonSource);
     }
 
     public void PageSound()

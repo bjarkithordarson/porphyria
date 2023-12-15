@@ -16,6 +16,7 @@ public class DepletionController : MonoBehaviour
     public float stalkerDepletionRate = 2f;
     public float highlightDepletionRate = 3f;
     private float originalDepletionRate;
+    public float audioCountDown = 4000;
 
 
     public void SetCountdownTimer()
@@ -59,6 +60,12 @@ public class DepletionController : MonoBehaviour
             countdownTimer -= Time.deltaTime * totalDepletionRate;
             float newProgress = countdownTimer / maxTimer; // Map the timer value to a 0-1 range
             progressBar.SetProgress(newProgress);
+            audioCountDown -= 1;
+            if (newProgress < 0.3 && audioCountDown < 0)
+            {
+                AudioManager.instance.OutOfOil();
+                audioCountDown = 4000;
+            }
         }
         else
         {
