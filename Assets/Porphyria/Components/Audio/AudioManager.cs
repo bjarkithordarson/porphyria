@@ -9,14 +9,17 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     //Sounds for statue placement
+    
     public AudioClip StatuePlacement;
     public AudioSource StatueSource;
 
     //Sounds for Stone Hatch movement
+
     public AudioClip StoneSlabPlacement;
     public AudioSource StoneSlabSource;
     public AudioSource FireFloorExplosionSource;
-    public AudioClip FireFloorExpSound;
+
+    //Oil fucntionality sounds
 
     public AudioSource FlaskPickupSource;
     public AudioClip FlaskPickupSound;
