@@ -9,10 +9,10 @@ public class DepletionController : MonoBehaviour
     public float maxDistance = 10.0f; // The maximum distance for full speed depletion
     public Light spotlight;
 
-    private float countdownTimer = 200f; // 20 seconds duration
-    private float maxTimer = 200f; // Maximum value of the timer
+    private float countdownTimer = 300f; // 20 seconds duration
+    private float maxTimer = 300f; // Maximum value of the timer
 
-    public float baseDepletionRate = 0.1f;
+    public float baseDepletionRate = 0.01f;
     public float stalkerDepletionRate = 2f;
     public float highlightDepletionRate = 3f;
     private float originalDepletionRate;
@@ -20,13 +20,13 @@ public class DepletionController : MonoBehaviour
 
     public void SetCountdownTimer()
     {
-        if(countdownTimer < 150)
+        if(countdownTimer < 230)
         {
-        countdownTimer += 50;
+        countdownTimer += 70;
         }
         else
         {
-            countdownTimer = 200;
+            countdownTimer = 300;
         }
     }
 

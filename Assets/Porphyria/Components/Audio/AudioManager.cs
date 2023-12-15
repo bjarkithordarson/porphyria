@@ -18,6 +18,9 @@ public class AudioManager : MonoBehaviour
     public AudioSource FireFloorExplosionSource;
     public AudioClip FireFloorExpSound;
 
+    public AudioSource FlaskPickupSource;
+    public AudioClip FlaskPickupSound;
+
     //Sounds for StoryInteractable
 
     public AudioSource StoryInteractible;
@@ -78,6 +81,11 @@ public class AudioManager : MonoBehaviour
     public void FireFloorExplosion()
     {
         PlayOneShot(FireFloorExpSound, FireFloorExplosionSource);
+    }
+
+    public void FlaskPickupBubble()
+    {
+        PlayOneShot(FlaskPickupSound, FlaskPickupSource);
     }
 
     public void PageSound()
