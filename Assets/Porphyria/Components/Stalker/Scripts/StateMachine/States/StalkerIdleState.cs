@@ -11,6 +11,7 @@ public class StalkerIdleState : StalkerBaseState
     private float timeLeft;
     public override void EnterState(StalkerStateManager stalker)
     {
+        Debug.Log("Stalker is idling.");
         StalkerAudioManager.instance.PlayIdleEnter();
         stalker.controller.StartIdleAnimation();
         hasSeenPlayer = false;

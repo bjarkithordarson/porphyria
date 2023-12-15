@@ -12,7 +12,9 @@ public class StalkerGizmos : MonoBehaviour
     private void OnDrawGizmos()
     {
         Vector3 from = controller.stalkerBody.transform.position;
+        from.y += 1;
         Vector3 to = stateMachine.target.transform.position;
+        to.y += 1;
         Color color = controller.CanSee(stateMachine.target.transform.position) ? Color.blue : Color.red;
         DrawGizmoLine(from, to, color);
 

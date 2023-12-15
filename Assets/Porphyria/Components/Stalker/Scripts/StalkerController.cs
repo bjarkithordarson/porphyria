@@ -45,10 +45,12 @@ public class StalkerController : MonoBehaviour
     public void Spawn()
     {
         stalkerBody.SetActive(true);
+        StalkerAudioManager.instance.PlayAmbiance();
     }
     public void Despawn()
     {
         stalkerBody.SetActive(false);
+        StalkerAudioManager.instance.StopAmbiance();
     }
     public void TeleportTo(Vector3 position)
     {
@@ -70,8 +72,12 @@ public class StalkerController : MonoBehaviour
         RaycastHit hit;
         Vector3 direction = position - transform.position;
 
+        //Debug.DrawRay(origin, direction);
+
         if (Physics.Raycast(origin, direction, out hit))
+        {
             return hit.collider.CompareTag("Player");
+        }
 
         return false;
     }
@@ -135,7 +141,7 @@ public class StalkerController : MonoBehaviour
         float z = position.z + radius * Mathf.Sin(angle);
 
         // Create a new Vector3 with the calculated x and z
-        Vector3 newPos = new Vector3(x, position.y, z);
+        Vector3 newPos = new Vector3(x, position.y + 0.1f, z);
 
         // Cast a ray downwards from the new position
         RaycastHit hit;

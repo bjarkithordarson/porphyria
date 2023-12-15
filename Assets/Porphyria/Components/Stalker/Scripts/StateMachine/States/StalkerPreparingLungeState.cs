@@ -20,7 +20,6 @@ public class StalkerPreparingLungeState : StalkerBaseState
     {
         if(!stalker.controller.CanSee(stalker.target.transform.position))
         {
-            timeLeft = lungingTimeout;
             stalker.TransitionToState(stalker.idleState);
         }
         else
@@ -28,7 +27,7 @@ public class StalkerPreparingLungeState : StalkerBaseState
             timeLeft = lungingTimeout - (float)(DateTime.Now - stateEnteredTime).TotalSeconds;
         }
 
-        if(timeLeft < 0)
+        if(timeLeft <= 0)
         {
             stalker.TransitionToState(stalker.lungingState);
         }

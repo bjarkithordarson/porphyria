@@ -7,18 +7,35 @@ public class StalkerAudioManager : MonoBehaviour
     public static StalkerAudioManager instance;
 
     public AudioSource audioSource;
+    public AudioSource ambianceAudioSource;
+    [Header("General")]
+    public AudioClip ambiance;
+    [Range(0,1)]
+    public float ambianceVolume = 1;
     [Header("Despawned")]
     public AudioClip despawnedEnter;
+    [Range(0, 1)]
+    public float despawnedEnterVolume = 1;
     [Header("Spawning")]
     public AudioClip spawningEnter;
+    [Range(0, 1)]
+    public float spawningEnterVolume = 1;
     [Header("Idle")]
     public AudioClip idleEnter;
+    [Range(0, 1)]
+    public float idleEnterVolume = 1;
     [Header("Scared")]
     public AudioClip scaredEnter;
+    [Range(0, 1)]
+    public float scaredEnterVolume = 1;
     [Header("Preparing")]
     public AudioClip preparingLungeEnter;
+    [Range(0, 1)]
+    public float preparingLungeEnterVolume = 1;
     [Header("Lunging")]
     public AudioClip lungingEnter;
+    [Range(0, 1)]
+    public float lungingEnterVolume = 1;
 
     private void Start()
     {
@@ -27,10 +44,28 @@ public class StalkerAudioManager : MonoBehaviour
             StalkerAudioManager.instance = GetComponent<StalkerAudioManager>() ?? gameObject.AddComponent<StalkerAudioManager>();
         }
     }
+
+    public void PlayAmbiance()
+    {
+        if (ambiance != null)
+        {
+            ambianceAudioSource.volume = ambianceVolume;
+            ambianceAudioSource.clip = ambiance;
+            ambianceAudioSource.Play();
+        }
+    }
+
+    public void StopAmbiance()
+    {
+        ambianceAudioSource.Stop();
+    }
+
+
     public void PlayDespawnedEnter()
     {
-        if(despawnedEnter != null)
+        if (despawnedEnter != null)
         {
+            audioSource.volume = despawnedEnterVolume;
             audioSource.clip = despawnedEnter;
             audioSource.Play();
         }
@@ -40,6 +75,7 @@ public class StalkerAudioManager : MonoBehaviour
     {
         if (spawningEnter != null)
         {
+            audioSource.volume = spawningEnterVolume;
             audioSource.clip = spawningEnter;
             audioSource.Play();
         }
@@ -49,6 +85,7 @@ public class StalkerAudioManager : MonoBehaviour
     {
         if(idleEnter != null)
         {
+            audioSource.volume = idleEnterVolume;
             audioSource.clip = idleEnter;
             audioSource.Play();
         }
@@ -58,24 +95,27 @@ public class StalkerAudioManager : MonoBehaviour
     {
         if (scaredEnter != null)
         {
+            audioSource.volume = scaredEnterVolume;
             audioSource.clip = scaredEnter;
             audioSource.Play();
         }
     }
 
-    public void PlayPreparingLungeEnter()
+    public void PlayPreparingLungeEnter(float volume = 1)
     {
         if (preparingLungeEnter != null)
         {
+            audioSource.volume = preparingLungeEnterVolume;
             audioSource.clip = preparingLungeEnter;
             audioSource.Play();
         }
     }
 
-    public void PlayLungingEnter()
+    public void PlayLungingEnter(float volume = 1)
     {
         if (lungingEnter != null)
         {
+            audioSource.volume = lungingEnterVolume;
             audioSource.clip = lungingEnter;
             audioSource.Play();
         }
