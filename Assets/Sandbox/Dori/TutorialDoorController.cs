@@ -12,7 +12,7 @@ public class TutorialDoorController : MonoBehaviour
     public AudioSource audioSourcedoor;
 
     private int statuesNeeded = 1;
-    public ConeDetection coneDetection;
+    public StatueRecieverForIntro statueRecieverForIntro;
     public TextMeshPro openDoorText;
 
     void Start()
@@ -23,7 +23,7 @@ public class TutorialDoorController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerIsNear && coneDetection.statueCount >= statuesNeeded)
+        if (Input.GetKeyDown(KeyCode.E) && playerIsNear && statueRecieverForIntro.hasFinished )
         {
             OpenDoors();
             openDoorText.gameObject.SetActive(false);

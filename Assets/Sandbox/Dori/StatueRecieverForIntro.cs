@@ -22,7 +22,7 @@ public ConeDetection coneDetection;
 
 
 private bool canReturnStatues = false;
-private bool hasFinished = false;
+public bool hasFinished = false;
     void Start()
     {
         // animator = GetComponent<Animator>();
