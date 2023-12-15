@@ -9,17 +9,23 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     //Sounds for statue placement
+    
     public AudioClip StatuePlacement;
     public AudioSource StatueSource;
 
     //Sounds for Stone Hatch movement
+
     public AudioClip StoneSlabPlacement;
     public AudioSource StoneSlabSource;
     public AudioSource FireFloorExplosionSource;
     public AudioClip FireFloorExpSound;
 
+    //Oil fucntionality sounds
+
     public AudioSource FlaskPickupSource;
     public AudioClip FlaskPickupSound;
+    public AudioSource OutOfOilSoonSource;
+    public AudioClip OutOfOilSoonSound;
 
     //Sounds for StoryInteractable
 
@@ -86,6 +92,11 @@ public class AudioManager : MonoBehaviour
     public void FlaskPickupBubble()
     {
         PlayOneShot(FlaskPickupSound, FlaskPickupSource);
+    }
+
+    public void OutOfOil()
+    {
+        PlayOneShot(OutOfOilSoonSound, OutOfOilSoonSource);
     }
 
     public void PageSound()
