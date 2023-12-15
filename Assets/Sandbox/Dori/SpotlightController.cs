@@ -1,4 +1,7 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class SpotlightController : MonoBehaviour
 {
@@ -11,6 +14,8 @@ public class SpotlightController : MonoBehaviour
     private Light spotlight;
     public LanternController lanternController;
     public Light areaLight;
+    public DepletionController depletionController;
+    public RawImage fillImage;
 
     void Start()
     {
@@ -41,6 +46,8 @@ public class SpotlightController : MonoBehaviour
             lanternController.intenseFlickerSpeed = 120;
             areaLight.range = 20;
             lanternController.canFlicker = false;
+            depletionController.HighlightUsage();
+            fillImage.color = new Color32(255, 0, 6, 255);
         }
         if (Input.GetMouseButtonUp(0)) // Left mouse button released
         {
@@ -50,6 +57,8 @@ public class SpotlightController : MonoBehaviour
             lanternController.nextFlickerTime = 0.1f;
             areaLight.range = 8;
             lanternController.canFlicker = true;
+            depletionController.HighlightUsageOff();
+            fillImage.color = new Color32(255, 234, 97, 255);
         }
     }
 }

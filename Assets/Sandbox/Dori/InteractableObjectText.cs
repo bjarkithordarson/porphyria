@@ -10,6 +10,7 @@ public class InteractableObjectText : MonoBehaviour
     public DepletionController depletionController;
     public MagicPigGames.ProgressBar progressBar;
     
+    
 
     void Update()
     {
@@ -51,6 +52,7 @@ public class InteractableObjectText : MonoBehaviour
     {
         depletionController.SetCountdownTimer();
         progressBar.SetProgress(1f);
+        AudioManager.instance.FlaskPickupBubble();
 
         // Destroy the flask object
         Destroy(gameObject); // This will destroy the GameObject this script is attached to

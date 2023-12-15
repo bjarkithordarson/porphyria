@@ -1,0 +1,65 @@
+	
+- - - - - - - - - - - - - - - - - - - - - Dead Body 3D - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+This pack contains 3d Model and animations of a Deadbody and a Hospital bed.
+
+What's New in Version 2.0 :
+
+- New Bath tubs 3d model with Scripts(C#) (Switch Blood & Bodies inside tub via editor)
+- New Hanging deadbodies with Script(C#) (Adjust rope length via editor)
+
+
+Technical Details:-
+				
+		- Vertex count : 722(Dead body), 2024(Bed)
+		- Tris count :  1440 (Dead body), 3773(Bed), 12k(Bathtub, blood and deadbodies inside it)
+		- Animations : 10 (Idle, Wake, Sleep, Hurt_1, Hurt_2, Look_Left, Look_Right, Weird_Right, Weird_Left, Anim_1)
+		- Prefab Variation's : 6 (Body), 5 (Bed), 6(Dead body in Bed), Customizable Bathtub with bodies
+		- Used Material(s) : Unity Standard Shader
+		- Texture maps : Albedo/Base Color
+		- Texture Size : 2048(.png)
+		- Simple colliders, Mesh colliders attached
+
+Features:-
+	- Lowpoly
+	- Animated deadbody model
+	- Hospital beds included
+	- Each model comes with many color variation's
+	- Prefabs included
+	- Easy to modify
+	- PBR HQ Textures
+	- Mobile, AR supported
+	- Drag and drop to use
+                   - Each Model's is fully textured with all materials applied.
+	- Pivot points are correctly placed to suit animation process.
+	- Model scaled to approximate real world size.
+	- All nodes, materials and textures are appropriately named.
+	
+Folder details:-
+
+	Materials : Where the materials for the model located.
+	
+	Meshes : Contain FBX format of the 3d model.
+	
+	Textures : Contains Textures, that are in (.PNG) file format
+	
+	(Other folders - Prefabs, Scenes)
+
+Notes:
+
+Support URP, HDRP, LWRP, Built-in Render Pipeline
+This project is submitted using Built-in Render Pipeline. If you are not using Built-in pipeline, you need to manually reset the shader of the model to avoid it being pink
+
+How to use:-
+	
+	Simply drag and drop the prefab to your scene and use it.
+	(Prefab(s) located under 
+	Asset > Dead_Body > Prefabs).
+
+..................................................................................
+
+About Me : "SR Studios Kerala", Indie Game developer & 2D-3D Artist from Alappuzha, Kerala, India
+
+Contact : srstudioskerala@gmail.com
+
+................Thank you for downloading this package................................
