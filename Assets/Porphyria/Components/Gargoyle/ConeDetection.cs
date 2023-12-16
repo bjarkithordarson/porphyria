@@ -8,7 +8,6 @@ public class ConeDetection : MonoBehaviour
     public TextMeshProUGUI statueCountText;
 
     private GameObject currentStatue = null;
-    public static ConeDetection instance; // Singleton instance
 
     
     public void ResetStatueCount()
