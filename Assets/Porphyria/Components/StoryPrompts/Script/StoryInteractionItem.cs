@@ -27,9 +27,10 @@ public class StoryInteractionItem : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        TextPrompt.gameObject.SetActive(true);
+        
         if (other.gameObject.CompareTag("Player"))
         {
+            TextPrompt.gameObject.SetActive(true);
             playerInTriggerZone = true;
         }
     }
@@ -81,9 +82,12 @@ public class StoryInteractionItem : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.CompareTag("Player"))
+        {
         TextPrompt.gameObject.SetActive(false);
         playerInTriggerZone = false;
         StartCoroutine(FadeOut());
+        }
     }
 
     void Update()
