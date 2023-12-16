@@ -46,6 +46,7 @@ public class StoryInteractionItem : MonoBehaviour
         // Start the fade out process
         GameManager.instance.PauseGame();
         
+        
     }
 
     IEnumerator FadeOut()
