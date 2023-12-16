@@ -19,6 +19,8 @@ public class DepletionController : MonoBehaviour
     private float originalDepletionRate;
     public float audioCountDown = 4000;
 
+    public bool enableDeathByOil = true;
+
 
     public void SetCountdownTimer()
     {
@@ -73,7 +75,7 @@ public class DepletionController : MonoBehaviour
             // Ensure the progress doesn't go below zero
             progressBar.SetProgress(0f);
             // Disable the spotlight when progress reaches 0
-            if (spotlight != null)
+            if (spotlight != null && enableDeathByOil)
             {
                 spotlight.enabled = false;
                 StartCoroutine(GameManager.instance.OutOfOilRoutine());
