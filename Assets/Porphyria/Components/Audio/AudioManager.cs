@@ -42,6 +42,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip ScientistScript4;
     public AudioClip DraculasNotes;
 
+    // JumpScare
+
+    public AudioClip prisonJumpScare;
+    public AudioSource prisonJumpScareSource;
+
 
 
 
@@ -134,6 +139,11 @@ public class AudioManager : MonoBehaviour
     public void ScientisScriptSound4()
     {
         PlayOneShot(ScientistScript4, StoryInteractible);
+    }
+
+    public void prisonJumpScareSound()
+    {
+        PlayOneShot(prisonJumpScare, prisonJumpScareSource);
     }
 
 }
