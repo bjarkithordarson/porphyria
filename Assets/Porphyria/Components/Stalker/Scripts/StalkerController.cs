@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,7 +8,17 @@ public class StalkerController : MonoBehaviour
 {
     public CapsuleCollider stalkerCollider;
     public GameObject stalkerBody;
+
+    public StalkerStateManager stateMachine;
     public bool seenByCamera = false;
+
+    public float minDangerDistance = 5f;
+
+    public ProximityDanger proximityDanger;
+
+    private bool inDanger = false;
+
+    private bool inSafeDistance = false;
 
     //public Animator animator;
 
@@ -39,6 +50,25 @@ public class StalkerController : MonoBehaviour
             Debug.Log("ASDFASDFASDF");
             seenByCamera = true;
             StalkerAudioManager.instance.PlayFirstSeenByCamera();
+        }
+        float distanceFromPlayer = Vector3.Distance(stateMachine.target.transform.position, transform.position);
+
+        if(distanceFromPlayer < minDangerDistance && !inDanger) {
+            Debug.Log("Player is in danger ASDASDASDASDASDASDDDDDD");
+            proximityDanger.PlayerDangerEffect();
+            inDanger = true;
+            inSafeDistance = true;
+            
+            
+
+        } else if(distanceFromPlayer > minDangerDistance && inSafeDistance)
+        {
+            Debug.Log("Player is not in danger ASDASDADASDASDASDASD");
+            proximityDanger.PlayerSafe();
+            inSafeDistance = false;
+            inDanger = false;
+             
+            
         }
 
         Move();
