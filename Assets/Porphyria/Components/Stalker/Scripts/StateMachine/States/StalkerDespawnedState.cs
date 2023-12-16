@@ -18,6 +18,10 @@ public class StalkerDespawnedState : StalkerBaseState
 
     public override void UpdateState(StalkerStateManager stalker)
     {
+        if(!stalker.enableSpawn)
+        {
+            return;
+        }
         timeLeft = spawnTimeout - (float)(DateTime.Now - stateEnteredTime).TotalSeconds;
 
         if(timeLeft < 0)

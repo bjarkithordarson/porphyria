@@ -51,7 +51,8 @@ public class StalkerPreparingLungeState : StalkerBaseState
             if(timeLeft <= 0)
             {
                 stalker.TransitionToState(stalker.lungingState);
-            }
+                timeLeft = maxLungeDistance;
+}
         } else
         {
             timeLeft = lungingTimeout;

@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public string tutorialSceneName = "Tutorial";
     public string gameSceneName = "MainLevelScene";
 
+    public StalkerStateManager stalkerStateMachine;
+
     public int AmountOfPlacedStatues = 0;
     public int AmountofStatuesNeeded = 4;
 
@@ -20,6 +22,50 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Update()
+    {
+        SetStalkerDifficulty();
+    }
+
+    private void SetStalkerDifficulty()
+    {
+        if(AmountOfPlacedStatues == 0)
+        {
+            stalkerStateMachine.enableSpawn = false;
+            stalkerStateMachine.enableLunge = false;
+            stalkerStateMachine.despawnedState.spawnTimeout = 45;
+            stalkerStateMachine.spawningState.spawnRadius = 10;
+            stalkerStateMachine.preparingLungeState.maxLungeDistance = 10;
+        }
+
+        if(AmountOfPlacedStatues == 1)
+        {
+            stalkerStateMachine.enableSpawn = true;
+            stalkerStateMachine.enableLunge = false;
+            stalkerStateMachine.despawnedState.spawnTimeout = 45;
+            stalkerStateMachine.spawningState.spawnRadius = 10;
+            stalkerStateMachine.preparingLungeState.maxLungeDistance = 10;
+        }
+
+        if(AmountOfPlacedStatues == 2)
+        {
+            stalkerStateMachine.enableSpawn = true;
+            stalkerStateMachine.enableLunge = true;
+            stalkerStateMachine.despawnedState.spawnTimeout = 30;
+            stalkerStateMachine.spawningState.spawnRadius = 9;
+            stalkerStateMachine.preparingLungeState.maxLungeDistance = 10;
+        }
+
+        if(AmountOfPlacedStatues == 3)
+        {
+            stalkerStateMachine.enableSpawn = true;
+            stalkerStateMachine.enableLunge = true;
+            stalkerStateMachine.despawnedState.spawnTimeout = 15;
+            stalkerStateMachine.spawningState.spawnRadius = 6;
+            stalkerStateMachine.preparingLungeState.maxLungeDistance = 15;
+        }
     }
 
 

@@ -13,6 +13,8 @@ public class StalkerStateManager : MonoBehaviour
 
     [Header("Properties")]
     public GameObject target;
+    public bool enableSpawn = true;
+    public bool enableLunge = true;
 
     [Header("States")]
     public StalkerDespawnedState despawnedState;

@@ -15,14 +15,16 @@ public class StalkerIdleState : StalkerBaseState
         StalkerAudioManager.instance.PlayIdleEnter();
         stalker.controller.StartIdleAnimation();
         hasSeenPlayer = false;
+        stateEnteredTime = DateTime.Now;
 
         timeLeft = despawnTimeout;
         Debug.Log("Stalker is idle!");
     }
     public override void UpdateState(StalkerStateManager stalker)
     {
+
         stalker.controller.LookAt(stalker.target.transform.position);
-        if(hasSeenPlayer == false && stalker.controller.CanSee(stalker.target.transform.position))
+        if(stalker.enableLunge && !hasSeenPlayer && stalker.controller.CanSee(stalker.target.transform.position))
         {
             hasSeenPlayer = true;
             stalker.TransitionToState(stalker.preparingLungeState);
@@ -36,6 +38,7 @@ public class StalkerIdleState : StalkerBaseState
         if(timeLeft < 0)
         {
             stalker.TransitionToState(stalker.despawnedState);
+            timeLeft = despawnTimeout;
         }
     }
     public override void OnTriggerEnterState(StalkerStateManager stalker, Collider other)
