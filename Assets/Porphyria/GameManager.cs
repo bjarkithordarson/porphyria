@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         {
             stalkerStateMachine.enableSpawn = false;
             stalkerStateMachine.enableLunge = false;
-            stalkerStateMachine.despawnedState.spawnTimeout = 45;
+            stalkerStateMachine.despawnedState.spawnTimeout = 30;
             stalkerStateMachine.spawningState.spawnRadius = 10;
             stalkerStateMachine.preparingLungeState.maxLungeDistance = 10;
         }
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         {
             stalkerStateMachine.enableSpawn = true;
             stalkerStateMachine.enableLunge = false;
-            stalkerStateMachine.despawnedState.spawnTimeout = 45;
+            stalkerStateMachine.despawnedState.spawnTimeout = 30;
             stalkerStateMachine.spawningState.spawnRadius = 10;
             stalkerStateMachine.preparingLungeState.maxLungeDistance = 10;
         }
@@ -53,18 +53,28 @@ public class GameManager : MonoBehaviour
         {
             stalkerStateMachine.enableSpawn = true;
             stalkerStateMachine.enableLunge = true;
-            stalkerStateMachine.despawnedState.spawnTimeout = 30;
+            stalkerStateMachine.despawnedState.spawnTimeout = 25;
             stalkerStateMachine.spawningState.spawnRadius = 9;
             stalkerStateMachine.preparingLungeState.maxLungeDistance = 10;
         }
 
-        if(AmountOfPlacedStatues == 3)
+        if (AmountOfPlacedStatues == 3)
         {
             stalkerStateMachine.enableSpawn = true;
             stalkerStateMachine.enableLunge = true;
             stalkerStateMachine.despawnedState.spawnTimeout = 15;
             stalkerStateMachine.spawningState.spawnRadius = 6;
             stalkerStateMachine.preparingLungeState.maxLungeDistance = 15;
+        }
+
+        if (AmountOfPlacedStatues == 4)
+        {
+            stalkerStateMachine.enableSpawn = false;
+            stalkerStateMachine.enableLunge = false;
+            stalkerStateMachine.despawnedState.spawnTimeout = 15;
+            stalkerStateMachine.spawningState.spawnRadius = 6;
+            stalkerStateMachine.preparingLungeState.maxLungeDistance = 15;
+            stalkerStateMachine.TransitionToState(stalkerStateMachine.despawnedState);
         }
     }
 
@@ -73,7 +83,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator OutOfOilRoutine()
     {
         //audioSource.PlayOneShot(deathSound);
-        yield return new WaitForSeconds(4000); // Wait for 3 secs
+        yield return new WaitForSeconds(3); // Wait for 3 secs
         SceneManager.LoadScene(deathSceneName); // Load death scene
     }
 

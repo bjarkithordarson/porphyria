@@ -8,11 +8,20 @@ public class AudioManager : MonoBehaviour
 {   
     public static AudioManager instance;
 
+    [Header("Ambiance")]
+    // Sounds for ambiance
+    public AudioClip Ambiance1;
+    public AudioSource AmbianceSource1;
+    public AudioClip Ambiance2;
+    public AudioSource AmbianceSource2;
+
+    [Header("Statue placement")]
     //Sounds for statue placement
-    
+
     public AudioClip StatuePlacement;
     public AudioSource StatueSource;
 
+    [Header("Stone Hatch")]
     //Sounds for Stone Hatch movement
 
     public AudioClip StoneSlabPlacement;
@@ -20,6 +29,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource FireFloorExplosionSource;
     public AudioClip FireFloorExpSound;
 
+    [Header("Oil")]
     //Oil fucntionality sounds
 
     public AudioSource FlaskPickupSource;
@@ -27,6 +37,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource OutOfOilSoonSource;
     public AudioClip OutOfOilSoonSound;
 
+    [Header("Story")]
     //Sounds for StoryInteractable
 
     public AudioSource StoryInteractible;
@@ -42,6 +53,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip ScientistScript4;
     public AudioClip DraculasNotes;
 
+
+    [Header("Jumpscares")]
     // JumpScare
 
     public AudioClip prisonJumpScare;
@@ -79,7 +92,17 @@ public class AudioManager : MonoBehaviour
         }
     
     }
-    
+
+    public void Ambiance1Sound()
+    {
+        PlayOneShot(Ambiance1, AmbianceSource1);
+    }
+
+    public void Ambiance2Sound()
+    {
+        PlayOneShot(Ambiance2, AmbianceSource2);
+    }
+
     public void StatuePlacementSound()
     {
         PlayOneShot(StatuePlacement, StatueSource);
