@@ -77,7 +77,7 @@ public class StalkerController : MonoBehaviour
     private void Move()
     {
         if (Vector3.Distance(transform.position, destination) > 0.01f)
-            transform.position = Vector3.Lerp(transform.position, destination, 0.01f);
+            transform.position = Vector3.Lerp(transform.position, destination, 0.01f * lungeSpeed);
         else
             transform.position = destination;
     }
