@@ -31911,7 +31911,7 @@ MonoBehaviour:
   OutOfOilSoonSound: {fileID: 0}
   StoryInteractible: {fileID: 1306251564}
   Page: {fileID: 8300000, guid: 71f81a4bab403964c927a96c879646a8, type: 3}
-  DaughterScript1: {fileID: 8300000, guid: 2bbb6978b83830b4badafde97800766d, type: 3}
+  DaughterScript1: {fileID: 8300000, guid: 1b8dfc1e3725943909815d43208268ee, type: 3}
   DaughterScript2: {fileID: 0}
   DaughterScript3: {fileID: 0}
   DaughterScript4: {fileID: 0}
@@ -47201,7 +47201,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2bbb6978b83830b4badafde97800766d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1b8dfc1e3725943909815d43208268ee, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -50520,6 +50520,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7268372705834846242, guid: da0c0fe7612bfb347af12b6523ba0293, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040511775262511763, guid: da0c0fe7612bfb347af12b6523ba0293, type: 3}
+      propertyPath: allowJump
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8040511775262511768, guid: da0c0fe7612bfb347af12b6523ba0293, type: 3}
