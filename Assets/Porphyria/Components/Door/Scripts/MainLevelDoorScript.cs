@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class MainLevelDoorScript : MonoBehaviour
@@ -9,6 +10,8 @@ public class MainLevelDoorScript : MonoBehaviour
     public GameObject doorBlocker;
     private AudioSource audioSource;
     public AudioSource audioSourcedoor;
+    private bool hasOpened = false;
+    public TextMeshPro openDoorText;
 
     void Start()
     {
@@ -18,7 +21,7 @@ public class MainLevelDoorScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerIsNear)
+        if (Input.GetKeyDown(KeyCode.E) && playerIsNear && !hasOpened)
         {
             OpenDoors();
         }
@@ -26,9 +29,10 @@ public class MainLevelDoorScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasOpened)
         {
             playerIsNear = true;
+            openDoorText.gameObject.SetActive(true);
         }
     }
 
@@ -37,6 +41,7 @@ public class MainLevelDoorScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsNear = false;
+            openDoorText.gameObject.SetActive(false);
         }
     }
 
@@ -45,6 +50,8 @@ public class MainLevelDoorScript : MonoBehaviour
         leftDoorAnimator.enabled = true;
         rightDoorAnimator.enabled = true;
         doorBlocker.SetActive(false);
+        openDoorText.gameObject.SetActive(false);
         audioSource.Play();
+        hasOpened = true;
     }
 }
