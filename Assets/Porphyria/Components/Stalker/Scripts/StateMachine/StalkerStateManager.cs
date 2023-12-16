@@ -36,9 +36,9 @@ public class StalkerStateManager : MonoBehaviour
     }
 
     void Update() => currentState.UpdateState(this);
-    void OnTriggerEnter(Collider other) => currentState.OnTriggerEnter(this, other);
-    void OnTriggerStay(Collider other) => currentState.OnTriggerStay(this, other);
-    private void OnTriggerExit(Collider other) => currentState.OnTriggerExit(this, other);
+    void OnTriggerEnter(Collider other) => currentState.OnTriggerEnterState(this, other);
+    void OnTriggerStay(Collider other) => currentState.OnTriggerStayState(this, other);
+    private void OnTriggerExit(Collider other) => currentState.OnTriggerExitState(this, other);
 
     public void TransitionToState(StalkerBaseState state)
     {

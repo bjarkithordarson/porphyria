@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StalkerController : MonoBehaviour
 {
     public CapsuleCollider stalkerCollider;
     public GameObject stalkerBody;
+    public bool seenByCamera = false;
 
     //public Animator animator;
 
@@ -31,6 +33,14 @@ public class StalkerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(VisibleByCamera());
+        if (!seenByCamera && VisibleByCamera())
+        {
+            Debug.Log("ASDFASDFASDF");
+            seenByCamera = true;
+            StalkerAudioManager.instance.PlayFirstSeenByCamera();
+        }
+
         Move();
     }
 
@@ -49,6 +59,7 @@ public class StalkerController : MonoBehaviour
     }
     public void Despawn()
     {
+        seenByCamera = false;
         stalkerBody.SetActive(false);
         StalkerAudioManager.instance.StopAmbiance();
     }
@@ -161,29 +172,30 @@ public class StalkerController : MonoBehaviour
     public bool IsCapsuleColliding(Vector3 position)
     {
         CapsuleCollider capsule = stalkerBody.GetComponent<CapsuleCollider>();
-        // Get the bounds of the capsule collider
         Bounds bounds = new Bounds(position, capsule.bounds.size);
 
-        // Get all colliders in the scene
         Collider[] allColliders = Physics.OverlapSphere(position, capsule.radius);
 
-        // Check each collider to see if it's colliding with the capsule
         foreach (Collider collider in allColliders)
         {
-            // Ignore the floor
             if (collider.CompareTag("Floor"))
                 continue;
-            // Ignore the capsule itself
             if (collider == capsule)
                 continue;
-
-            // If the bounds of the capsule intersect with the bounds of the collider, return true
             if (bounds.Intersects(collider.bounds))
                 return true;
         }
-
-        // If no collisions were found, return false
         return false;
+    }
+
+    private void OnTriggerStay(Collider collider)
+    {
+        if(collider.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("EndScene");
+
+            Debug.Log("STALKER COLLIDING WITH PLAYER");
+        }
     }
 
 }

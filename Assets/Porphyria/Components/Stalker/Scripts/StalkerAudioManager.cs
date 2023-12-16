@@ -12,6 +12,9 @@ public class StalkerAudioManager : MonoBehaviour
     public AudioClip ambiance;
     [Range(0,1)]
     public float ambianceVolume = 1;
+    public AudioClip failedSpawn;
+    [Range(0, 1)]
+    public float failedSpawnVolume = 1;
     [Header("Despawned")]
     public AudioClip despawnedEnter;
     [Range(0, 1)]
@@ -24,6 +27,9 @@ public class StalkerAudioManager : MonoBehaviour
     public AudioClip idleEnter;
     [Range(0, 1)]
     public float idleEnterVolume = 1;
+    public AudioClip firstSeenByCamera;
+    [Range(0,1)]
+    public float firstSeenByCameraVolume = 1;
     [Header("Scared")]
     public AudioClip scaredEnter;
     [Range(0, 1)]
@@ -39,6 +45,8 @@ public class StalkerAudioManager : MonoBehaviour
 
     private void Start()
     {
+        audioSource.enabled = true;
+        ambianceAudioSource.enabled = true;
         if (StalkerAudioManager.instance == null)
         {
             StalkerAudioManager.instance = GetComponent<StalkerAudioManager>() ?? gameObject.AddComponent<StalkerAudioManager>();
@@ -60,6 +68,16 @@ public class StalkerAudioManager : MonoBehaviour
         ambianceAudioSource.Stop();
     }
 
+    public void PlayFailedSpawn()
+    {
+        if (failedSpawn != null)
+        {
+            audioSource.volume = failedSpawnVolume;
+            audioSource.clip = failedSpawn;
+            audioSource.Play();
+        }
+    }
+
 
     public void PlayDespawnedEnter()
     {
@@ -77,6 +95,16 @@ public class StalkerAudioManager : MonoBehaviour
         {
             audioSource.volume = spawningEnterVolume;
             audioSource.clip = spawningEnter;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayFirstSeenByCamera()
+    {
+        if (firstSeenByCamera!= null)
+        {
+            audioSource.volume = firstSeenByCameraVolume;
+            audioSource.clip = firstSeenByCamera;
             audioSource.Play();
         }
     }

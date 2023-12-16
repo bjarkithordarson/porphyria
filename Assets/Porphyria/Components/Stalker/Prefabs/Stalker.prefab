@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8592313632983714160}
   - component: {fileID: 5717357296484948432}
   - component: {fileID: 3228740554496983436}
+  - component: {fileID: 6845044756234594786}
   m_Layer: 0
   m_Name: Stalker
   m_TagString: Untagged
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stalkerCollider: {fileID: 8592313632983714160}
   stalkerBody: {fileID: 6891184463785908415}
+  seenByCamera: 0
   lungeSpeed: 2
   destination: {x: 0, y: 0, z: 0}
 --- !u!114 &3228740554496983436
@@ -112,6 +114,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 5717357296484948432}
   stateMachine: {fileID: 1826181730421237931}
+--- !u!54 &6845044756234594786
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152182984508239746}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3445542077544786983
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,19 +603,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 5359345231557764008}
   ambianceAudioSource: {fileID: 2444122889273770847}
-  ambiance: {fileID: 0}
-  ambianceVolume: 0
+  ambiance: {fileID: 8300000, guid: 567ce55f866937e4da745453abf174d1, type: 3}
+  ambianceVolume: 0.529
+  failedSpawn: {fileID: 0}
+  failedSpawnVolume: 1
   despawnedEnter: {fileID: 0}
   despawnedEnterVolume: 1
   spawningEnter: {fileID: 0}
   spawningEnterVolume: 1
   idleEnter: {fileID: 0}
   idleEnterVolume: 1
+  firstSeenByCamera: {fileID: 8300000, guid: aca84ff0ac749404b99d5f02fd3b2b73, type: 3}
+  firstSeenByCameraVolume: 1
   scaredEnter: {fileID: 0}
   scaredEnterVolume: 1
   preparingLungeEnter: {fileID: 0}
   preparingLungeEnterVolume: 1
-  lungingEnter: {fileID: 0}
+  lungingEnter: {fileID: 8300000, guid: 14962383b089394448086e09942ca5cb, type: 3}
   lungingEnterVolume: 1
 --- !u!1 &6891184463785908415
 GameObject:
@@ -639,7 +672,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
