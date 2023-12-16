@@ -10,15 +10,15 @@ public class StalkerFleeingState : StalkerBaseState
     {
 
     }
-    public override void OnTriggerEnter(StalkerStateManager stalker, Collider other)
+    public override void OnTriggerEnterState(StalkerStateManager stalker, Collider other)
     {
 
     }
-    public override void OnTriggerStay(StalkerStateManager stalker, Collider other)
+    public override void OnTriggerStayState(StalkerStateManager stalker, Collider other)
     {
 
     }
-    public override void OnTriggerExit(StalkerStateManager stalker, Collider other)
+    public override void OnTriggerExitState(StalkerStateManager stalker, Collider other)
     {
 
     }

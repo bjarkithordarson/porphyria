@@ -9,18 +9,11 @@ public class StalkerLungingState : StalkerBaseState
     {
         StalkerAudioManager.instance.PlayLungingEnter();
         Debug.Log("Stalker is lunging!");
-        //StartCoroutine(Lunge(stalker));
+
         stalker.controller.RunTo(stalker.target.transform.position);
         stalker.controller.LookAt(stalker.target.transform.position);
         stalker.controller.StartFloatingAnimation();
     }
-
-    private IEnumerator Lunge(StalkerStateManager stalker)
-    {
-        yield return new WaitForSeconds(timeBeforeLunge);
-        
-    }
-
     public override void UpdateState(StalkerStateManager stalker)
     {
         if(Vector3.Distance(stalker.controller.stalkerBody.transform.position, stalker.controller.destination) < 0.5f)
@@ -28,15 +21,15 @@ public class StalkerLungingState : StalkerBaseState
             stalker.TransitionToState(stalker.idleState);
         }
     }
-    public override void OnTriggerEnter(StalkerStateManager stalker, Collider other)
+    public override void OnTriggerEnterState(StalkerStateManager stalker, Collider other)
     {
 
     }
-    public override void OnTriggerStay(StalkerStateManager stalker, Collider other)
+    public override void OnTriggerStayState(StalkerStateManager stalker, Collider other)
     {
 
     }
-    public override void OnTriggerExit(StalkerStateManager stalker, Collider other)
+    public override void OnTriggerExitState(StalkerStateManager stalker, Collider other)
     {
 
     }

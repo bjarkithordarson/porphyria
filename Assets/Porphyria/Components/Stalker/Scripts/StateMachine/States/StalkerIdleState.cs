@@ -28,8 +28,6 @@ public class StalkerIdleState : StalkerBaseState
             stalker.TransitionToState(stalker.preparingLungeState);
         }
 
-        Debug.Log(stalker.controller.VisibleByCamera());
-
         if(stalker.controller.VisibleByCamera() == false)
         {
             timeLeft = despawnTimeout - (float)(DateTime.Now - stateEnteredTime).TotalSeconds;
@@ -40,15 +38,15 @@ public class StalkerIdleState : StalkerBaseState
             stalker.TransitionToState(stalker.despawnedState);
         }
     }
-    public override void OnTriggerEnter(StalkerStateManager stalker, Collider other)
+    public override void OnTriggerEnterState(StalkerStateManager stalker, Collider other)
     {
 
     }
-    public override void OnTriggerStay(StalkerStateManager stalker, Collider other)
+    public override void OnTriggerStayState(StalkerStateManager stalker, Collider other)
     {
 
     }
-    public override void OnTriggerExit(StalkerStateManager stalker, Collider other)
+    public override void OnTriggerExitState(StalkerStateManager stalker, Collider other)
     {
 
     }
