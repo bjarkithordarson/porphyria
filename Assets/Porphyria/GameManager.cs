@@ -58,13 +58,23 @@ public class GameManager : MonoBehaviour
             stalkerStateMachine.preparingLungeState.maxLungeDistance = 10;
         }
 
-        if(AmountOfPlacedStatues == 3)
+        if (AmountOfPlacedStatues == 3)
         {
             stalkerStateMachine.enableSpawn = true;
             stalkerStateMachine.enableLunge = true;
             stalkerStateMachine.despawnedState.spawnTimeout = 15;
             stalkerStateMachine.spawningState.spawnRadius = 6;
             stalkerStateMachine.preparingLungeState.maxLungeDistance = 15;
+        }
+
+        if (AmountOfPlacedStatues == 4)
+        {
+            stalkerStateMachine.enableSpawn = false;
+            stalkerStateMachine.enableLunge = false;
+            stalkerStateMachine.despawnedState.spawnTimeout = 15;
+            stalkerStateMachine.spawningState.spawnRadius = 6;
+            stalkerStateMachine.preparingLungeState.maxLungeDistance = 15;
+            stalkerStateMachine.TransitionToState(stalkerStateMachine.despawnedState);
         }
     }
 
