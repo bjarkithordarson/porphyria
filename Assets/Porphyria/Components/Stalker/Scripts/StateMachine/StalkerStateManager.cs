@@ -6,7 +6,7 @@ public class StalkerStateManager : MonoBehaviour
 {
     [Header("State Machine")]
     [SerializeField]
-    StalkerBaseState currentState;
+    public StalkerBaseState currentState;
 
     [Header("Controller")]
     public StalkerController controller;

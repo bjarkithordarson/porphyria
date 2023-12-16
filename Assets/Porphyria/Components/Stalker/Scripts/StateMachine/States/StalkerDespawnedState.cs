@@ -10,6 +10,7 @@ public class StalkerDespawnedState : StalkerBaseState
     public float timeLeft;
     public override void EnterState(StalkerStateManager stalker)
     {
+        stalker.controller.isSpawned = false;
         stalker.controller.Despawn();
         StalkerAudioManager.instance.PlayDespawnedEnter();
         timeLeft = spawnTimeout;

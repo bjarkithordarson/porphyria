@@ -25,6 +25,8 @@ public class StalkerController : MonoBehaviour
     public float lungeSpeed = 2;
 
     public Vector3 destination;
+
+    public bool isSpawned;
     void Start()
     {
         destination = transform.position;
@@ -226,9 +228,14 @@ public class StalkerController : MonoBehaviour
         return false;
     }
 
+    public StalkerBaseState GetState()
+    {
+        return stateMachine.currentState;
+    }
+
     private void OnTriggerStay(Collider collider)
     {
-        if(collider.CompareTag("Player"))
+        if(collider.CompareTag("Player") && isSpawned)
         {
             SceneManager.LoadScene("EndScene");
 

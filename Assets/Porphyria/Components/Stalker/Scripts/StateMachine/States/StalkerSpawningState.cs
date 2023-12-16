@@ -12,6 +12,7 @@ public class StalkerSpawningState : StalkerBaseState
     private StalkerStateManager stalker;
     public override void EnterState(StalkerStateManager stalker)
     {
+        stalker.controller.isSpawned = false;
         StalkerAudioManager.instance.PlaySpawningEnter();
         this.stalker = stalker;
 

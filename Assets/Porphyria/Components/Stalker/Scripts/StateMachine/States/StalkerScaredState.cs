@@ -9,6 +9,7 @@ public class StalkerScaredState : StalkerBaseState
     private float timeLeft;
     public override void EnterState(StalkerStateManager stalker)
     {
+        stalker.controller.isSpawned = true;
         StalkerAudioManager.instance.PlayScaredEnter();
         stalker.controller.StartScaredAnimation();
         timeLeft = cooldown;
