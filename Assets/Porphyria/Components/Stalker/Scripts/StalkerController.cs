@@ -76,6 +76,10 @@ public class StalkerController : MonoBehaviour
 
         transform.rotation = lookRotation;
     }
+    public float GetDistanceTo(Vector3 position)
+    {
+        return Vector3.Distance(transform.position, position);
+    }
     public bool CanSee(Vector3 position)
     {
         Vector3 origin = transform.position;
@@ -100,6 +104,10 @@ public class StalkerController : MonoBehaviour
     public void StartFloatingAnimation()
     {
         GetComponent<Animator>().Play("Floating");
+    }
+    public void StartScaredAnimation()
+    {
+        GetComponent<Animator>().Play("Scared");
     }
 
     public void RunTo(Vector3 position)

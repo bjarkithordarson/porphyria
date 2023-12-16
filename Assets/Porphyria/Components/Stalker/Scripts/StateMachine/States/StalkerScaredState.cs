@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class StalkerScaredState : StalkerBaseState
 {
-    public float cooldown = 2f;
+    public float cooldown = 10f;
 
     [SerializeField]
     private float timeLeft;
     public override void EnterState(StalkerStateManager stalker)
     {
         StalkerAudioManager.instance.PlayScaredEnter();
+        stalker.controller.StartScaredAnimation();
         timeLeft = cooldown;
 
     }
@@ -17,6 +18,10 @@ public class StalkerScaredState : StalkerBaseState
     {
         timeLeft = cooldown- (float)(DateTime.Now - stateEnteredTime).TotalSeconds;
 
+        if(timeLeft <= 0)
+        {
+            stalker.TransitionToState(stalker.preparingLungeState);
+        }
 
     }
     public override void OnTriggerEnterState(StalkerStateManager stalker, Collider other)
