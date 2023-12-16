@@ -23,6 +23,15 @@ public class StalkerPreparingLungeState : StalkerBaseState
 
     public override void UpdateState(StalkerStateManager stalker)
     {
+        if(GameManager.instance.isPaused)
+        {
+            stateEnteredTime = DateTime.Now;
+            StalkerAudioManager.instance.Mute();
+            return;
+        } else
+        {
+            StalkerAudioManager.instance.Unmute();
+        }
         distanceToTarget = stalker.controller.GetDistanceTo(stalker.target.transform.position);
         seesTarget = stalker.controller.CanSee(stalker.target.transform.position);
 

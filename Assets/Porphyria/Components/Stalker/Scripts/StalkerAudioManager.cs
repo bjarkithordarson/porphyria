@@ -53,6 +53,17 @@ public class StalkerAudioManager : MonoBehaviour
         }
     }
 
+    public void Mute()
+    {
+        audioSource.volume = 0;
+        ambianceAudioSource.volume = 0;
+    }
+
+    public void Unmute()
+    {
+        ambianceAudioSource.volume = ambianceVolume;
+    }
+
     public void PlayAmbiance()
     {
         if (ambiance != null)

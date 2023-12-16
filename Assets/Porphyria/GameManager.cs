@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public int AmountOfPlacedStatues = 0;
     public int AmountofStatuesNeeded = 4;
+
+    public bool isPaused = false;
     private void Awake()
     {
         instance = this;
@@ -36,10 +38,12 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame ()
     {
+        isPaused = true;
         Time.timeScale = 0f;
     }
     public void ResumeGame ()
     {
+        isPaused = false;
         Time.timeScale = 1f;
     }
 }
