@@ -80,6 +80,8 @@ public class StoryInteractionItem : MonoBehaviour
         {   
             Light.SetActive(true);
             TextPrompt.gameObject.SetActive(false);
+            GameManager.instance.PauseGame();
+            Debug.Log("Hello from another world");
             FadeIn();
             AudioManager.instance.PageSound();
             

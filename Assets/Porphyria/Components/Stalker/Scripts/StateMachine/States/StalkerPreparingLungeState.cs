@@ -23,7 +23,7 @@ public class StalkerPreparingLungeState : StalkerBaseState
 
     public override void UpdateState(StalkerStateManager stalker)
     {
-        if(GameManager.instance.isPaused)
+        if(GameManager.instance.isPaused || stalker.paused)
         {
             stateEnteredTime = DateTime.Now;
             StalkerAudioManager.instance.Mute();

@@ -44,17 +44,17 @@ public class StalkerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(VisibleByCamera());
+        //Debug.Log(VisibleByCamera());
         if (!seenByCamera && VisibleByCamera())
         {
-            Debug.Log("ASDFASDFASDF");
+            //Debug.Log("ASDFASDFASDF");
             seenByCamera = true;
             StalkerAudioManager.instance.PlayFirstSeenByCamera();
         }
         float distanceFromPlayer = Vector3.Distance(stateMachine.target.transform.position, transform.position);
 
         if(distanceFromPlayer < minDangerDistance && !inDanger) {
-            Debug.Log("Player is in danger ASDASDASDASDASDASDDDDDD");
+            //Debug.Log("Player is in danger ASDASDASDASDASDASDDDDDD");
             proximityDanger.PlayerDangerEffect();
             inDanger = true;
             inSafeDistance = true;
@@ -63,7 +63,7 @@ public class StalkerController : MonoBehaviour
 
         } else if(distanceFromPlayer > minDangerDistance && inSafeDistance)
         {
-            Debug.Log("Player is not in danger ASDASDADASDASDASDASD");
+            //Debug.Log("Player is not in danger ASDASDADASDASDASDASD");
             proximityDanger.PlayerSafe();
             inSafeDistance = false;
             inDanger = false;

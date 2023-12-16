@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Sandbox/Dadi/dadiWorkspace/EndScene.unity
-    guid: 13206864f59573942bcaa0d1b12073c1
-  - enabled: 1
     path: Assets/Porphyria/Scenes/MainMenu/AlphaMenu.unity
     guid: 06f98e818f0cbff49b123ede6861ebf4
   - enabled: 1
+    path: Assets/Sandbox/Dadi/dadiWorkspace/EndScene.unity
+    guid: 13206864f59573942bcaa0d1b12073c1
+  - enabled: 0
     path: Assets/Porphyria/Scenes/AlphaMap/Main_Level.unity
     guid: 79026449db5c5b440985a583f1835363
   - enabled: 1

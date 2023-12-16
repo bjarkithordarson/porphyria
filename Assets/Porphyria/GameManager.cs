@@ -21,7 +21,9 @@ public class GameManager : MonoBehaviour
     public bool isPaused = false;
     private void Awake()
     {
+
         instance = this;
+      
     }
 
     private void Update()
@@ -94,12 +96,14 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame ()
     {
-        isPaused = true;
-        Time.timeScale = 0f;
+        instance.isPaused = true;
+        stalkerStateMachine.paused = true;
+        //Time.timeScale = 0f;
     }
     public void ResumeGame ()
     {
-        isPaused = false;
-        Time.timeScale = 1f;
+        instance.isPaused = false;
+        stalkerStateMachine.paused = false;
+        //Time.timeScale = 1f;
     }
 }

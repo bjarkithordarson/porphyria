@@ -15,6 +15,7 @@ public class StalkerStateManager : MonoBehaviour
     public GameObject target;
     public bool enableSpawn = true;
     public bool enableLunge = true;
+    public bool paused = false;
 
     [Header("States")]
     public StalkerDespawnedState despawnedState;
@@ -23,6 +24,7 @@ public class StalkerStateManager : MonoBehaviour
     public StalkerScaredState    scaredState;
     public StalkerPreparingLungeState preparingLungeState;
     public StalkerLungingState   lungingState;
+    
 
     void Start()
     {
@@ -47,6 +49,6 @@ public class StalkerStateManager : MonoBehaviour
         currentState = state;
         state.EnterState(this);
         state.StartTiming();
-        Debug.Log("Stalker transitioning to " + state);
+        //Debug.Log("Stalker transitioning to " + state);
     }
 }
