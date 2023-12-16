@@ -15,7 +15,6 @@ public class StalkerStateManager : MonoBehaviour
     public GameObject target;
     public bool enableSpawn = true;
     public bool enableLunge = true;
-    public bool paused = false;
 
     [Header("States")]
     public StalkerDespawnedState despawnedState;

@@ -80,13 +80,14 @@ public class StoryInteractionItem : MonoBehaviour
         {   
             Light.SetActive(true);
             TextPrompt.gameObject.SetActive(false);
-            GameManager.instance.PauseGame();
+            //GameManager.instance.PauseGame();
+            GameManager.instance.isPaused = true;
             Debug.Log("Hello from another world");
             FadeIn();
             AudioManager.instance.PageSound();
             
         }
-        else if (Input.anyKeyDown)
+        else if (Input.anyKeyDown && playerInTriggerZone)
         {
             GameManager.instance.ResumeGame();
         }

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int AmountofStatuesNeeded = 4;
 
     public bool isPaused = false;
+
     private void Awake()
     {
 
@@ -94,16 +95,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(deathSceneName); // Restart the game
     }
 
-    public void PauseGame ()
+    public void PauseGame()
     {
         instance.isPaused = true;
-        stalkerStateMachine.paused = true;
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
     }
-    public void ResumeGame ()
+    public void ResumeGame()
     {
         instance.isPaused = false;
-        stalkerStateMachine.paused = false;
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
     }
 }
