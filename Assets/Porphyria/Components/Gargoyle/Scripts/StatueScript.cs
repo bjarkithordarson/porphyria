@@ -17,7 +17,7 @@ public class StatueScript : MonoBehaviour
             }
             else
             {
-                interactionText.text = "Pick up statue";
+                interactionText.text = "Pick up statue (E)";
             }
 
             // Enable the interaction text
