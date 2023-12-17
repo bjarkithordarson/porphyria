@@ -34,11 +34,12 @@ public class LanternController : MonoBehaviour
 
 
         if (spotlight == null || targetObject == null) return;
-
-        
+        StalkerController stalker = targetObject.GetComponent<StalkerController>();
+        bool isSpawned = stalker == null ? false : stalker.isSpawned;
+                
         float distance = Vector3.Distance(transform.position, targetObject.position);
         
-        if (canFlicker && targetObject.GetComponent<StalkerController>().isSpawned)
+        if (canFlicker && isSpawned)
         {
         // Determine if we are doing intense flickering or baseline flickering
         bool isIntenseFlickering = distance < intenseFlickerDistance;
