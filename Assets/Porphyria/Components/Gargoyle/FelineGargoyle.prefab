@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 5628980619129853064}
   - component: {fileID: 1148527961815347299}
   - component: {fileID: 2736628866124044823}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PickUpStatue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

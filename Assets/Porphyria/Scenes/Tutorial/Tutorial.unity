@@ -5687,7 +5687,7 @@ GameObject:
   - component: {fileID: 341517271}
   - component: {fileID: 341517270}
   - component: {fileID: 341517272}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: PickupStatueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6921,7 +6921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 0
+  m_AmplitudeGain: 1
   m_FrequencyGain: 1
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &395186967
@@ -24989,6 +24989,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.30512726
       objectReference: {fileID: 0}
+    - target: {fileID: 5891390995945235692, guid: 40c2ba2834b290144b6c70f0806adf6a, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 6083666578441855339, guid: 40c2ba2834b290144b6c70f0806adf6a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.023835853
@@ -36320,7 +36324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1269120730060968, guid: 1a365141225c22e49a7bb976869b22a8, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1269120730060968, guid: 1a365141225c22e49a7bb976869b22a8, type: 3}
       propertyPath: m_IsActive
@@ -44521,7 +44525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1269120730060968, guid: 1a365141225c22e49a7bb976869b22a8, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1269120730060968, guid: 1a365141225c22e49a7bb976869b22a8, type: 3}
       propertyPath: m_IsActive
@@ -52094,7 +52098,7 @@ GameObject:
   - component: {fileID: 3809048560240714202}
   - component: {fileID: 1676833399}
   - component: {fileID: 3809048560240714203}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Railing_Pillar_Low_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52369,7 +52373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3677716940451212264, guid: acccb950d8edd0f418f478ada61023cc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 17.539978
+      value: 17.54004
       objectReference: {fileID: 0}
     - target: {fileID: 4237517762670473382, guid: acccb950d8edd0f418f478ada61023cc, type: 3}
       propertyPath: m_fontSize
@@ -52558,7 +52562,7 @@ GameObject:
   - component: {fileID: 9200066768668156308}
   - component: {fileID: 5090951638715316655}
   - component: {fileID: 9200066768668156307}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: TigerGargoyle-GO
   m_TagString: Statue
   m_Icon: {fileID: 0}
@@ -52759,7 +52763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7645701894132365775}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: FelineGargoyle
   m_TagString: Statue
   m_Icon: {fileID: 0}
