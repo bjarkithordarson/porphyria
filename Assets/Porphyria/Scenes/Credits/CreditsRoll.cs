@@ -54,4 +54,12 @@ public class CreditsRoll : MonoBehaviour
         yield return new WaitForSeconds(66f); // Wait for 66 seconds
         SceneManager.LoadScene("AlphaMenu"); // Replace with your scene name
     }
+
+    private void Update()
+    {
+        if(Input.anyKeyDown)
+        {
+            SceneManager.LoadScene("AlphaMenu");
+        }
+    }
 }
