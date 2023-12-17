@@ -277,16 +277,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975968807}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.13052596, y: -0, z: -0, w: 0.99144495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2100149633}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 0}
+  m_AnchoredPosition: {x: -106, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975968809
@@ -309,13 +309,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<size=149>Porphyria</size>\n\n\n\n<size=72>Developers</size>\n\n\nBjarki
+  m_text: "<size=200>Porphyria</size>\n\n\n\n\n\n\n\n\n\n\n\n<size=96>Developers</size>\n\n\nBjarki
     Rafn \u201CThordarson\u201D Thordarson\n\nDadi \u201CSpicyBeard\u201D Runarsson\n\nHalldor
-    \u201CDoriSig\u201D Sigurdsson\n\nHugi Freyr \u201CKennitala\u201D Alfgeirsson\n\n\n<size=72>Guest
-    Artists</size>\n\n\nBjartur Steinn Hagalin\n\n\n<size=72>Advisory</size>\n\n\nAgust
+    \u201CDoriSig\u201D Sigurdsson\n\nHugi Freyr \u201CKennitala\u201D Alfgeirsson\n\n\n<size=96>Guest
+    Artists</size>\n\n\nBjartur Steinn Hagalin\n\n\n<size=96>Advisory</size>\n\n\nAgust
     Thor Thrastarson\n\nDarri Arnarson\n\nFreyr Magnusson\n\nRagnar Smari Omarsson\n\nSteingerdur
-    Loa Gunnarsdottir\n\n\n<size=72>Special thanks</size>\n\n\nTeam Diamond\n\n\n<size=96>Thank
-    you</size>"
+    Loa Gunnarsdottir\n\n\n<size=96>Music</size>\n\n\nJohann Sebastian Bach - Toccata
+    and Fugue in D Minor by Kevin MacLeod\n\nDoriSig - Project X\n\n\n<size=96>Special
+    thanks</size>\n\n\nTeam Diamond\n\nPlaytesters\n\nColleagues\n\nGuest Lecturers\n\n\n<size=96>Made
+    possible by</size>\n\n\nReykjavik University\n\nUnity\n\nAutodesk\n\nAdobe\n\nReplica
+    Studios\n\nZapsplat\n\n\n\n\n\n\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41e38bd5dbb44ab49aa8dcc75335353a, type: 2}
   m_sharedMaterial: {fileID: 482245200546186538, guid: 41e38bd5dbb44ab49aa8dcc75335353a, type: 2}
@@ -342,8 +345,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -358,7 +361,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -404,7 +407,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8916e57336dc9f844b9967c8496748ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.42
+  targetSpeed: 0.42
+  delayBeforeStart: 5
+  accelerationDuration: 3
 --- !u!1 &1303855409
 GameObject:
   m_ObjectHideFlags: 0
