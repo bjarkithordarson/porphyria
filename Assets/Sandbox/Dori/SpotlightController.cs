@@ -26,6 +26,11 @@ public class SpotlightController : MonoBehaviour
 
     void Update()
     {
+        // Pause lantern mechanic if game is paused.
+        if(GameManager.instance.isPaused)
+        {
+            return;
+        }
         // Rotate the spotlight based on mouse movement
         float mouseMovement = Input.GetAxis("Mouse X") * sensitivity;
         float newRotation = currentRotation + mouseMovement;
