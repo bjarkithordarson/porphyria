@@ -55,7 +55,7 @@ public class StalkerController : MonoBehaviour
         }
         float distanceFromPlayer = Vector3.Distance(stateMachine.target.transform.position, transform.position);
 
-        if(distanceFromPlayer < minDangerDistance && !inDanger) {
+        if(distanceFromPlayer < minDangerDistance && !inDanger && isSpawned) {
             //Debug.Log("Player is in danger ASDASDASDASDASDASDDDDDD");
             proximityDanger.PlayerDangerEffect();
             inDanger = true;
