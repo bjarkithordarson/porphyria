@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,16 +21,40 @@ public class GameManager : MonoBehaviour
 
     public bool isPaused = false;
 
+    [Header("UI")]
+    public UIDocument pauseMenu;
+
+    [Header("Settings")]
+    [Range(0, 1)]
+    public float masterVolume = 0.7f;
+    [Range(0, 1)]
+    public float brightness= 0.5f;
+
+    public PostProcessProfile brightnessProfile;
+
+    AutoExposure exposure;
+
     private void Awake()
     {
-
         instance = this;
-      
+
+        brightnessProfile.TryGetSettings(out exposure);
     }
 
     private void Update()
     {
         SetStalkerDifficulty();
+        UpdateVolume(masterVolume);
+        UpdateBrightness(brightness);
+    }
+
+    private void UpdateVolume(float volume)
+    {
+        AudioListener.volume = volume;
+    }
+    private void UpdateBrightness(float value)
+    {
+        exposure.keyValue.value = value < 0.05f ? 0.05f : value;
     }
 
     private void SetStalkerDifficulty()
@@ -104,5 +129,20 @@ public class GameManager : MonoBehaviour
     {
         instance.isPaused = false;
         Time.timeScale = 1f;
+    }
+
+    public void OpenPauseMenu()
+    {
+        if (pauseMenu != null)
+        {
+            pauseMenu.enabled = true;
+        }
+    }
+    public void ClosePauseMenu()
+    {
+        if (pauseMenu != null)
+        {
+            pauseMenu.enabled = false;
+        }
     }
 }
