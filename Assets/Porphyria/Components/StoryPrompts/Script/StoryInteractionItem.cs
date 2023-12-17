@@ -19,6 +19,8 @@ public class StoryInteractionItem : MonoBehaviour
     
     private float targetAlpha = 0f;
 
+    public bool pauseGame = true;
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -80,8 +82,11 @@ public class StoryInteractionItem : MonoBehaviour
         {   
             Light.SetActive(true);
             TextPrompt.gameObject.SetActive(false);
-            //GameManager.instance.PauseGame();
-            GameManager.instance.isPaused = true;
+            if(pauseGame)
+            {
+            GameManager.instance.PauseGame();
+            }
+            //GameManager.instance.isPaused = true;
             Debug.Log("Hello from another world");
             FadeIn();
             AudioManager.instance.PageSound();
