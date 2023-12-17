@@ -14,7 +14,6 @@ public class EndGameController : MonoBehaviour
     public GameObject papertext;
     public GameObject mindy;
     public Light spotLight;
-    public GameObject character;
     public AudioSource papa;
     public GameObject stopper;
 
@@ -50,7 +49,6 @@ public class EndGameController : MonoBehaviour
         camera2.SetActive(true);
         mindy.SetActive(true);
         spotLight.intensity = 10.0f;
-        character.SetActive(false);
         Invoke("Papa", 1.5f);
     }
 
