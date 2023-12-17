@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1087134305981850746}
   - component: {fileID: 9104116541678039092}
   - component: {fileID: 8171357360439547867}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DaughterNote 1
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -172,8 +172,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.87058824, b: 0.73333335, a: 1}
-  m_Intensity: 2.5
-  m_Range: 2
+  m_Intensity: 4
+  m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -5252,8 +5252,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.6710639, y: 0.70148605, z: 0.75640297}
+  m_Center: {x: 0.16446805, y: -0.14925697, z: 0.121798515}
 --- !u!1 &8929528100299400617
 GameObject:
   m_ObjectHideFlags: 0
