@@ -84,7 +84,7 @@ public class StoryInteractionItem : MonoBehaviour
             TextPrompt.gameObject.SetActive(false);
             if(pauseGame)
             {
-            GameManager.instance.PauseGame();
+            GameManager.instance.PauseGame(false);
             }
             //GameManager.instance.isPaused = true;
             Debug.Log("Hello from another world");

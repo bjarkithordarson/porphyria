@@ -39,5 +39,7 @@ public class StatueScript : MonoBehaviour
         // Add any specific interaction logic here, like updating counters
         // Disable text upon interaction
         interactionText.gameObject.SetActive(false);
+        AudioManager.instance.PickupStatueSound();
+        
     }
 }

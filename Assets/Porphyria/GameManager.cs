@@ -128,11 +128,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(deathSceneName); // Restart the game
     }
 
-    public void PauseGame()
+    public void PauseGame(bool audio=true, bool time=true)
     {
         instance.isPaused = true;
-        Time.timeScale = 0f;
-        AudioListener.pause = true;
+        
+        if(time)
+            Time.timeScale = 0f;
+        
+        if(audio)
+            AudioListener.pause = true;
     }
     public void ResumeGame()
     {

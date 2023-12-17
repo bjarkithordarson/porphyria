@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip StatuePlacement;
     public AudioSource StatueSource;
+    public AudioClip statuePickUp;
+    public AudioSource statuePickupSource;
 
     [Header("Stone Hatch")]
     //Sounds for Stone Hatch movement
@@ -91,6 +93,11 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Clip not found");
         }
     
+    }
+
+    public void PickupStatueSound()
+    {
+        PlayOneShot(statuePickUp, statuePickupSource);
     }
 
     public void Ambiance1Sound()
