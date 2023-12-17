@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1558910387202838185}
   - component: {fileID: 1055642021074612439}
   - component: {fileID: 4278503568589905040}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FlaskInteractText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 4710877565276102801}
   - component: {fileID: 4003630456957721070}
   - component: {fileID: 8968092938961518900}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: FlaskWithText
   m_TagString: Flask
   m_Icon: {fileID: 0}
