@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class StalkerPreparingLungeState : StalkerBaseState
 {
+    [Header("Knowledge")]
+    public bool seesTarget = false;
+    public float distanceToTarget;
+    [Header("Timer")]
     public float lungingTimeout = 7f;
+    private float timeLeft;
+
+    [Header("Regular lunge")]
     public float criticalHitDistance = 1f;
     public float maxLungeDistance = 10f;
-    public float distanceToTarget;
-    public bool seesTarget = false;
+
+    [Header("Instant lunge")]
+    public bool enableInstantLunge = true;
+    public float instantLungeDistance = 2.5f;
 
     [SerializeField]
-    private float timeLeft;
     public override void EnterState(StalkerStateManager stalker)
     {
         stalker.controller.isSpawned = true;
@@ -36,16 +44,12 @@ public class StalkerPreparingLungeState : StalkerBaseState
         distanceToTarget = stalker.controller.GetDistanceTo(stalker.target.transform.position);
         seesTarget = stalker.controller.CanSee(stalker.target.transform.position);
 
-        /*if (distanceToTarget <= criticalHitDistance)
-        {
-            stalker.TransitionToState(stalker.scaredState);
-        }*/
-
         if(!seesTarget)
         {
             stalker.TransitionToState(stalker.idleState);
         }
 
+        // Count down to lunge.
         if(distanceToTarget < maxLungeDistance)
         {
             timeLeft = lungingTimeout - (float)(DateTime.Now - stateEnteredTime).TotalSeconds;
@@ -58,6 +62,12 @@ public class StalkerPreparingLungeState : StalkerBaseState
         {
             timeLeft = lungingTimeout;
             stateEnteredTime = DateTime.Now;
+        }
+
+        // Instant lunge
+        if(enableInstantLunge && distanceToTarget < instantLungeDistance)
+        {
+            stalker.TransitionToState(stalker.lungingState);
         }
 
 

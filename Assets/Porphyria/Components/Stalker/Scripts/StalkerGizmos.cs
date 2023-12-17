@@ -26,6 +26,8 @@ public class StalkerGizmos : MonoBehaviour
             stateMachine.target.transform.eulerAngles.y,
             Color.blue);
 
+        DrawGizmoCircle(controller.transform.position, stateMachine.preparingLungeState.instantLungeDistance, Color.red);
+
     }
     public void DrawGizmoLine(Vector3 from, Vector3 to, Color color)
     {
@@ -59,6 +61,19 @@ public class StalkerGizmos : MonoBehaviour
 
         Gizmos.DrawLine(center, startSpoke);
         Gizmos.DrawLine(center, endSpoke);
+    }
+    void DrawGizmoCircle(Vector3 position, float radius, Color color)
+    {
+        // Set the Gizmo color
+        Gizmos.color = color;
+
+        // Draw a circle perpendicular to the ground at the specified position
+        for (int i = 0; i < 360; i++)
+        {
+            Vector3 pos = position + new Vector3(radius * Mathf.Cos(i * Mathf.Deg2Rad), 0, radius * Mathf.Sin(i * Mathf.Deg2Rad));
+            Vector3 pos2 = position + new Vector3(radius * Mathf.Cos((i + 1) * Mathf.Deg2Rad), 0, radius * Mathf.Sin((i + 1) * Mathf.Deg2Rad));
+            Gizmos.DrawLine(pos, pos2);
+        }
     }
 
 }

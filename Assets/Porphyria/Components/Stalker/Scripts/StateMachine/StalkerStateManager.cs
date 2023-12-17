@@ -22,8 +22,9 @@ public class StalkerStateManager : MonoBehaviour
     public StalkerIdleState      idleState;
     public StalkerScaredState    scaredState;
     public StalkerPreparingLungeState preparingLungeState;
-    public StalkerLungingState   lungingState;
-    
+    public StalkerLungingState lungingState;
+    public StalkerInstantLungeState instantLungeState;
+
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class StalkerStateManager : MonoBehaviour
         scaredState    = gameObject.GetComponent<StalkerScaredState>()    ?? gameObject.AddComponent<StalkerScaredState>();
         preparingLungeState = gameObject.GetComponent<StalkerPreparingLungeState>() ?? gameObject.AddComponent<StalkerPreparingLungeState>();
         lungingState   = gameObject.GetComponent<StalkerLungingState>() ?? gameObject.AddComponent<StalkerLungingState>();
+        instantLungeState = gameObject.GetComponent<StalkerInstantLungeState>() ?? gameObject.AddComponent<StalkerInstantLungeState>();
 
         TransitionToState(despawnedState);
     }
