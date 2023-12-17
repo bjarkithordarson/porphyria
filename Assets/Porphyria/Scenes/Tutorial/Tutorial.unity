@@ -10851,8 +10851,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.79, y: 7.6, z: 23.15}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.3609958, y: 10.80695, z: 23.15}
+  m_Center: {x: -0.7854979, y: 1.6034751, z: 0}
 --- !u!1 &673898343
 GameObject:
   m_ObjectHideFlags: 0
@@ -33446,6 +33446,8 @@ MonoBehaviour:
   AmbianceSource2: {fileID: 0}
   StatuePlacement: {fileID: 8300000, guid: 6a382a51f41553a47a590253ba1c7b07, type: 3}
   StatueSource: {fileID: 1306251564}
+  statuePickUp: {fileID: 0}
+  statuePickupSource: {fileID: 0}
   StoneSlabPlacement: {fileID: 0}
   StoneSlabSource: {fileID: 0}
   FireFloorExplosionSource: {fileID: 0}
