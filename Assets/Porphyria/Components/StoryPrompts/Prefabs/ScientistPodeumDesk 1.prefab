@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4366951780553327830}
   - component: {fileID: 6622638348591281525}
   - component: {fileID: 857812645789185808}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Drawer_Preset_Items_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,6 +499,14 @@ PrefabInstance:
     - target: {fileID: 495364, guid: 57216b0d7e1f41d396ea9e5bb9117953, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 10858058, guid: 57216b0d7e1f41d396ea9e5bb9117953, type: 3}
+      propertyPath: m_Range
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 10858058, guid: 57216b0d7e1f41d396ea9e5bb9117953, type: 3}
+      propertyPath: m_Intensity
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19907264, guid: 57216b0d7e1f41d396ea9e5bb9117953, type: 3}
       propertyPath: m_Materials.Array.size
