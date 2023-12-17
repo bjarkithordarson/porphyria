@@ -8,7 +8,7 @@
             <ui:VisualElement style="flex-grow: 1;" />
             <ui:Label tabindex="-1" text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" class="MenuHeading" />
             <ui:Slider picking-mode="Ignore" label="Master volume" value="42" high-value="1" name="SliderMasterVolume" />
-            <ui:Slider picking-mode="Ignore" label="Brightness" value="42" high-value="1" name="SliderBrightness" />
+            <ui:Slider picking-mode="Ignore" label="Brightness" value="42" high-value="2" name="SliderBrightness" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

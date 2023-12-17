@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -56,6 +57,13 @@ public class PauseMenuController : MonoBehaviour
     {
         root.Q<VisualElement>("MenuWrapper").style.display = DisplayStyle.Flex;
         isOpen = true;
+
+        // Hide the mouse cursor
+        Cursor.visible = true;
+
+        // Lock the cursor to the center of the screen
+        Cursor.lockState = CursorLockMode.None;
+
         GameManager.instance.PauseGame();
     }
 
@@ -63,6 +71,13 @@ public class PauseMenuController : MonoBehaviour
     {
         root.Q<VisualElement>("MenuWrapper").style.display = DisplayStyle.None;
         isOpen = false;
+
+        // Hide the mouse cursor
+        Cursor.visible = false;
+
+        // Lock the cursor to the center of the screen
+        Cursor.lockState = CursorLockMode.Locked;
+
         GameManager.instance.ResumeGame();
     }
 
