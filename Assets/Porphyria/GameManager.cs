@@ -27,8 +27,10 @@ public class GameManager : MonoBehaviour
     [Header("Settings")]
     [Range(0, 1)]
     public float masterVolume = 0.7f;
-    [Range(0, 1)]
+    [Range(0, 2)]
     public float brightness= 0.5f;
+    public float minBrightness = 0.05f;
+    public AudioListener audioListener;
 
     public PostProcessProfile brightnessProfile;
 
@@ -39,11 +41,17 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         brightnessProfile.TryGetSettings(out exposure);
+
+        Debug.Log(brightnessProfile);
     }
 
     private void Update()
     {
-        SetStalkerDifficulty();
+        if(stalkerStateMachine)
+        {
+            SetStalkerDifficulty();
+        }
+
         UpdateVolume(masterVolume);
         UpdateBrightness(brightness);
     }
@@ -54,7 +62,7 @@ public class GameManager : MonoBehaviour
     }
     private void UpdateBrightness(float value)
     {
-        exposure.keyValue.value = value < 0.05f ? 0.05f : value;
+        exposure.keyValue.value = value < minBrightness ? minBrightness : value;
     }
 
     private void SetStalkerDifficulty()
@@ -124,11 +132,13 @@ public class GameManager : MonoBehaviour
     {
         instance.isPaused = true;
         Time.timeScale = 0f;
+        AudioListener.pause = true;
     }
     public void ResumeGame()
     {
         instance.isPaused = false;
         Time.timeScale = 1f;
+        AudioListener.pause = false;
     }
 
     public void OpenPauseMenu()
