@@ -2710,7 +2710,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.48, y: 2.93, z: 3.6}
+  m_Size: {x: 3.8, y: 3.13, z: 4.32}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &176438816
 PrefabInstance:
@@ -14175,7 +14175,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.48, y: 2.93, z: 3.6}
+  m_Size: {x: 4.25, y: 3.17, z: 4.05}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &852752644
 PrefabInstance:
@@ -47613,8 +47613,8 @@ Transform:
   m_GameObject: {fileID: 1837175702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.53, y: -0.35, z: 0.72}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.53, y: -0.06, z: 0.72}
+  m_LocalScale: {x: 1, y: 1.19, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1372230160}
@@ -52359,6 +52359,10 @@ PrefabInstance:
       objectReference: {fileID: -1754355333678790417, guid: 1c66854c7e3744a45bf21ec10c9d8ca5, type: 2}
     - target: {fileID: 3061865218122942086, guid: acccb950d8edd0f418f478ada61023cc, type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677716938761919536, guid: acccb950d8edd0f418f478ada61023cc, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3677716940451212264, guid: acccb950d8edd0f418f478ada61023cc, type: 3}

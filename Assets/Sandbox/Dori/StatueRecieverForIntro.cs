@@ -63,7 +63,6 @@ public bool hasFinished = false;
         depositText.gameObject.SetActive(true);
         doorCollider.enabled = true;
         audioSource.Play();
-        yield return new WaitForSeconds(0.5f);
         depositText.gameObject.SetActive(false);
         hasFinished = true;
 
