@@ -38,7 +38,7 @@ public class LanternController : MonoBehaviour
         
         float distance = Vector3.Distance(transform.position, targetObject.position);
         
-        if (canFlicker)
+        if (canFlicker && targetObject.GetComponent<StalkerController>().isSpawned)
         {
         // Determine if we are doing intense flickering or baseline flickering
         bool isIntenseFlickering = distance < intenseFlickerDistance;
