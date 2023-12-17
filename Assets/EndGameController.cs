@@ -39,7 +39,7 @@ public class EndGameController : MonoBehaviour
 
     public void EndGame()
     {
-        SceneManager.LoadScene("AlphaMenu");
+        SceneManager.LoadScene("Credits");
     }
 
     public void SwitchToFinalCamera() {
