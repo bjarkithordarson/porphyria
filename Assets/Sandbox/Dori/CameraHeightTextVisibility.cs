@@ -6,7 +6,7 @@ public class CameraHeightTextVisibility : MonoBehaviour
     public GameObject textMeshProObject; // Assign your TextMeshPro UI GameObject here
     public Camera mainCamera; // Assign your main camera here
 
-    private float visibilityThreshold = 4.9361f; // The Y value threshold
+    private float visibilityThreshold = 4.9861f; // The Y value threshold
 
     void Update()
     {

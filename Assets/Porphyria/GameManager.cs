@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,14 +20,41 @@ public class GameManager : MonoBehaviour
     public int AmountofStatuesNeeded = 4;
 
     public bool isPaused = false;
+
+    [Header("UI")]
+    public UIDocument pauseMenu;
+
+    [Header("Settings")]
+    [Range(0, 1)]
+    public float masterVolume = 0.7f;
+    [Range(0, 1)]
+    public float brightness= 0.5f;
+
+    public PostProcessProfile brightnessProfile;
+
+    AutoExposure exposure;
+
     private void Awake()
     {
         instance = this;
+
+        brightnessProfile.TryGetSettings(out exposure);
     }
 
     private void Update()
     {
         SetStalkerDifficulty();
+        UpdateVolume(masterVolume);
+        UpdateBrightness(brightness);
+    }
+
+    private void UpdateVolume(float volume)
+    {
+        AudioListener.volume = volume;
+    }
+    private void UpdateBrightness(float value)
+    {
+        exposure.keyValue.value = value < 0.05f ? 0.05f : value;
     }
 
     private void SetStalkerDifficulty()
@@ -58,13 +86,23 @@ public class GameManager : MonoBehaviour
             stalkerStateMachine.preparingLungeState.maxLungeDistance = 10;
         }
 
-        if(AmountOfPlacedStatues == 3)
+        if (AmountOfPlacedStatues == 3)
         {
             stalkerStateMachine.enableSpawn = true;
             stalkerStateMachine.enableLunge = true;
             stalkerStateMachine.despawnedState.spawnTimeout = 15;
             stalkerStateMachine.spawningState.spawnRadius = 6;
             stalkerStateMachine.preparingLungeState.maxLungeDistance = 15;
+        }
+
+        if (AmountOfPlacedStatues == 4)
+        {
+            stalkerStateMachine.enableSpawn = false;
+            stalkerStateMachine.enableLunge = false;
+            stalkerStateMachine.despawnedState.spawnTimeout = 15;
+            stalkerStateMachine.spawningState.spawnRadius = 6;
+            stalkerStateMachine.preparingLungeState.maxLungeDistance = 15;
+            stalkerStateMachine.TransitionToState(stalkerStateMachine.despawnedState);
         }
     }
 
@@ -82,14 +120,29 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(deathSceneName); // Restart the game
     }
 
-    public void PauseGame ()
+    public void PauseGame()
     {
-        isPaused = true;
+        instance.isPaused = true;
         Time.timeScale = 0f;
     }
-    public void ResumeGame ()
+    public void ResumeGame()
     {
-        isPaused = false;
+        instance.isPaused = false;
         Time.timeScale = 1f;
+    }
+
+    public void OpenPauseMenu()
+    {
+        if (pauseMenu != null)
+        {
+            pauseMenu.enabled = true;
+        }
+    }
+    public void ClosePauseMenu()
+    {
+        if (pauseMenu != null)
+        {
+            pauseMenu.enabled = false;
+        }
     }
 }

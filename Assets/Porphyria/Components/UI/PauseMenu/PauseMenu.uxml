@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Porphyria/Components/UI/PauseMenu/PauseMenu.uss?fileID=7433441132597879392&amp;guid=d1bbe847cbb624f46a5eaeed90b7fe62&amp;type=3#PauseMenu" />
+    <ui:VisualElement name="MenuWrapper" class="MenuWrapper" style="flex-grow: 1;">
+        <ui:VisualElement class="MenuContainer" style="flex-grow: 1; align-self: auto; justify-content: flex-start; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: auto; height: auto; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+            <ui:Label tabindex="-1" text="Porphyria" parse-escape-sequences="true" display-tooltip-when-elided="true" class="MenuHeading" style="-unity-font: url(&apos;project://database/Assets/Porphyria/Media/Fonts/BeauRivage-Regular.ttf?fileID=12800000&amp;guid=7a9324dd6fe32a04d8d07eaceeec469a&amp;type=3#BeauRivage-Regular&apos;);" />
+            <ui:Button text="Resume" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonResume" class="MenuButton" />
+            <ui:Button text="Quit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonQuit" class="MenuButton" />
+            <ui:VisualElement style="flex-grow: 1;" />
+            <ui:Label tabindex="-1" text="Settings" parse-escape-sequences="true" display-tooltip-when-elided="true" class="MenuHeading" />
+            <ui:Slider picking-mode="Ignore" label="Master volume" value="42" high-value="1" name="SliderMasterVolume" />
+            <ui:Slider picking-mode="Ignore" label="Brightness" value="42" high-value="1" name="SliderBrightness" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -7,6 +7,7 @@ public class StalkerLungingState : StalkerBaseState
     public float returnToIdleTimeout = 3f;
     public override void EnterState(StalkerStateManager stalker)
     {
+        stalker.controller.isSpawned = true;
         StalkerAudioManager.instance.PlayLungingEnter();
         Debug.Log("Stalker is lunging!");
 

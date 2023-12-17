@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoryInteractableTutorial : MonoBehaviour
+public class StoryInteractionTutorial : MonoBehaviour
 {
     public GameObject Light;
     public Image StoryPage;
@@ -17,6 +17,7 @@ public class StoryInteractableTutorial : MonoBehaviour
     //private Image StoryPage;
     public float fadeDuration = 1f;
     
+    private float targetAlpha = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -35,43 +36,12 @@ public class StoryInteractableTutorial : MonoBehaviour
         }
     }
 
-        IEnumerator FadeIn()
-    {
-        // Fading in
-        yield return FadeToAlpha(StoryText, 1.0f);
-        yield return FadeToAlpha(StoryPage, 1.0f);
-
-        // Wait for a moment at fully visible state
-        yield return new WaitForSeconds(0.3f);
-
-        // Start the fade out process
-        
-        
-        
+    void FadeOut() {
+        targetAlpha = 0;
     }
 
-    IEnumerator FadeOut()
-    {
-        // Fading out
-        yield return FadeToAlpha(StoryText, 0.0f);
-        yield return FadeToAlpha(StoryPage, 0.0f);
-
-        // You can repeat the process if needed or perform other actions
-    }
-        IEnumerator FadeToAlpha(Graphic graphic, float targetAlpha)
-    {
-        Color startColor = graphic.color;
-        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
-
-        float elapsedTime = 0.0f;
-        while (elapsedTime < fadeDuration)
-        {
-            graphic.color = Color.Lerp(startColor, targetColor, elapsedTime / fadeDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        graphic.color = targetColor;  // Ensure the target alpha is reached exactly
+    void FadeIn() {
+        targetAlpha = 1;
     }
 
     void SetAlpha(Graphic graphic, float alpha)
@@ -86,17 +56,31 @@ public class StoryInteractableTutorial : MonoBehaviour
         {
         TextPrompt.gameObject.SetActive(false);
         playerInTriggerZone = false;
-        StartCoroutine(FadeOut());
+        FadeOut();
         }
     }
 
     void Update()
-    {   
+    {
+        Color newPageColor = new Color(StoryPage.color.r, StoryPage.color.g, StoryPage.color.b, 1);
+        Color newTextColor = new Color(StoryText.color.r, StoryText.color.g, StoryText.color.b, 1);
+        if(Mathf.Abs(StoryPage.color.a - targetAlpha) > 0.01) {
+            newPageColor.a = Mathf.Lerp(StoryPage.color.a, targetAlpha, 0.1f);
+            newTextColor.a = Mathf.Lerp(StoryText.color.a, targetAlpha, 0.1f);
+        
+        } else {
+            newPageColor.a = targetAlpha;
+            newTextColor.a = targetAlpha;
+        }
+        StoryPage.color = newPageColor;
+        StoryText.color = newTextColor;
+        
+
         if (playerInTriggerZone && Input.GetKeyDown(KeyCode.E))
         {   
             Light.SetActive(true);
             TextPrompt.gameObject.SetActive(false);
-            StartCoroutine(FadeIn());
+            FadeIn();
             AudioManager.instance.PageSound();
             
         }

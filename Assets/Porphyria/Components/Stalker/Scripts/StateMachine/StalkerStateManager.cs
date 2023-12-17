@@ -6,7 +6,7 @@ public class StalkerStateManager : MonoBehaviour
 {
     [Header("State Machine")]
     [SerializeField]
-    StalkerBaseState currentState;
+    public StalkerBaseState currentState;
 
     [Header("Controller")]
     public StalkerController controller;
@@ -23,6 +23,7 @@ public class StalkerStateManager : MonoBehaviour
     public StalkerScaredState    scaredState;
     public StalkerPreparingLungeState preparingLungeState;
     public StalkerLungingState   lungingState;
+    
 
     void Start()
     {
@@ -47,6 +48,6 @@ public class StalkerStateManager : MonoBehaviour
         currentState = state;
         state.EnterState(this);
         state.StartTiming();
-        Debug.Log("Stalker transitioning to " + state);
+        //Debug.Log("Stalker transitioning to " + state);
     }
 }

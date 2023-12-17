@@ -40,7 +40,7 @@ public bool hasFinished = false;
             else
             {
 
-                depositText.text = "Place down statue";
+                depositText.text = "Place down statue (E)";
                 depositText.gameObject.SetActive(true);
             }
         }

@@ -14,6 +14,7 @@ public class StalkerPreparingLungeState : StalkerBaseState
     private float timeLeft;
     public override void EnterState(StalkerStateManager stalker)
     {
+        stalker.controller.isSpawned = true;
         StalkerAudioManager.instance.PlayPreparingLungeEnter();
         stalker.controller.StartIdleAnimation();
         Debug.Log("Stalker is preparing to lunge!");

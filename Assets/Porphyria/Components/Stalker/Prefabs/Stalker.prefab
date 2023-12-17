@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5717357296484948432}
   - component: {fileID: 3228740554496983436}
   - component: {fileID: 6845044756234594786}
+  - component: {fileID: 2667591030020351677}
   m_Layer: 0
   m_Name: Stalker
   m_TagString: Untagged
@@ -75,7 +76,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -97,9 +98,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stalkerCollider: {fileID: 8592313632983714160}
   stalkerBody: {fileID: 6891184463785908415}
+  stateMachine: {fileID: 1826181730421237931}
   seenByCamera: 0
+  minDangerDistance: 3
+  proximityDanger: {fileID: 0}
   lungeSpeed: 2
   destination: {x: 0, y: 0, z: 0}
+  isSpawned: 0
 --- !u!114 &3228740554496983436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +146,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2667591030020351677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152182984508239746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c826ad51060f14fa0b3672ae16cc53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 0
+  heartbeatSpeed: 0.05
 --- !u!1 &3445542077544786983
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +342,8 @@ MonoBehaviour:
   currentState: {fileID: 0}
   controller: {fileID: 5717357296484948432}
   target: {fileID: 0}
+  enableSpawn: 1
+  enableLunge: 1
   despawnedState: {fileID: 892269557327499432}
   spawningState: {fileID: 6357541989611446252}
   idleState: {fileID: 1554142140947046626}
@@ -428,6 +449,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lungingTimeout: 7
+  criticalHitDistance: 1
+  maxLungeDistance: 10
+  distanceToTarget: 0
+  seesTarget: 0
   timeLeft: 0
 --- !u!1 &6078076356053070784
 GameObject:

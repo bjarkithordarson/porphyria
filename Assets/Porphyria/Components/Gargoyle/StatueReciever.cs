@@ -32,13 +32,13 @@ private bool canReturnStatues = false;
         {
             if (coneDetection.statueCount < statuesNeeded)
             {   
-                depositText.text = "You need 1 statue";
+                depositText.text = "You need a statue";
                 depositText.gameObject.SetActive(true);
             }
             else
             {
 
-                depositText.text = "Place down statues with 'E'";
+                depositText.text = "Place statue (E)";
                 depositText.gameObject.SetActive(true);
             }
         }

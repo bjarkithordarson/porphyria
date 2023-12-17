@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,13 +8,25 @@ public class StalkerController : MonoBehaviour
 {
     public CapsuleCollider stalkerCollider;
     public GameObject stalkerBody;
+
+    public StalkerStateManager stateMachine;
     public bool seenByCamera = false;
+
+    public float minDangerDistance = 5f;
+
+    public ProximityDanger proximityDanger;
+
+    private bool inDanger = false;
+
+    private bool inSafeDistance = false;
 
     //public Animator animator;
 
     public float lungeSpeed = 2;
 
     public Vector3 destination;
+
+    public bool isSpawned;
     void Start()
     {
         destination = transform.position;
@@ -33,12 +46,31 @@ public class StalkerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(VisibleByCamera());
+        //Debug.Log(VisibleByCamera());
         if (!seenByCamera && VisibleByCamera())
         {
-            Debug.Log("ASDFASDFASDF");
+            //Debug.Log("ASDFASDFASDF");
             seenByCamera = true;
             StalkerAudioManager.instance.PlayFirstSeenByCamera();
+        }
+        float distanceFromPlayer = Vector3.Distance(stateMachine.target.transform.position, transform.position);
+
+        if(distanceFromPlayer < minDangerDistance && !inDanger) {
+            //Debug.Log("Player is in danger ASDASDASDASDASDASDDDDDD");
+            proximityDanger.PlayerDangerEffect();
+            inDanger = true;
+            inSafeDistance = true;
+            
+            
+
+        } else if(distanceFromPlayer > minDangerDistance && inSafeDistance)
+        {
+            //Debug.Log("Player is not in danger ASDASDADASDASDASDASD");
+            proximityDanger.PlayerSafe();
+            inSafeDistance = false;
+            inDanger = false;
+             
+            
         }
 
         Move();
@@ -47,7 +79,7 @@ public class StalkerController : MonoBehaviour
     private void Move()
     {
         if (Vector3.Distance(transform.position, destination) > 0.01f)
-            transform.position = Vector3.Lerp(transform.position, destination, 0.01f);
+            transform.position = Vector3.Lerp(transform.position, destination, 0.01f * lungeSpeed);
         else
             transform.position = destination;
     }
@@ -196,9 +228,14 @@ public class StalkerController : MonoBehaviour
         return false;
     }
 
+    public StalkerBaseState GetState()
+    {
+        return stateMachine.currentState;
+    }
+
     private void OnTriggerStay(Collider collider)
     {
-        if(collider.CompareTag("Player"))
+        if(collider.CompareTag("Player") && isSpawned)
         {
             SceneManager.LoadScene("EndScene");
 
