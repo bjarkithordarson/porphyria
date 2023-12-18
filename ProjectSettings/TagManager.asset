@@ -3,18 +3,23 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CinemachineTarget
+  - Flask
+  - Statue
+  - Floor
+  - AntiStalkerLight
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Character
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Postprocessing
+  - interactable
+  - fog
+  - dangerlayer
   - 
   - 
   - 

@@ -1,0 +1,54 @@
+VisualElement.MenuContainer {
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
+    width: 500px;
+    height: 500px;
+    opacity: 0.71;
+    display: flex;
+    transition-duration: 1s;
+    align-self: auto;
+    max-width: 500px;
+    max-height: 500px;
+    min-width: 500px;
+    min-height: 500px;
+    color: rgb(255, 255, 255);
+}
+
+VisualElement.MenuWrapper {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+Button.MenuButton {
+    color: rgb(255, 255, 255);
+    -unity-font: resource('Fonts & Materials/BlackwoodCastleShadow');
+    font-size: 43px;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    background-color: rgb(0, 0, 0);
+    border-left-color: rgba(255, 255, 255, 0.18);
+    border-right-color: rgba(255, 255, 255, 0.18);
+    border-top-color: rgba(255, 255, 255, 0.18);
+    border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+.MenuHeading {
+    font-size: 52px;
+    color: rgb(255, 255, 255);
+    -unity-text-align: upper-center;
+}
